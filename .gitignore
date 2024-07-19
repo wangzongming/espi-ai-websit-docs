@@ -1,0 +1,6 @@
+ 
+docs/.vuepress/.cache
+docs/.vuepress/.temp
+
+# 忽略依赖
+node_modules
