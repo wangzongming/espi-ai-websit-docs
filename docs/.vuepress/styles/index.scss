@@ -1,0 +1,19 @@
+
+
+.vp-navbar{ 
+    .vp-site-name.vp-hide-mobile{ 
+        display: none;
+    }
+}
+
+.vp-home{
+    #main-title{
+        display: none;
+    }
+   .vp-hero .vp-hero-image{
+        // height: 120px; 
+    }
+    .vp-hero-actions{
+        padding-top: 20px;
+    }
+}

@@ -1,33 +1,58 @@
 ---
 home: true
 title: Home
-heroImage: https://vuejs.press/images/hero.png
+heroImage: /images/logo-3d.png
+
 actions:
   - text: Get Started
-    link: /getting-started.html
+    link: /en/start.html
     type: primary
 
-  - text: Introduction
-    link: https://vuejs.press/guide/introduction.html
+  - text: Development Guide
+    link: /en/client.html
     type: secondary
 
 features:
   - title: Simplicity First
-    details: Minimal setup with markdown-centered project structure helps you focus on writing.
-  - title: Vue-Powered
-    details: Enjoy the dev experience of Vue, use Vue components in markdown, and develop custom themes with Vue.
-  - title: Performant
-    details: VuePress generates pre-rendered static HTML for each page, and runs as an SPA once a page is loaded.
-  - title: Themes
-    details: Providing a default theme out of the box. You can also choose a community theme or create your own one.
+    details: Whether it's hardware code, server-side code, or plugin development, developers won't need to learn new concepts or write unnecessary code.
+
+  - title: On-Demand Integration
+    details: The framework only includes built-in support for iFLYTEK's IAT, TTS, and LLM. Other platforms can be extended by downloading plugins from the plugin market as needed.
+
   - title: Plugins
-    details: Flexible plugin API, allowing plugins to provide lots of plug-and-play features for your site.
-  - title: Bundlers
-    details: Default bundler is Vite, while Webpack is also supported. Choose the one you like!
+    details: Use plugins to flexibly extend any functionality, including integrating local services. If you are a developer, you can easily publish your plugins to the ESP-AI plugin market.
 
-footer: MIT Licensed | Copyright © 2018-present VuePress Community
+  - title: Voice Wake-Up
+    details: Customizable offline voice wake-up, with voice inference using TensorFlow Lite models. An online wake-up word generation service will be available later.
+
+  - title: Complete and Reliable
+    details: As a framework released for production environments, ESP-AI provides a complete IAT (ASR) ➡️ LLM/RAG ➡️ TTS process, with each step customizable.
+
+  - title: Configuration and Zero Code
+    details: Apart from plugins written for specific business needs, the configurations provided by the framework or plugins generally meet most scenarios. A configuration generation service will be offered later, making it completely zero code.
+
+
+footer: Apache 2.0 Licensed | Copyright © ESP-AI
 ---
+<br/>
+<br/>
+<h1><center>Just a few lines of code give your robot a soul</center></h1>
+<br/>
+<br/>
+<img src="/images/nodejs.png" width="50%" height="300px" />
+<img src="/images/arduino.png" width="50%"  height="300px"/>
 
-This is the content of home page. Check [Home Page Docs][default-theme-home] for more details.
+<br/>
+<br/>
+<h1><center>Community</center></h1>
+<br/>
+<br/>
 
-[default-theme-home]: https://vuejs.press/reference/default-theme/frontmatter.html#home-page
+<center>
+QQ Group: 854445223 
+</center> 
+<br/>
+<center>
+<img src="/images/qq-grounp.png" />
+</center> 
+ 
