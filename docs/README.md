@@ -1,7 +1,8 @@
 ---
 home: true
 title: 首页 
-heroImage: /images/logo-3d.png
+# heroImage: /images/logo-3d.png
+heroImage: /images/ESP-AI.png
 
 actions:
   - text: 快速开始

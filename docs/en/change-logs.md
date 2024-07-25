@@ -1,5 +1,60 @@
 # Change Logs
 
+
+## 2024-7-23 Server@1.14.5 Client@1.2.1 
+
+#### Server 
+
+- 🐞 修复 播放 `http` 地址放入音乐会报错 
+
+##### Install
+
+```
+npm i esp-ai@1.14.5
+```
+
+#### Client 
+
+- 🐞 修复 一些其他问题
+
+##### Install
+<a href="https://github.com/user-attachments/files/16347295/esp-ai-1.2.1.zip">esp-ai Arduino依赖库 点击下载</a>
+
+
+
+## 2024-7-22 Server@1.14.4 Client@1.2.0 
+
+#### Server
+
+- 🐞 修复 讯飞llm服务返回报错后框架未将错误输出
+
+##### Install
+
+
+```
+npm i esp-ai@1.14.4
+```
+
+#### Client
+
+- 💄 优化 稳定性提示
+ 
+##### Install
+<a href="https://github.com/user-attachments/files/16323083/esp-ai-1.1.0.zip">esp-ai Arduino依赖库 点击下载</a>
+
+## 2024-07-21 
+
+#### Server v1.14.3
+
+- 🆕 Added the music player function
+- 🐞 fixed no longer waking up after the first wake up
+
+
+#### Client v1.2.0
+
+- 💄 Stability optimization Tips
+
+
 ## 2024-07-20
 
 #### Server v1.13.2

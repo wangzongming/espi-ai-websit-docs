@@ -42,19 +42,69 @@ espAi(config);
 - 使用案例
 ``` typescript
 const config = { 
-    // 讯飞：https://console.xfyun.cn/services/iat  。打开网址后，右上角三个字段复制进来即可。
-    xun_fei: {
-        appid: "xxx",
-        apiSecret: "xxx",
-        apiKey: "xxx",
-        // LLM 版本
-        llm: "v4.0", 
-    }, 
+    api_key: {
+       /** [内置插件]
+        * 讯飞：https://console.xfyun.cn/services/iat  。打开网址后，右上角三个字段复制进来即可。
+       */
+        xun_fei: {
+            appid: "5200d300",
+            apiSecret: "xxx",
+            apiKey: "xx",
+            llm: "v4.0",
+        },
+        /** [内置插件]
+         * 阿里积灵（千问等）： https://dashscope.console.aliyun.com/apiKey
+         * 积灵主要是提供llm（推荐使用这个llm服务）
+        */ 
+        dashscope: {
+            apiKey: "sk-xx",
+            // LLM 版本
+            llm: "qwen-turbo",
+        },
 
-    // 自定义插件，插件名称为对象名字，如[custom_plugin]
-    custom_plugin: {
-        [key: string]: any;
-    }
+
+        /** [内置插件]
+         * 火山引擎（豆包等）：https://console.volcengine.com/speech/service/8?AppID=6359932705
+         */ 
+        volcengine: {
+            // 火山引擎的TTS与LLM使用不同的key，所以需要分别配置
+            tts: {
+                // 服务接口认证信息
+                appid: "xxx",
+                accessToken: "xxx",
+            },
+
+            // 暂不支持 llm
+            llm: {
+                // 获取地址：https://console.volcengine.com/ark/region:ark+cn-beijing/endpoint?current=1&pageSize=10
+                model: "ep-xxx",// 每个模型都有一个id
+                // 获取地址：https://console.volcengine.com/ark/region:ark+cn-beijing/apiKey
+                apiKey: "32dacfe4xxx",
+            }
+        },
+
+        /** [第三方插件]
+         * 海豚TTS, 可以不用配置 token, 每天都有免费额度
+         * 插件文档地址： https://www.npmjs.com/package/esp-ai-plugin-tts-ttson
+         * 海豚配音：https://www.ttson.cn/
+        */ 
+        "esp-ai-plugin-tts-ttson": {
+            token: ""
+        }, 
+        /**  [第三方插件]
+         * 通过onehub支持绝大多数LLM模型
+         * 插件文档地址： https://www.npmjs.com/package/esp-ai-plugin-llm-onehub 
+         */  
+        "esp-ai-plugin-llm-onehub": {
+            apiKey: "sk-xxx",
+            llm: "gpt-3.5-turbo",
+            api_server: "https://api.xn--5kv132d.com/v1/chat/completions",
+        }, 
+        // 其他自定义插件，插件名称为对象名字，如[custom_plugin]
+        // custom_plugin: {
+        //     [key: string]: any;
+        // }
+    } 
 }
 ```
 
@@ -74,7 +124,7 @@ const config = {
 ### tts_server
 - 说明：
 
-TTS服务，框架目前内置了讯飞的服务`xun_fei`，如果需要其他服务商或者本地的服务，请自行到插件市场下载所需插件或者自行编写插件。
+TTS服务，框架目前内置了讯飞的服务`xun_fei`(讯飞)、`volcengine`(火山引擎)，如果需要其他服务商或者本地的服务，请自行到插件市场下载所需插件或者自行编写插件。
 
 - 默认: xun_fei
 - 必填:  否
@@ -87,7 +137,7 @@ const config = {
 ### llm_server
 - 说明：
 
-LLM/RAG 服务，框架目前内置了讯飞的服务`xun_fei`，如果需要其他服务商或者本地的服务，请自行到插件市场下载所需插件或者自行编写插件。
+LLM/RAG 服务，框架目前内置了讯飞的服务`xun_fei`(讯飞)、`dashscope`(阿里积灵)，如果需要其他服务商或者本地的服务，请自行到插件市场下载所需插件或者自行编写插件。
 
 - 默认:  xun_fei
 - 必填:  否
@@ -124,6 +174,10 @@ const config = {
 
 ###  intention
 - 说明： 用户意图表，当用户唤醒 小明同学后，可以向小明同学发出下面的指令，关键词设置在3到5个为最佳。在打造一个家庭助手时这是必不可少的功能。
+内置指令 __play_music__ 、__sleep__
+
+当需要请求意图服务时，可写为异步函数，返回非 `false` 即为匹配成功。如下方的音乐播放。
+
 - 默认:  -
 - 必填:  否
 - 使用案例
@@ -146,6 +200,34 @@ const config = {
             instruct: "device_close_001",
             message: "关啦！还有什么需要帮助的吗？"
         },
+        
+        {
+            /**
+             * 正则匹配
+             * 如：播放音乐最后的倔强
+             * 
+             * 返回匹配的字符串为匹配成功
+            */
+            key: async (text) => {
+                const regex = /^(播放音乐)(.*)$/;
+                const match = text.match(regex); 
+                if (match) { 
+                    const songName = match[2]; 
+                    console.log("音乐名称:", songName);
+                    return songName;
+                } else {
+                    return false;
+                }
+            },
+            // 向客户端发送的指令
+            instruct: "__play_music__",
+            message: "好的！",
+            // 用于返回音乐地址的服务，`esp-ai` 目前不提供音乐服务
+            // name 是歌曲名称
+            music_server: async (name)=>{
+                return "http://m10.music.126.net/20240723180659/13eabc0c9291dab9a836120bf3f609ea/ymusic/5353/0f0f/0358/d99739615f8e5153d77042092f07fd77.mp3";
+            }
+        },
         {
             // 关键词
             key: ["退下吧", "退下"],
@@ -167,6 +249,17 @@ const config = {
     f_reply: "有事请吩咐",
 }
 ```
+
+###  vad_eos
+- 默认:  语音识别静默时间, 单位毫秒，默认 2500
+- 必填:  否
+- 使用案例
+``` javascript
+const config = { 
+    vad_eos: 5000, // 5秒后听不见说话结束会话
+}
+```
+ 
 
 ###  llm_params_set
 - 说明： llm 参数自定义, 可以设置温度等
@@ -283,6 +376,22 @@ const config = {
     onLLMcb: ({ device_id, text, is_over, llm_historys }) => {};
 }
 ```
+
+###  onTTScb 
+- 说明：  tts 回调 
+- 默认:  -
+- 必填:  否
+- 使用案例
+``` javascript
+const config = { 
+    /** 
+     * @param {string} device_id 设备id
+     * @param {Boolean} is_over  是否完毕
+     * @param {Buffer} audio    音频流 
+    */
+    onTTScb: ({  device_id: string, is_over: boolean, audio: Buffer }) => {};
+}
+``` 
 
 ###  plugins 
 - 说明： 

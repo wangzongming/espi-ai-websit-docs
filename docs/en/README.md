@@ -1,7 +1,8 @@
 ---
 home: true
 title: Home
-heroImage: /images/logo-3d.png
+# heroImage: /images/logo-3d.png
+heroImage: /images/ESP-AI.png
 
 actions:
   - text: Get Started

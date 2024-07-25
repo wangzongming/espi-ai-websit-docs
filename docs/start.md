@@ -42,11 +42,11 @@
 
 | 环境 | 版本 | 备注 |
 | -------- | ------- | ------- |
-| `Nodejs`      | 推荐：大于v14.0.0 并且小于 v18.x    | |
+| `Nodejs`      | v18.x(npm版本需要低于10.x, 6.x到9.x都行)    | |
 | `VsCode IDE`      | 最新版     | |
 | `Arduino IDE`      | >= v2.x     |  |
 | `esp` 开发板     | v2.x     |  `Arduino IDE` 中搜索安装`esp`开发板 |
-| 硬件代码依赖库      |  最新版   | 需将`Github` 仓库中 `/client/libraries` 中的插件导入到IDE插件中，默认位置在`C:\Users\用户名\Documents\Arduino\libraries` | 
+| 硬件代码依赖库      |  最新版   | 需将`Github` 仓库中 `/client/libraries` <br/>中的插件导入到IDE插件中，<br/>默认位置在`C:\Users\用户名\Documents\Arduino\libraries` | 
 
 #### 硬件代码依赖库说明
 | 文件名 | 备注 | 版本 |

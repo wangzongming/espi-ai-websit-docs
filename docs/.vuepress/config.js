@@ -6,7 +6,8 @@ import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 export default defineUserConfig({
   lang: 'zh-CN',
   title: "ESP-AI",
-  head: [['link', { rel: 'icon', href: '/images/logo-squ-green.png' }]],
+  base: '/esp-ai/',
+  head: [['link', { rel: 'icon', href: '/esp-ai/images/logo-squ-green.png' }]],
   locales: {
     '/': {
       lang: 'zh-CN',
@@ -64,8 +65,30 @@ export default defineUserConfig({
               },
               {
                 text: '海豚配音',
-                link: 'https://ttson.cn',
+                link: 'https://www.ttson.cn/',
               },
+              {
+                text: '免费二次元音色',
+                link: 'https://acgn.ttson.cn/',
+              },
+              {
+                text: "Qsy's Blog",
+                link: 'http://hexp.top/',
+              },
+              {
+                text: "mybatis-mp",
+                link: 'https://mybatis-mp.cn/',
+              }, 
+
+              {
+                text: "安全获取苹果UDID",
+                link: 'https://authapi.applekuid.com/index.html',
+              }, 
+              {
+                text: "KaedeharaLu's Blog",
+                link: 'https://www.kazuhalu.com',
+              }, 
+              
             ],
           },
         ],
@@ -102,8 +125,29 @@ export default defineUserConfig({
               },
               {
                 text: '海豚配音',
-                link: 'https://ttson.cn',
+                link: 'https://www.ttson.cn/',
               },
+              {
+                text: 'Free second tone',
+                link: 'https://acgn.ttson.cn/',
+              },
+              {
+                text: "Qsy's Blog",
+                link: 'http://hexp.top/',
+              },
+              {
+                text: "mybatis-mp",
+                link: 'https://mybatis-mp.cn/',
+              }, 
+              
+              {
+                text: "安全获取苹果UDID",
+                link: 'https://authapi.applekuid.com/index.html',
+              }, 
+              {
+                text: "KaedeharaLu's Blog",
+                link: 'https://www.kazuhalu.com',
+              }, 
             ],
           },
         ],
@@ -111,14 +155,19 @@ export default defineUserConfig({
     }
   }),
 
-  bundler: viteBundler(),
+  bundler: viteBundler({
+    viteOptions: {
+      // base: "https://xiaomingio.top/esp-ai",
+      base: "/esp-ai/",
+    }
+  }),
 
   plugins: [
-    // docsearchPlugin({
-    //   // 配置项
-    //   apiKey: 'YOUR_API_KEY',
-    //   appId: 'YOUR_APP_ID',
-    //   indexName: 'YOUR_APP_ID',
-    // }),
+    docsearchPlugin({
+      // 配置项
+      apiKey: 'ec7028c6e108534c152d97b6ac282244',
+      appId: 'LEWWWDLKT1',
+      indexName: 'xiaomingio',
+    }),
   ],
 })

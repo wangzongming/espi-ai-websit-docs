@@ -41,7 +41,7 @@ For subsequent upgrades, simply download the relevant files from the <a target="
 
 | Environment | Version | Notes |
 | -------- | ------- | ------- |
-| `Nodejs`      | Recommended: greater than v14.0.0 and less than v18.x    | |
+| `Nodejs`      |  v18.x    | |
 | `VsCode IDE`      | Latest version     | |
 | `Arduino IDE`      | >= v2.x     |  |
 | `esp` development board     | v2.x     |  Search for `esp` development board in `Arduino IDE` |
