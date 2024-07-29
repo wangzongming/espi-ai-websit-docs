@@ -7,7 +7,7 @@ export default defineUserConfig({
   lang: 'zh-CN',
   title: "ESP-AI",
   base: '/esp-ai/',
-  head: [['link', { rel: 'icon', href: '/esp-ai/images/logo-squ-green.png' }]],
+  head: [['link', { rel: 'icon', href: '/esp-ai/images/logo3.png' }]],
   locales: {
     '/': {
       lang: 'zh-CN',
@@ -26,7 +26,7 @@ export default defineUserConfig({
     lang: 'zh-CN',
     // 你也可以直接将它设置为一个 URL
     repo: 'https://github.com/wangzongming/esp-ai',
-    logo: '/images/logo.png',
+    logo: '/images/logo3.png',
     docsRepo: 'https://github.com/wangzongming/espi-ai-websit-docs',
     docsBranch: 'main',
     docsDir: 'docs',

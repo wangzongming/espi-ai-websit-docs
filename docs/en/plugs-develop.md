@@ -320,3 +320,13 @@ module.exports = {
     }
 };
 ``` 
+
+
+## Intent recognition Plugin
+
+...
+
+
+## Music player  Plugin
+
+...

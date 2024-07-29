@@ -22,6 +22,7 @@
 
 - ✔️ 可定制的离线语音唤醒
 - ✔️ IAT(ASR) ➡️ LLM/RAG ➡️ TTS
+- ✔️ 用户指令识别(家电控制、唱歌等)
 - ✔️ 配置化
 - ✔️ 插件化
 - ✔️ 开箱即用
@@ -40,22 +41,24 @@
 ### 本地开发环境准备
 后续升级仅需在<a target="_block" href="https://github.com/wangzongming/esp-ai/releases">发布页面</a>下载相关文件即可，下面的依赖文件只是首次需要安装。
 
-| 环境 | 版本 | 备注 |
-| -------- | ------- | ------- |
-| `Nodejs`      | v18.x(npm版本需要低于10.x, 6.x到9.x都行)    | |
-| `VsCode IDE`      | 最新版     | |
-| `Arduino IDE`      | >= v2.x     |  |
-| `esp` 开发板     | v2.x     |  `Arduino IDE` 中搜索安装`esp`开发板 |
-| 硬件代码依赖库      |  最新版   | 需将`Github` 仓库中 `/client/libraries` <br/>中的插件导入到IDE插件中，<br/>默认位置在`C:\Users\用户名\Documents\Arduino\libraries` | 
+docker 镜像或者window懒人包安装服务端时不需要 `Nodejs` 环境。
+
+| 环境           | 版本    | 备注                                                                                                                               |
+| -------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `Nodejs`       | >= v18.x 建议18.x   | npm版本需要低于10.x, 6.x到9.x都行  |
+| `VsCode IDE`   | 最新版  |                                                                                                                                    |
+| `Arduino IDE`  | >= v2.x |                                        |
+| `esp` 开发板   | v2.x    | `Arduino IDE` 中搜索安装`esp`开发板                                                                                                |
+| 硬件代码依赖库 | 最新版  | 需将`Github` 仓库中 `/client/libraries` <br/>中的插件导入到IDE插件中，<br/>默认位置在`C:\Users\用户名\Documents\Arduino\libraries` |
 
 #### 硬件代码依赖库说明
-| 文件名 | 备注 | 版本 |
-| -------- | ------- | ------- |
-| arduino-audio-tool      | https://github.com/pschatzmann/arduino-audio-tools     | |
-| WebSockets      | 新版IDE可以直接搜索安装     | v2.4.0 |
-| Arduino_JSON      | 新版IDE可以直接搜索安装     | v0.2.0 |
-| esp-ai      | esp-ai 暂时不可搜索安装     | |
-| xiao_ming_tong_xue_inferencing      | 离线语音识别模型  暂时不可搜索安装   | |
+| 文件名                         | 备注                                               | 版本   |
+| ------------------------------ | -------------------------------------------------- | ------ |
+| arduino-audio-tool             | https://github.com/pschatzmann/arduino-audio-tools |        |
+| WebSockets                     | 新版IDE可以直接搜索安装                            | v2.4.0 |
+| Arduino_JSON                   | 新版IDE可以直接搜索安装                            | v0.2.0 |
+| esp-ai                         | esp-ai 暂时不可搜索安装                            |        |
+| xiao_ming_tong_xue_inferencing | 离线语音识别模型  暂时不可搜索安装                 |        |
 
 ### 讯飞 KEY 申请
 
@@ -73,7 +76,11 @@
  -->
 
 
-## 客户端代码
+## 客户端
+
+硬件端这里成为客户端
+
+### 硬件代码 - Arduino
 
 1. 创建一个文件 `example/example.ino` ，注意：文件必须放到一个文件夹里，文件夹名字必须和文件一样
 2. 用 `Arduino IDE` 打开 `example.ino` 文件
@@ -110,8 +117,56 @@ void loop() {
 }
 ```
 
+### 硬件代码 - IDF
 
-## 服务端代码
+``` c
+// 开发中 ...
+```
+
+### 硬件物料 
+
+| 硬件           | 数量 | 价格 |
+| -------------- | ---- | ---- |
+| esp32s3(N16R8) | 1    | 25   |
+| INMP441        | 1    | 8    |
+| Max98357A      | 1    | 5    |
+| LED            | 1    | 0.5  |
+| 小喇叭         | 1    | 6    |
+| 面包板         | 1    | 5    |
+| 杜邦线         | 若干 | 1    |
+
+
+### 硬件接线 - ESP32-S3
+ 
+| ESP32-s3 | INMP441 | Max98357A | 电位器(可选) | LED(可选) |
+| -------- | ------- | --------- | ------------ | --------- |
+| 3v3      | VDD     | VDD       | VDD          |           |
+| GND      | GND     | GND       | GND          | GND       |
+| GND      | L/R     |           |              |           |
+| 4        | SCK     |           |              |           |
+| 5        | WS      |           |              |           |
+| 6        | SD      |           |              |           |
+| 15       |         | DIN       |              |           |
+| 16       |         | BCLK      |              |           |
+| 17       |         | LRC       |              |           |
+| 34/35    |         |           | OUT          |           |
+| 18       |         |           |              | 正极      |
+
+接线图待补充...
+
+
+### 硬件接线 - XIAOESP32S3
+开发中...
+
+### 硬件接线 - nodemcu32s
+开发中...
+
+## 服务端
+
+服务端用于向硬件(客户端)提供服务，用于调用 `LLM`、`IAT`、`TTS` 等服务，并且可以方便向外提供扩展等。
+与客户端是一对多的关系，也就是说一台服务能够供多个客户端连接。
+
+### 服务端代码 - Node.js
 
 1. 继续在上面创建的 `example` 目录中创建一个文件 `index.js` 
 2. 在 `index.js` 中添加以下代码：
@@ -164,35 +219,18 @@ pnpm install esp-ai
 node ./index.js
 ```
 
-
-## 硬件接线
-
-- INMP441      是一个麦克风模块
-- Max98357A    是一个放大器模块
-- 电位器        用来调节输出音量
-- LED          用来演示用户指令开关灯
-
-### ESP32-S3 开发板
- 
-| ESP32-s3 | INMP441 | Max98357A | 电位器(可选) | LED(可选) |
-| -------- | ------- |  -------  | ----       | --- |
-| 3v3      | VDD     |  VDD      | VDD        |     |
-| GND      | GND     |  GND      | GND        |  GND|
-| GND      | L/R     |           |            |     |
-| 4        | SCK     |           |            |     |
-| 5        | WS      |           |            |     |
-| 6        | SD      |           |            |     |
-| 15       |         | DIN       |            |     | 
-| 16       |         | BCLK      |            |     |
-| 17       |         | LRC       |            |     |
-| 34       |         |           |    OUT     |     |
-| 18       |         |           |            | 正极 |
-
-接线图待补充...
+### Docker 方式安装
+实现中...
 
 
-### ESP32XIAOS3 开发板
-与其他的开发板一样在路上...
+### 懒人包 
+实现中...
+
+
+## 详细文档
+
+- <a href="client.html">客户端详细文档</a>
+- <a href="server.html">服务端端详细文档</a> 
 
 ## 最后
 

@@ -4,11 +4,11 @@ This document will help you dive into the hardware part of the development, incl
 
 ## Basic Code
 
-For the basic code, refer directly to the quick start section: <a href="/en/start.html#client-code">Client Code</a>.
+For the basic code, refer directly to the quick start section: <a href="start.html#client">Client Code</a>.
 
 ## Pin Connections
 
-For the pin connections, refer directly to the quick start section: <a href="/en/start.html#hardware-wiring">Pin Connections</a>.
+For the pin connections, refer directly to the quick start section: <a href="start.html#hardware-wiring-esp32-s3">Pin Connections</a>.
 
 ## API
 

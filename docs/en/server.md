@@ -6,6 +6,10 @@ The core of the server is written in `Nodejs`. It provides plugin development ex
 
 The server mainly offers various configuration options that you need to modify.
 
+## Installation and Environment
+
+For detailed information, please refer directly to the Quick Start section: [Server Installation](start.html#server).
+
 ## Basic Code
 
 ```javascript
