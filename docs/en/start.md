@@ -25,6 +25,8 @@ Now with `ESP-AI`, you don't have to do that. You just need to introduce `ESP-AI
 - ✔️ User command recognition (home appliance control, singing, etc.)
 - ✔️ Configurable
 - ✔️ Plugin-based
+- ✔️ The service and client have a one-to-many relationship
+- ✔️ Server authentication
 - ✔️ Ready to use
 
 ## Next Steps
@@ -84,8 +86,8 @@ ESP_AI esp_ai;
 bool debug = true;
 // [Required] WiFi configuration: { wifi SSID, wifi password } Note: Use double quotes!
 ESP_AI_wifi_config wifi_config = { "oldwang", "oldwang520" };
-// [Required] Service configuration: { service IP, service port }
-ESP_AI_server_config server_config = { "192.168.1.5", 8080 };
+// [Required] Service configuration: { service IP, service port, params }
+ESP_AI_server_config server_config = { "192.168.1.5", 8080, "api-key=your_api_key&p2=test" };
 // [Required] Offline wake-up solution: { solution, recognition threshold }, "edge_impulse" | "diy", for "diy" you can call the esp_ai.wakeUp() method to wake up
 ESP_AI_wake_up_config wake_up_config = { "edge_impulse", 0.7 };
 

@@ -177,6 +177,30 @@ const config = {
 }
 ```
 
+
+### auth 
+- 说明： 客户端鉴权, 客户端首次连接与每一次调用接口都会进行回调。
+- 默认:  -
+- 必填:  否
+- 使用案例
+``` javascript
+const config = { 
+    /**
+     * 客户端鉴权, 客户端首次连接与每一次调用接口都会进行回调。
+     * 返回 success: false, 如 Promise.resolve({ success: false, message:"ak无效" }) 可使客户端鉴权失败
+     * 返回 success: true,  如 Promise.resolve({ success: true }) 可使客户端鉴权成功
+     * @param {object} params 参数为客户端中配置的参数， 这里会解析为字面量对象，开发者直接使用 key 方式引用即可。
+     * @param {string} scene 什么场景下的鉴权, "connect" 连接时， "start_session" 开始会话时
+     */
+    auth: async (params, scene) => {
+        // some code...
+        // console.log(scene, params);
+        return { success: true }
+        // return { success: false, message:"ak无效" }
+    },
+}
+```
+
 ###  intention
 - 说明： 用户意图表，当用户唤醒 小明同学后，可以向小明同学发出下面的指令，关键词设置在3到5个为最佳。在打造一个家庭助手时这是必不可少的功能。
 内置指令 __play_music__ 、__sleep__

@@ -172,6 +172,28 @@ const config = {
 }
 ```
 
+### auth 
+- Description: Client authentication: The first connection between the client and the interface is called back each time
+- Required:  -
+- Required:  No
+- Example
+``` javascript
+const config = { 
+    /** 
+     * retrun success: false, eg Promise.resolve({ success: false, message:"ak无效" }) Client authentication may fail
+     * retrun success: true,  eg Promise.resolve({ success: true }) Client authentication may successful
+     * @param {object} params Parameters are parameters configured on the client, which are parsed into literal objects, and can be referenced directly by the developer using the key method.
+     * @param {string} scene What is the authentication scenario, when "connect" connects, and when "start_session" starts a session
+     */
+    auth: async (params, scene) => {
+        // some code...
+        // console.log(scene, params);
+        return { success: true }
+        // return { success: false, message:"ak fail" }
+    },
+}
+```
+
 ### intention
 - Description: User intention table. After waking up Xiao Ming, you can give the following commands. Setting 3 to 5 keywords is optimal. This function is essential when creating a home assistant.
 

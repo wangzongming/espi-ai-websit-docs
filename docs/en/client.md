@@ -25,8 +25,8 @@ ESP_AI esp_ai;
 bool debug = true;
 // [Required] WiFi configuration: { WiFi SSID, WiFi password } Note: Use double quotes!
 ESP_AI_wifi_config wifi_config = { "oldwang", "oldwang520" };
-// [Required] Server configuration: { Server IP, Server port }
-ESP_AI_server_config server_config = { "192.168.1.5", 8080 };
+// [Required] Server configuration: { Server IP, Server port, params }
+ESP_AI_server_config server_config = { "192.168.1.5", 8080, "api-key=your_api_key&p2=test"  };
 // [Required] Offline wake-up scheme: { Scheme, Recognition threshold }, "edge_impulse" | "diy", use `esp_ai.wakeUp()` to wake up if "diy" is chosen
 ESP_AI_wake_up_config wake_up_config = { "edge_impulse", 0.7 };
 
