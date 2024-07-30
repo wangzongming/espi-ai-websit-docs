@@ -253,8 +253,9 @@ const config = {
             message: "好的！",
             // 用于返回音乐地址的服务，`esp-ai` 目前不提供音乐服务
             // name 是歌曲名称
+            // 目前只支持 mp3、wav 格式
             music_server: async (name)=>{
-                return "http://m10.music.126.net/20240723180659/13eabc0c9291dab9a836120bf3f609ea/ymusic/5353/0f0f/0358/d99739615f8e5153d77042092f07fd77.mp3";
+                return "https://xiaomingio.top/music.mp3";
             }
         },
         {

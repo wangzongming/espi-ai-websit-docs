@@ -27,6 +27,7 @@ Now with `ESP-AI`, you don't have to do that. You just need to introduce `ESP-AI
 - ✔️ Plugin-based
 - ✔️ The service and client have a one-to-many relationship
 - ✔️ Server authentication
+- ✔️ Streaming data interaction 
 - ✔️ Ready to use
 
 ## Next Steps
@@ -86,7 +87,7 @@ ESP_AI esp_ai;
 bool debug = true;
 // [Required] WiFi configuration: { wifi SSID, wifi password } Note: Use double quotes!
 ESP_AI_wifi_config wifi_config = { "oldwang", "oldwang520" };
-// [Required] Service configuration: { service IP, service port, params }
+// [Required] Service configuration: { service IP, service port, params max 256 byts }
 ESP_AI_server_config server_config = { "192.168.1.5", 8080, "api-key=your_api_key&p2=test" };
 // [Required] Offline wake-up solution: { solution, recognition threshold }, "edge_impulse" | "diy", for "diy" you can call the esp_ai.wakeUp() method to wake up
 ESP_AI_wake_up_config wake_up_config = { "edge_impulse", 0.7 };
@@ -211,7 +212,39 @@ node ./index.js
 ```
 
 ### Docker Installation
-Under implementation...
+ 
+- We will name the container: `esp-ai-server`
+- Place the configuration file at: `/esp-ai-server/index.js`
+- The host machine port is: `8080`
+
+Note: These three configurations can only modify those on the host machine; the image settings must be hard-coded as follows.
+
+#### Running the Container
+```bash
+docker run -itd -p 8080:8080 -v /esp-ai-server/index.js:/server/index.js --name esp-ai-server registry.cn-shanghai.aliyuncs.com/xiaomingio/esp-ai:1.0.0
+```
+
+The configuration file is mapped to `/esp-ai-server/index.js`. You need to modify this configuration file yourself. After making changes, you can restart the service:
+```bash
+docker exec -it esp-ai-server pm2 restart all
+```
+
+#### Installing Plugins Inside the Container
+Execute the plugin installation command directly inside the container:
+```bash
+docker exec -it esp-ai-server yarn add [plugin-name]
+```
+
+After modifying the configuration file, you still need to restart the container:
+```bash
+docker exec -it esp-ai-server pm2 restart all
+```
+
+#### Viewing Runtime Logs
+```bash
+docker exec -it esp-ai-server pm2 logs
+```
+
 
 ### Lazy Package
 Under implementation...

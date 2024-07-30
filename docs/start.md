@@ -27,6 +27,7 @@
 - ✔️ 插件化
 - ✔️ 服务与客户端为一对多关系
 - ✔️ 服务端鉴权 
+- ✔️ 流式数据交互 
 - ✔️ 开箱即用
 
 ## 下一步计划
@@ -95,7 +96,7 @@ ESP_AI esp_ai;
 bool debug = true;
 // [必  填] wifi 配置： { wifi 账号， wifi 密码 }  注意：要用双引号！
 ESP_AI_wifi_config wifi_config = { "oldwang", "oldwang520" };
-// [必  填] 服务配置： { 服务IP， 服务端口, "请求参数，用多个参数&号分割" }
+// [必  填] 服务配置： { 服务IP， 服务端口, "请求参数，用多个参数&号分割，最大256字节" }
 ESP_AI_server_config server_config = { "192.168.1.5", 8080, "api-key=your_api_key&p2=test" };
 // [必  填] 离线唤醒方案：{ 方案, 识别阈值 }, "edge_impulse" | "diy"，为 "diy" 时可调用 esp_ai.wakeUp() 方法进行唤醒
 ESP_AI_wake_up_config wake_up_config = { "edge_impulse", 0.7 };
@@ -222,8 +223,50 @@ node ./index.js
 ```
 
 ### Docker 方式安装
-实现中...
 
+- 我们将容器命名为：`esp-ai-server`
+- 配置文件放到`/esp-ai-server/index.js`
+- 宿主机端口为`8080`
+
+注意：上面这三个配置只能更改宿主机的，镜像的必须如下写死。
+ 
+#### 运行容器
+```bash
+docker run -itd -p 8080:8080 -v /esp-ai-server/index.js:/server/index.js --name esp-ai-server registry.cn-shanghai.aliyuncs.com/xiaomingio/esp-ai:1.0.0
+```
+
+配置文件将映射到了`/esp-ai-server/index.js`，需要自行更改配置文件，更改文件后重启服务即可：
+```bash
+docker exec -it esp-ai-server pm2 restart all
+```
+
+#### 容器内安装插件
+直接在容器内执行安装插件的命令
+```bash
+docker exec -it esp-ai-server yarn add [插件名字]
+```
+
+然后自行修改配置文件后，依然需要重启容器
+```bash
+docker exec -it esp-ai-server pm2 restart all
+```
+
+#### 查看运行日志
+```bash
+docker exec -it esp-ai-server pm2 logs
+```
+
+#### 更新依赖
+用最新的版本号替换下面代码中的版本号即可。
+
+```bash
+docker exec -it esp-ai-server yarn add esp-ai@1.15.6
+```
+
+更新完毕后需要查看`package.json`中的版本号是否正确，如果正确，则重启容器即可。
+```bash
+docker exec -it test cat ./package.json
+```
 
 ### 懒人包 
 实现中...

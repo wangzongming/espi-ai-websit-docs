@@ -1,6 +1,26 @@
 # Change Logs
 
 
+## 2024-7-30 Server@1.15.6 Client@1.3.1 
+
+#### Server 
+
+- 🆕 新增 鉴权配置，用户每次请求接口时都可进行一次鉴权
+
+##### Install
+
+```
+npm i esp-ai@1.15.6
+```
+
+#### Client 
+
+- 🆕 新增 连接服务时可传递参数，用于服务端鉴权等。
+
+##### Install
+<a href="https://github.com/user-attachments/files/16422116/esp-ai-1.3.1.zip">esp-ai Arduino依赖库 点击下载</a>
+
+
 ## 2024-7-23 Server@1.14.5 Client@1.2.1 
 
 #### Server 

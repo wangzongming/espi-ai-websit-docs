@@ -2,7 +2,7 @@
 
 
 
-## 2024-7-30 Server@1.15.5 Client@1.3.1 
+## 2024-7-30 Server@1.15.6 Client@1.3.1 
 
 #### Server 
 
@@ -11,7 +11,7 @@
 ##### Install
 
 ```
-npm i esp-ai@1.15.5
+npm i esp-ai@1.15.6
 ```
 
 #### Client 
