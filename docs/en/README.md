@@ -13,25 +13,33 @@ actions:
     link: /en/client.html
     type: secondary
 
-features:
+features: 
   - title: Simplicity First
     details: Whether it's hardware code, server-side code, or plugin development, developers won't need to learn new concepts or write unnecessary code.
 
-  - title: On-Demand Integration
-    details: The framework only includes built-in support for iFLYTEK's IAT, TTS, and LLM. Other platforms can be extended by downloading plugins from the plugin market as needed.
+  - title: Flexible Expansion
+    details: The framework only includes iFLYTEK's IAT, TTS, and LLM by default. For other platforms, plugins can be downloaded from the plugin market as needed, or developers can easily create their own plugins.
 
-  - title: Plugins
-    details: Use plugins to flexibly extend any functionality, including integrating local services. If you are a developer, you can easily publish your plugins to the ESP-AI plugin market.
+  - title: Voice Activation
+    details: Customizable offline voice activation with voice inference using TensorFlow Lite models. An online wake word generation service will be available in the future.
 
-  - title: Voice Wake-Up
-    details: Customizable offline voice wake-up, with voice inference using TensorFlow Lite models. An online wake-up word generation service will be available later.
+  - title: Command Recognition
+    details: Developers can customize user commands or use built-in commands to enable the robot to control home appliances, sing, and more.
 
-  - title: Complete and Reliable
-    details: As a framework released for production environments, ESP-AI provides a complete IAT (ASR) ➡️ LLM/RAG ➡️ TTS process, with each step customizable.
+  - title: C/S Architecture
+    details: The server and client are separated. The server supports multiple clients connecting simultaneously and provides services to all connected clients.
 
-  - title: Configuration and Zero Code
-    details: Apart from plugins written for specific business needs, the configurations provided by the framework or plugins generally meet most scenarios. A configuration generation service will be offered later, making it completely zero code.
+  - title: Identity Authentication
+    details: Each client connection and session can undergo identity verification and other operations.
 
+  - title: Real-time Response
+    details: All service interfaces use the WebSocket protocol for streaming transmission, enabling real-time server response. Each character inferred by LLM is responded to in real time.
+
+  - title: Configurable & Zero Code
+    details: Apart from plugins written for special business needs, the configurations provided by the framework or plugins generally meet most scenarios. A configuration generation service will be offered in the future, making it completely zero-code.
+
+  - title: Production grade & integrable
+    details: ESP-AI is a development library released for production environments, with strict requirements for scalability, flexibility, and stability.
 
 footer: Apache 2.0 Licensed | Copyright © ESP-AI
 ---

@@ -245,6 +245,17 @@ docker exec -it esp-ai-server pm2 restart all
 docker exec -it esp-ai-server pm2 logs
 ```
 
+#### Update Dependency
+Replace the version number in the code below with the latest version number.
+
+```bash
+docker exec -it esp-ai-server yarn add esp-ai@1.15.6
+```
+
+After the update, you need to check whether the version number in package.json is correct. If it is correct, restart the container.
+```bash
+docker exec -it esp-ai-server cat ./package.json
+```
 
 ### Lazy Package
 Under implementation...

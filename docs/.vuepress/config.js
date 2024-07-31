@@ -10,15 +10,13 @@ export default defineUserConfig({
   head: [['link', { rel: 'icon', href: '/esp-ai/images/logo3.png' }]],
   locales: {
     '/': {
-      lang: 'zh-CN',
-      // title: "", 
-      description: '将任何物品接入AI最简单的方案，也是为您的开发板提供全套的 AI 对话方案',
+      lang: 'zh-CN', 
+      // description: '将任何物品接入AI最简单的方案，也是为您的开发板提供全套的 AI 对话方案',
+      description: '最简单、最低成本的AI接入方案，让任何物品都能实现智能对话功能',
     },
     '/en/': {
-      lang: 'en-US',
-      // title: 'ESP-AI',
-      // title: '',
-      description: 'The simplest solution to integrate any item with AI, providing a complete AI conversation solution for your development board.',
+      lang: 'en-US', 
+      description: 'The simplest and most cost-effective AI integration solution, enabling any object to have intelligent conversation capabilities.',
     },
   },
 
