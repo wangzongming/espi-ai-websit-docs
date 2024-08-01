@@ -37,6 +37,7 @@ Now with `ESP-AI`, you don't have to do that. You just need to introduce `ESP-AI
 - 🤔 Offer free and paid services
 - 🤔 Online generation of wake words
 - 🤔 Methods for writing plugins in other languages (to avoid only using Node.js to develop plugins)
+- 🤔 OTA
 - 🤔 Provide a dedicated development board (to avoid current complex wiring)
 
 ## Development Environment Setup
