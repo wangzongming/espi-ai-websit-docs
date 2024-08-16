@@ -13,11 +13,11 @@ actions:
     type: secondary
 
 features:
-  - title: 简洁至上
-    details: 不管是硬件代码还是服务端代码，或是插件开发，都不会让开发者多去了解一个新概念或多写一些无关的代码。
+  - title: 简洁/全面
+    details: 绝不让开发者去了解一个多余新概念或多写无关业务的代码。客户端支持使用Ardunio、IDF(实现中)、PlatformIO等开发环境。
 
   - title: 灵活扩展
-    details: 框架仅内置讯飞的 IAT、TTS、LLM，其他平台可自行到到插件市场下载插件来按需扩展功能，或者自行实现一个插件也是非常简单的。
+    details: 内置讯飞IAT、TTS、LLM，其他平台可用插件扩展。
   
   - title: 语音唤醒
     details: 可定制的离线语音唤醒，语音推理使用 TensorFlow Lite 模型，后续将会推出在线唤醒词生成服务。
@@ -26,7 +26,7 @@ features:
     details: 开发者可以自定义用户指令，或者使用内置指令来让机器人具备家电控制、唱歌等功能
 
   - title: C/S架构
-    details: 服务端与客户端分离，服务端支持多个客户端同时连接，并为多个客户同时端提供服务。
+    details: 服务端与客户端分离，复杂计算与服务调度全部交于服务端，极大降低客户端成本，并可同时为N个客户端提供服务。
 
   - title: 身份鉴权
     details: 可在每个客户端连接时与每次会话时对客户端进行身份校验等操作。
@@ -41,8 +41,11 @@ features:
     details: ESP-AI 作为面向生产环境发布的开发库，对于扩展性、灵活性、稳定性有严格要求。并且可以很方便集成到现有项目。
 
  
-footer: Apache 2.0 Licensed | Copyright © ESP-AI
----
+# footer: Apache 2.0 Licensed | Copyright © ESP-AI 
+footer: Apache 2.0 Licensed | Copyright © ESP-AI <a style="padding-left:12px"  href="https://beian.miit.gov.cn/" target="_blank">黔ICP备2024030115号-2</a> 
+footerHtml: true
+--- 
+
 
 <br/>
 <br/>
@@ -68,3 +71,6 @@ QQ 交流群: 854445223
 <img src="/images/qq-grounp.png" />
 </center> 
  
+<!-- <div align="center">
+  <a href="https://beian.miit.gov.cn/" target="_blank">黔ICP备2024030115号-2</a>
+</div> -->

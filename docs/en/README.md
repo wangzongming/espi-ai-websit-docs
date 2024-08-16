@@ -15,11 +15,11 @@ actions:
 
 features: 
   - title: Simplicity First
-    details: Whether it's hardware code, server-side code, or plugin development, developers won't need to learn new concepts or write unnecessary code.
+    details: Never let a developer learn a new concept or write code that has nothing to do with the business. The client supports the use of Ardunio, IDF(in implementation), PlatformIO and other development environments.
 
   - title: Flexible Expansion
-    details: The framework only includes iFLYTEK's IAT, TTS, and LLM by default. For other platforms, plugins can be downloaded from the plugin market as needed, or developers can easily create their own plugins.
-
+    details: Built-in IFLYtek IAT, TTS, LLM, other platforms can be extended by plug-ins.
+ 
   - title: Voice Activation
     details: Customizable offline voice activation with voice inference using TensorFlow Lite models. An online wake word generation service will be available in the future.
 
@@ -27,7 +27,7 @@ features:
     details: Developers can customize user commands or use built-in commands to enable the robot to control home appliances, sing, and more.
 
   - title: C/S Architecture
-    details: The server and client are separated. The server supports multiple clients connecting simultaneously and provides services to all connected clients.
+    details: The server and client are separated, and the complex calculation and service scheduling are all handed over to the server, which greatly reduces the cost of the client, and can provide services for N clients at the same time.
 
   - title: Identity Authentication
     details: Each client connection and session can undergo identity verification and other operations.

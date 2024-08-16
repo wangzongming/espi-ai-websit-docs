@@ -6,17 +6,18 @@ import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 export default defineUserConfig({
   lang: 'zh-CN',
   title: "ESP-AI",
-  base: '/esp-ai/',
-  head: [['link', { rel: 'icon', href: '/esp-ai/images/logo3.png' }]],
+  // base: '/esp-ai/',
+  base: '/',
+  head: [['link', { rel: 'icon', href: '/images/logo-tm.png' }]],
   locales: {
     '/': {
       lang: 'zh-CN', 
       // description: '将任何物品接入AI最简单的方案，也是为您的开发板提供全套的 AI 对话方案',
-      description: '最简单、最低成本的AI接入方案，让任何物品都能实现智能对话功能',
+      description: '最简单、最低成本的AI接入方案，让任何物品都能实现智能对话功能，让人人都有AI助手',
     },
     '/en/': {
       lang: 'en-US', 
-      description: 'The simplest and most cost-effective AI integration solution, enabling any object to have intelligent conversation capabilities.',
+      description: 'The simplest and most cost-effective AI integration solution, enabling any object to have intelligent conversation capabilities. Let everyone have an AI assistant',
     },
   },
 
@@ -24,7 +25,7 @@ export default defineUserConfig({
     lang: 'zh-CN',
     // 你也可以直接将它设置为一个 URL
     repo: 'https://github.com/wangzongming/esp-ai',
-    logo: '/images/logo3.png',
+    logo: '/images/logo-tm.png',
     docsRepo: 'https://github.com/wangzongming/espi-ai-websit-docs',
     docsBranch: 'main',
     docsDir: 'docs',
@@ -34,8 +35,7 @@ export default defineUserConfig({
         selectLanguageName: '简体中文',
         selectLanguageText: "选择语言",
         title: "",
-        navbar: [
-          '/',
+        navbar: [ 
           {
             text: '开发指南',
             prefix: '/develop/',
@@ -49,10 +49,11 @@ export default defineUserConfig({
           '/plugs',
           '/change-logs',
           '/technical-support',
-          {
-            text: '控制台',
-            link: '/ing',
-          },
+          '/cooperation',
+          // {
+          //   text: '控制台',
+          //   link: '/ing',
+          // },
           {
             text: '友情链接',
             prefix: '/blogroll/',
@@ -94,8 +95,7 @@ export default defineUserConfig({
       '/en/': {
         lang: 'en-US',
         selectLanguageName: 'English',
-        navbar: [
-          '/en/',
+        navbar: [ 
           {
             text: 'develop',
             prefix: '/develop/',
@@ -109,10 +109,11 @@ export default defineUserConfig({
           '/en/plugs',
           '/en/change-logs',
           '/en/technical-support',
-          {
-            text: 'Console',
-            link: '/en/ing',
-          },
+          '/en/cooperation',
+          // {
+          //   text: 'Console',
+          //   link: '/en/ing',
+          // },
           {
             text: 'blogroll',
             prefix: '/blogroll/',
@@ -156,7 +157,8 @@ export default defineUserConfig({
   bundler: viteBundler({
     viteOptions: {
       // base: "https://xiaomingio.top/esp-ai",
-      base: "/esp-ai/",
+      // base: "/esp-ai/",
+      base: "/",
     }
   }),
 

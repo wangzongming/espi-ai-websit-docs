@@ -6,6 +6,15 @@ The core of the server is written in `Nodejs`. It provides plugin development ex
 
 The server mainly offers various configuration options that you need to modify.
 
+
+## free service
+A more complete service scheme is being built...
+
+``` c
+// 基于讯飞服务
+ESP_AI_server_config server_config = { "101.34.59.36", 8088, "api-key=free-test" };
+```
+
 ## Installation and Environment
 
 For detailed information, please refer directly to the Quick Start section: [Server Installation](start.html#server).
@@ -163,7 +172,7 @@ const config = {
 
 ### port 
 - Description: Server port
-- Default: 8080
+- Default: 8088
 - Required: No
 - Usage Example
 ```javascript

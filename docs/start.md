@@ -39,6 +39,7 @@
 - 🤔 唤醒词在线生成
 - 🤔 客户端 OTA 支持
 - 🤔 其他语言编写插件的方法（避免只能使用nodejs进行开发插件）
+- 🤔 外接电源管理
 - 🤔 提供专用开发板（避免当前的复杂接线）
 
 ## 开发环境准备
@@ -52,7 +53,7 @@ docker 镜像或者window懒人包安装服务端时不需要 `Nodejs` 环境。
 | -------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | `Nodejs`       | >= v18.x 建议18.x   | npm版本需要低于10.x, 6.x到9.x都行  |
 | `VsCode IDE`   | 最新版  |                                                                                                                                    |
-| `Arduino IDE`  | >= v2.x |                                        |
+| `Arduino IDE`  | >= v2.x |   如果你想用 platformio 来开发客户端，也可以选择 VsCode 等IDE  |                                     |
 | `esp` 开发板   | v2.x    | `Arduino IDE` 中搜索安装`esp`开发板                                                                                                |
 | 硬件代码依赖库 | 最新版  | 需将`Github` 仓库中 `/client/libraries` <br/>中的插件导入到IDE插件中，<br/>默认位置在`C:\Users\用户名\Documents\Arduino\libraries` |
 
@@ -80,7 +81,7 @@ docker 镜像或者window懒人包安装服务端时不需要 `Nodejs` 环境。
  
 ## 客户端
 
-硬件端这里成为客户端
+硬件端这里称为客户端。文档中统一使用 `Ardunio IDE` 来编程，当然你也可以使用 `PlatformIO`。
 
 ### 硬件代码 - Arduino
 
@@ -96,7 +97,7 @@ bool debug = true;
 // [必  填] wifi 配置： { wifi 账号， wifi 密码 }  注意：要用双引号！
 ESP_AI_wifi_config wifi_config = { "oldwang", "oldwang520" };
 // [必  填] 服务配置： { 服务IP， 服务端口, "请求参数，用多个参数&号分割，最大256字节" }
-ESP_AI_server_config server_config = { "192.168.1.5", 8080, "api-key=your_api_key&p2=test" };
+ESP_AI_server_config server_config = { "192.168.1.5", 8088, "api-key=your_api_key&p2=test" };
 // [必  填] 离线唤醒方案：{ 方案, 识别阈值 }, "edge_impulse" | "diy"，为 "diy" 时可调用 esp_ai.wakeUp() 方法进行唤醒
 ESP_AI_wake_up_config wake_up_config = { "edge_impulse", 0.7 };
 
@@ -105,7 +106,7 @@ ESP_AI_i2s_config_mic i2s_config_mic = { 4, 5, 6 };
 // [可留空] 扬声器引脚配置：{ bck_io_num, ws_io_num, data_in_num, 采样率 }
 ESP_AI_i2s_config_speaker i2s_config_speaker = { 16, 17, 15, 16000 };
 // [可留空] 音量调节配置：{ 输入引脚，输入最大值(1024|4096)，默认音量(0-1) }
-ESP_AI_volume_config volume_config = { 34, 4096, 0.5 };
+ESP_AI_volume_config volume_config = { 34, 4096, 0.4 };
  
 
 void setup() {
@@ -168,6 +169,15 @@ void loop() {
 服务端用于向硬件(客户端)提供服务，用于调用 `LLM`、`IAT`、`TTS` 等服务，并且可以方便向外提供扩展等。
 与客户端是一对多的关系，也就是说一台服务能够供多个客户端连接。
 
+
+### 免费服务
+将下面的配置复制到客户端中将无需自己搭建服务。更完整的服务方案搭建中...
+
+``` c
+// 基于讯飞服务
+ESP_AI_server_config server_config = { "101.34.59.36", 8088, "api-key=free-test" };
+```
+
 ### 服务端代码 - Node.js
 
 1. 继续在上面创建的 `example` 目录中创建一个文件 `index.js` 
@@ -193,7 +203,7 @@ espAi(config);
   <CodeGroupItem title="yarn">
 
 ```bash:no-line-numbers
-yarn add esp-ai
+yarn add esp-ai --registry=https://registry.npm.taobao.org  --strict-ssl=false 
 ```
 
   </CodeGroupItem>
@@ -201,7 +211,7 @@ yarn add esp-ai
   <CodeGroupItem title="npm" active>
 
 ```bash:no-line-numbers
-npm install esp-ai
+npm install esp-ai  --registry=https://registry.npm.taobao.org  --strict-ssl=false 
 ```
 
   </CodeGroupItem>
@@ -225,47 +235,76 @@ node ./index.js
 
 - 我们将容器命名为：`esp-ai-server`
 - 配置文件放到`/esp-ai-server/index.js` **(请先手动创建好这个文件)**
-- 宿主机端口为`8080`
+- 宿主机端口为`8088`
 
 注意：上面这三个配置只能更改宿主机的，镜像的必须如下写死。
- 
+
+
+#### 创建配置文件
+```bash
+sudo touch /esp-ai-server/index.js
+```
+
+#### 编辑配置文件
+```bash
+sudo nano /esp-ai-server/index.js
+```
+打开后把下面代码复制进去：(记得自己去复制自己的key)
+```javascript
+const espAi = require("esp-ai"); 
+const config = { 
+    api_key: {
+        // 讯飞：https://console.xfyun.cn/services/iat  。打开网址后，右上角三个字段复制进来即可。
+        xun_fei: {
+            appid: "xx",
+            apiSecret: "xx",
+            apiKey: "xx",
+            llm: "v4.0",
+        }, 
+    }
+};
+espAi(config);
+```
+然后 ctrl + o 保存。
+然后 ctrl + x 退出。
+
 #### 运行容器
 必须先手动创建好 `/esp-ai-server/index.js` 文件，该文件案例在仓库的 `example/index.js` 目录下。
 ```bash
-docker run -itd -p 8080:8080 -v /esp-ai-server/index.js:/server/index.js --name esp-ai-server registry.cn-shanghai.aliyuncs.com/xiaomingio/esp-ai:1.0.0
+sudo docker run -itd -p 8088:8088 -v /esp-ai-server/index.js:/server/index.js --name esp-ai-server registry.cn-shanghai.aliyuncs.com/xiaomingio/esp-ai:1.0.0
 ```
 
 配置文件将映射到了`/esp-ai-server/index.js`，需要自行更改配置文件，更改文件后重启服务即可：
 ```bash
-docker exec -it esp-ai-server pm2 restart all
+sudo docker exec -it esp-ai-server pm2 restart all
 ```
 
 #### 容器内安装插件
 直接在容器内执行安装插件的命令
 ```bash
-docker exec -it esp-ai-server yarn add [插件名字]
+sudo docker exec -it esp-ai-server npm i [插件名字]  --registry=https://registry.npm.taobao.org  --strict-ssl=false 
 ```
 
 然后自行修改配置文件后，依然需要重启容器
 ```bash
-docker exec -it esp-ai-server pm2 restart all
+sudo docker exec -it esp-ai-server pm2 restart all
 ```
 
 #### 查看运行日志
 ```bash
-docker exec -it esp-ai-server pm2 logs
+sudo docker exec -it esp-ai-server pm2 logs
 ```
 
 #### 更新依赖
 用最新的版本号替换下面代码中的版本号即可。
 
 ```bash
-docker exec -it esp-ai-server yarn add esp-ai@1.15.6
+sudo docker exec -it esp-ai-server npm i esp-ai@1.xx.xx  --registry=https://registry.npm.taobao.org  --strict-ssl=false 
 ```
 
 更新完毕后需要查看`package.json`中的版本号是否正确，如果正确，则重启容器即可。
 ```bash
-docker exec -it esp-ai-server cat ./package.json
+sudo docker exec -it esp-ai-server cat ./package.json
 ```
 
 ### 懒人包 

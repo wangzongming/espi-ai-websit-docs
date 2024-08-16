@@ -25,7 +25,7 @@ bool debug = true;
 // [必  填] wifi 配置： { wifi 账号， wifi 密码 }  注意：要用双引号！
 ESP_AI_wifi_config wifi_config = { "oldwang", "oldwang520" };
 // [必  填] 服务配置： { 服务IP， 服务端口, "请求参数，用多个参数&号分割，最大256字节" }
-ESP_AI_server_config server_config = { "192.168.1.5", 8080, "api-key=your_api_key&p2=test"  };
+ESP_AI_server_config server_config = { "192.168.1.5", 8088, "api-key=your_api_key&p2=test"  };
 // [必  填] 离线唤醒方案：{ 方案, 识别阈值 }, "edge_impulse" | "diy"，为 "diy" 时可调用 esp_ai.wakeUp() 方法进行唤醒
 ESP_AI_wake_up_config wake_up_config = { "edge_impulse", 0.7 };
 
@@ -56,6 +56,8 @@ void setup() {
 
  
 
+---
+
 ### .loop
 
 固定在 `loop()`中调用，用于处理硬件内部逻辑。一定要放到 `loop()` 中最顶部。
@@ -70,6 +72,20 @@ void loop() {
 ```
 #### 参数说明
 无
+
+---
+
+### .setWifiConfig
+设置wifi账号密码，并且重新连接`wifi`。
+
+#### 案例代码
+``` c
+esp_ai.setWifiConfig("oldwang", "oldwang520"); // 会重新连接wifi
+```
+#### 参数说明
+无
+
+---
 
 ### .wifiIsConnected
 返回是否连接WiFi
@@ -89,6 +105,8 @@ void loop() {
 #### 参数说明
 无
 
+---
+
 ### .localIP
 返回开发板本地IP，连接WiFi后存在
 
@@ -99,6 +117,7 @@ Serial.println(esp_ai.localIP().c_str());
 #### 参数说明
 无
 
+---
 ### .wakeUp
 
 #### 案例代码
@@ -109,6 +128,8 @@ esp_ai.wakeUp()
 #### 参数说明
 设置喇叭音量
 
+
+---
 ### .setVolume
 
 #### 案例代码
@@ -120,6 +141,8 @@ esp_ai.setVolume(50);
 - 类型：int  
 - 范围：0-100
 
+
+---
 ### .onEvent
 接收到用户的控制指令后的回调，比如用户让`开灯`或者`关灯`。你需要在这个回调中进行相应的操作。
 

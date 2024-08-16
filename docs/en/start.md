@@ -73,7 +73,7 @@ Registration URL: https://console.xfyun.cn/services/iat
 
 ## Client
 
-The hardware end is referred to as the client.
+The hardware side is called the client. The documentation uses' Ardunio IDE 'to program, but you can also use' PlatformIO '.
 
 ### Hardware Code - Arduino
 
@@ -89,7 +89,7 @@ bool debug = true;
 // [Required] WiFi configuration: { wifi SSID, wifi password } Note: Use double quotes!
 ESP_AI_wifi_config wifi_config = { "oldwang", "oldwang520" };
 // [Required] Service configuration: { service IP, service port, params max 256 byts }
-ESP_AI_server_config server_config = { "192.168.1.5", 8080, "api-key=your_api_key&p2=test" };
+ESP_AI_server_config server_config = { "192.168.1.5", 8088, "api-key=your_api_key&p2=test" };
 // [Required] Offline wake-up solution: { solution, recognition threshold }, "edge_impulse" | "diy", for "diy" you can call the esp_ai.wakeUp() method to wake up
 ESP_AI_wake_up_config wake_up_config = { "edge_impulse", 0.7 };
 
@@ -98,7 +98,7 @@ ESP_AI_i2s_config_mic i2s_config_mic = { 4, 5, 6 };
 // [Optional] Speaker pin configuration: { bck_io_num, ws_io_num, data_in_num, sample rate }
 ESP_AI_i2s_config_speaker i2s_config_speaker = { 16, 17, 15, 16000 };
 // [Optional] Volume control configuration: { input pin, input max value (1024|4096), default volume (0-1) }
-ESP_AI_volume_config volume_config = { 34, 4096, 0.5 };
+ESP_AI_volume_config volume_config = { 34, 4096, 0.4 };
 
 void setup() {
   Serial.begin(115200);
@@ -216,13 +216,13 @@ node ./index.js
  
 - We will name the container: `esp-ai-server`
 - Place the configuration file at: `/esp-ai-server/index.js`
-- The host machine port is: `8080`
+- The host machine port is: `8088`
 
 Note: These three configurations can only modify those on the host machine; the image settings must be hard-coded as follows.
 
 #### Running the Container
 ```bash
-docker run -itd -p 8080:8080 -v /esp-ai-server/index.js:/server/index.js --name esp-ai-server registry.cn-shanghai.aliyuncs.com/xiaomingio/esp-ai:1.0.0
+docker run -itd -p 8088:8088 -v /esp-ai-server/index.js:/server/index.js --name esp-ai-server registry.cn-shanghai.aliyuncs.com/xiaomingio/esp-ai:1.0.0
 ```
 
 The configuration file is mapped to `/esp-ai-server/index.js`. You need to modify this configuration file yourself. After making changes, you can restart the service:
