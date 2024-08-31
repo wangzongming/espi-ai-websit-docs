@@ -1,4 +1,64 @@
 # Change Logs
+ 
+
+## 2024-8-32 Server@2.0.0 Client@2.0.0
+
+🔥🔥🔥 A new member has been added to the ecosystem: `ESP-AI Developer Platform`
+
+🔥🔥🔥 Website: `https://dev.espai.fun`
+
+🔥🔥🔥 Features in the Developer Platform: provides free services, visual configuration services, various online tools, and more...
+
+### Server 
+
+- 🔥 Added: When errors are caught, they will be fed back to the client, allowing clients to reference an error table for relevant error prompts.
+- 🔥 Added: Built-in Volcano Engine `LLM` (compatible with Doupao and others)
+- 🔥 Added: Each user under the service can have their own independent set of configurations.
+- 🔥 Optimized: The `TTS` task mechanism now supports incremental character conversion, making conversations smoother and faster while addressing concerns over TTS service costs.
+- 🔥 Optimized: During audio playback, LLM conversation history can be read, and support for controlling start times is included.
+- 🆕 Added: `connected_reply` configuration, which allows changing the prompt message after service connection.
+- 🆕 Added: Output all configuration items upon service startup, making it easy for users to clearly know what services they are using.
+- 🆕 Added: Exception handling to prevent services from crashing directly when not running via methods such as `pm2`.
+- 🤔 Adjusted: Removed the `api_key` configuration, replaced by `iat_config`, `llm_config`, `tts_config` (as putting everything in `api_key` was confusing).
+- 🤔 Adjusted: Changed the default service port to `8088` (since there's a high chance of conflict with `8080`).
+- 🤔 Adjusted: Other configuration parts, details can be found in the documentation.
+- 💄 Optimized: Switched to a better prompt sound before starting a session.
+- 💄 Optimized: Voice wake-up mechanism, improving offline wake-up accuracy by over `60%` (further improvements will continue in future versions).
+- 🐞 Fixed: Issue where sentence breaks would repeat the previous sentence.
+
+##### Installation
+
+```bash
+npm i esp-ai@1.x.x
+```
+
+Docker Installation:
+```bash
+docker exec -it esp-ai-server npm i esp-ai@1.x.x
+```
+
+### Client
+
+- 🔥 Added: Support for pairing with the `ESP-AI Developer Platform` for a super simple AI dialogue solution for individuals and enterprises. Simply enter an `api_key` on the network configuration page.
+- 🔥 Added: `.onError` unified error capture callback, allowing developers to decide how to notify users based on error codes.
+- 🔥 Added: `.onConnectedWifiCb` to monitor successful device connection to `wifi`, where the IP address can be obtained directly as a parameter.
+- 🔥 Added: Network configuration settings page, which supports customization. In addition to `wifi` information, it also provides additional fields for storing your business data.
+- 🔥 Added: Ability to interrupt conversations, by calling `Xiaoming Tongxue` to restart the session.
+- 🔥 Added: Multiple built-in wake-up solutions: `Pin level wake-up`, `Tianwen module wake-up`, `Serial string wake-up`, all ready to use with direct configuration.
+- 🔥 Added: `.onNetStatus` unified status callback, where the status of the device connecting to wifi or the service can be uniformly obtained.
+- 🔥 Added: `.onAPInfo` callback when the device opens a hotspot. You should prompt the user to open the configuration webpage here, and you can get all the hotspot information as parameters.
+- 🆕 Added: `setWifiConfig` for manually setting `wifi` information.
+- 🆕 Added: Each device generates a UUID during initialization, which can be retrieved as needed, similar to a `sn` code.
+- 🤔 Adjusted: Configuration order adjusted, unnecessary parameters are placed at the end and can be left unconfigured. 
+- 💄 Optimized: Improved console output.
+- 💄 Optimized: Refactored client-side code.
+- 🐞 Fixed: Errors when uploading code in certain environments due to undefined `LED_BUILTIN`.
+- 🐞 Fixed: Various other issues...
+
+##### Installation
+Please download the latest version of the client from the repository release page: <https://github.com/wangzongming/esp-ai/releases>
+
+The file to download is named `esp-ai-xxx.zip`.
 
 ## 2024-8-1 Server@1.18.7 Client@1.4.2
 ### Server 

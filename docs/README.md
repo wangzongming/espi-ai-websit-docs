@@ -6,11 +6,15 @@ heroImage: /images/ESP-AI.png
 actions:
   - text: 快速开始
     link: /start.html
-    type: primary
+    type: secondary
 
   - text: 开发指南
     link: /client.html
     type: secondary
+    
+  - text: 开发者平台
+    link: https://dev.espai.fun
+    type: primary
 
 features:
   - title: 简洁/全面
@@ -42,7 +46,7 @@ features:
 
  
 # footer: Apache 2.0 Licensed | Copyright © ESP-AI 
-footer: Apache 2.0 Licensed | Copyright © ESP-AI <a style="padding-left:12px"  href="https://beian.miit.gov.cn/" target="_blank">黔ICP备2024030115号-2</a> 
+footer: Apache 2.0 Licensed | Copyright © ESP-AI <br/><div style="font-size:12px;padding-top:12px;"><a style="color:#777;"  href="https://beian.miit.gov.cn/" target="_blank">黔ICP备2024030115号-2</a> <img style="width:16px;margin-left:14px;margin-bottom:-5px;padding-right:3px;" src="/images/beian.png"/><a href="https://beian.mps.gov.cn/#/query/webSearch?code=44030002004468" style="color:#777;"  rel="noreferrer" target="_blank">粤公网安备44030002004468</a></div>
 footerHtml: true
 --- 
 

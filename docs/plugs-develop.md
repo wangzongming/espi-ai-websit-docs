@@ -85,28 +85,33 @@ module.exports = {
      * 大语言模型插件
      * @param {String}      device_id           设备id 
      * @param {Number}      devLog              日志输出等级，为0时不应该输出任何日志   
-     * @param {Object}      api_key             用户配置的key   
+     * @param {Object}      llm_config          用户配置的 apikey 等信息   
+     * @param {String}      iat_server          用户配置的 iat 服务 
+     * @param {String}      llm_server          用户配置的 llm 服务 
+     * @param {String}      tts_server          用户配置的 tts 服务 
      * @param {String}      text                对话文本
      * @param {Function}    cb                  LLM 服务返回音频数据时调用，eg: cb({ text, texts })
      * @param {Function}    llmServerErrorCb    与 LLM 服务之间发生错误时调用，并且传入错误说明，eg: llmServerErrorCb("意外错误")
      * @param {Function}    llm_params_set      用户配置的设置 LLM 参数的函数
-     * @param {Function}    logWSServer         将 ws 服务回传给框架，如果不是ws服务可以这么写: logWSServer({ close: ()=> {} })
+     * @param {Function}    logWSServer         将 ws 服务回传给框架，如果不是ws服务可以这么写: logWSServer({ close: ()=> {  中断逻辑... } })
      * @param {{role, content}[]}  llm_init_messages   用户配置的初始化时的对话数据
-     * @param {{role, content}[]}  llm_historys        llm 历史对话数据
+     * @param {{role, content}[]}  llm_historys llm 历史对话数据
      * @param {Function}    log                 为保证日志输出的一致性，请使用 log 对象进行日志输出，eg: log.error("错误信息")、log.info("普通信息")、log.llm_info("llm 专属信息")
      *  
     */
-    main({ device_id, devLog, api_key, text, llmServerErrorCb, llm_init_messages = [], llm_historys = [], cb, llm_params_set, logWSServer }) {
+    main({ devLog, device_id, llm_config, text, llmServerErrorCb, llm_init_messages = [], llm_historys = [], cb, llm_params_set, logWSServer }) {
 
         devLog && console.log("对话记录：\n", llm_historys)
 
         // 请自行约定接口 key 需要配置什么字段
-        const config = { ...api_key }
+        const { apiKey, epId, ...other_config } = llm_config;
 
         // 连接 ws 服务后并且上报给框架
         // const llm_ws = new WebSocket("ws://xxx");
         // logWSServer(llm_ws)
 
+        // 如果关闭后 message 还没有被关闭，需要定义一个标志控制
+        let shouldClose = false;
         /**
          * 这个变量是固定写法，需要回传给 cb()
          * 具体需要怎么更改见下面逻辑
@@ -114,6 +119,7 @@ module.exports = {
         const texts = {
             all_text: "",
             count_text: "",
+            index: 0,
         }
 
         // 模拟服务返回的数据
@@ -125,6 +131,8 @@ module.exports = {
             ];
 
             function reData() {
+                // 如果你不能保证 你的 close 方法能够打断推理，那就必须加这个判断
+                if (shouldClose) break; 
                 const res_text = moni_data.splice(0, 1);
                 cb(res_text[0], moni_data.length);
                 moni_data.length && setTimeout(reData, 1000);
@@ -198,22 +206,27 @@ module.exports = {
     name: "esp-ai-plugin-tts-ttson",
     // 插件类型 LLM | TTS | IAT
     type: "TTS",
+   
     /**
-     * TTS 插件封装 
+     * TTS 插件封装 - 火山引擎 TTS 
      * @param {String}      device_id           设备ID   
      * @param {String}      text                待播报的文本   
-     * @param {Object}      api_key             用户配置的key   
+     * @param {Object}      tts_config          用户配置的 apikey 等信息    
+     * @param {String}      iat_server          用户配置的 iat 服务 
+     * @param {String}      llm_server          用户配置的 llm 服务 
+     * @param {String}      tts_server          用户配置的 tts 服务 
      * @param {Number}      devLog              日志输出等级，为0时不应该输出任何日志   
      * @param {Function}    tts_params_set      用户自定义传输给 TTS 服务的参数，eg: tts_params_set(参数体)
-     * @param {Function}    logWSServer         将 ws 服务回传给框架，如果不是ws服务可以这么写: logWSServer({ close: ()=> {} })
+     * @param {Function}    logWSServer         将 ws 服务回传给框架，如果不是ws服务可以这么写: logWSServer({ close: ()=> { 中断逻辑...  }  })
      * @param {Function}    ttsServerErrorCb    与 TTS 服务之间发生错误时调用，并且传入错误说明，eg: ttsServerErrorCb("意外错误")
      * @param {Function}    cb                  TTS 服务返回音频数据时调用，eg: cb({ audio: 音频base64, ... })
      * @param {Function}    log                 为保证日志输出的一致性，请使用 log 对象进行日志输出，eg: log.error("错误信息")、log.info("普通信息")、log.tts_info("tts 专属信息")
     */
-    main({ device_id, text, devLog, api_key, logWSServer, tts_params_set, cb, log, ttsServerErrorCb }) {
-        const config = { ...api_key }
+    main({device_id, text, devLog, tts_config, logWSServer, tts_params_set, cb, log, ttsServerErrorCb }) {
+        // other_config 一般就是其他配置，比如在 tts里面可能是音色等
+        const { token, ...other_config } = tts_config;  
 
-        const url = `https://u95167-bd74-2aef8085.westx.seetacloud.com:8443/flashsummary/tts?token=${config.token}`;
+        const url = `https://u95167-bd74-2aef8085.westx.seetacloud.com:8443/flashsummary/tts?token=${token}`;
         let language = "ZH";
 
         if (/[a-zA-Z]/.test(text)) {
@@ -338,22 +351,28 @@ module.exports = {
     // 插件类型 LLM | TTS | IAT
     type: "IAT",
     /**
-     * 语音识别插件  
+     * 讯飞语音识别  
      * @param {String}      device_id           设备ID    
      * @param {Number}      devLog              日志输出等级，为0时不应该输出任何日志   
-     * @param {Object}      api_key             用户配置的key   
-     * @param {Number}      vad_eos             用户配置的静默时间，超过这个时间不说话就结束语音识别  
+     * @param {Object}      iat_config          用户配置的 apikey 等信息   
+     * @param {String}      iat_server          用户配置的 iat 服务 
+     * @param {String}      llm_server          用户配置的 llm 服务 
+     * @param {String}      tts_server          用户配置的 tts 服务 
      * @param {Function}    logWSServer         将 ws 服务回传给框架，如果不是ws服务可以这么写: logWSServer({ close: ()=> {} })
      * @param {Function}    iatServerErrorCb    与 TTS 服务之间发生错误时调用，并且传入错误说明，eg: ttsServerErrorCb("意外错误") 
      * @param {Function}    cb                  IAT 识别的结果调用这个方法回传给框架 eg: cb({ text: "我是语音识别结果"  })
      * @param {Function}    logSendAudio        记录发送音频数据给服务的函数，框架在合适的情况下会进行调用
+     * @param {Function}    connectServerBeforeCb 连接 iat 服务逻辑开始前需要调用这个方法告诉框架：eg: connectServerBeforeCb()
      * @param {Function}    connectServerCb     连接 iat 服务后需要调用这个方法告诉框架：eg: connectServerCb(true)
      * @param {Function}    serverTimeOutCb     当 IAT 服务连接成功了，但是长时间不响应时
      * @param {Function}    iatEndQueueCb       iat 静默时间达到后触发， 一般在这里面进行最后一帧的发送，告诉服务端结束识别 
      * @param {Function}    log                 为保证日志输出的一致性，请使用 log 对象进行日志输出，eg: log.error("错误信息")、log.info("普通信息")、log.iat_info("iat 专属信息")
+     * 
+     *  
     */
-    main({ device_id, log, devLog, api_key, vad_eos, cb, iatServerErrorCb, logWSServer, logSendAudio, connectServerCb, serverTimeOutCb, iatEndQueueCb }) {
-        const config = { ...api_key }
+    main({ device_id, log, devLog, iat_config, iat_server, llm_server, tts_server, cb, iatServerErrorCb, logWSServer, logSendAudio, connectServerCb, connectServerBeforeCb, serverTimeOutCb, iatEndQueueCb  }) {
+        
+        const { appid, apiSecret, apiKey, ...other_config } = iat_config;
 
         // // 连接 ws 服务后并且上报给框架
         // const iat_ws = new WebSocket("ws:/xxx")

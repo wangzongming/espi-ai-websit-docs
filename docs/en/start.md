@@ -20,26 +20,29 @@ Now with `ESP-AI`, you don't have to do that. You just need to introduce `ESP-AI
 
 ## Features
 
-- ✔️ Customizable offline voice wake-up
-- ✔️ IAT(ASR) ➡️ LLM/RAG ➡️ TTS
-- ✔️ User command recognition (home appliance control, singing, etc.)
+- ✔️ Customizable offline wake words with multiple built-in wake-up methods (voice, button, serial port, Tianwen ASRPro)
+- ✔️ Complete conversation chain: IAT (ASR) ➡️ LLM/RAG ➡️ TTS
+- ✔️ Fast response algorithms for TTS/LLM, designed to balance service cost while providing the quickest response time
+- ✔️ Supports conversation interruption
+- ✔️ Recognizes user commands (appliance control, singing, etc.) and can dynamically respond based on context
 - ✔️ Configurable
-- ✔️ Plugin-based
-- ✔️ The service and client have a one-to-many relationship
-- ✔️ Server authentication
-- ✔️ Streaming data interaction 
-- ✔️ Ready to use
+- ✔️ Plugin-based, allowing integration with any LLM/TTS/IAT using plugins
+- ✔️ One-to-many relationship between service and clients, with independent configuration for each client (hardware)
+- ✔️ Connection supports authentication
+- ✔️ Full-chain streaming data interaction
+- ✔️ Developer platform offers: free services, visual configuration, etc.
+- ✔️ Client configuration webpage provided
+- ✔️ Easily handles high concurrency scenarios (requires Nginx for load balancing)
+- ✔️ Ready to use out of the box
 
-## Next Steps
+# 🧐 Next Steps
 
-- 🤔 Provide a no-code access solution
-- 🤔 Integrate AI into user intent inference (e.g., "turn off the light" and "quickly turn on the light" will both be recognized as the "turn on the light" command)
-- 🤔 Offer free and paid services
-- 🤔 Online generation of wake words
-- 🤔 Methods for writing plugins in other languages (to avoid only using Node.js to develop plugins)
-- 🤔 OTA
-- 🤔 Provide a dedicated development board (to avoid current complex wiring)
-
+- [ ] 🤔 Improve accuracy of built-in offline wake-up (currently recommended to use Tianwen ASRPro)
+- [ ] 🤔 Incorporate AI into user intent inference (e.g., "Turn off the light quickly" and "Turn on the light quickly" will both be recognized as "Turn on the light" command)
+- [ ] 🤔 Online wake word generation
+- [ ] 🤔 Client OTA support
+- [ ] 🤔 Develop plugins in other languages (to avoid relying solely on Node.js for plugin development)
+- [ ] 🤔 Provide a dedicated development board (to avoid current complex wiring)
 ## Development Environment Setup
 
 ### Local Development Environment Setup
@@ -84,24 +87,30 @@ The hardware side is called the client. The documentation uses' Ardunio IDE 'to 
 #include <esp-ai.h>
 
 ESP_AI esp_ai;
-// [Required] Debug mode, will output more information
-bool debug = true;
-// [Required] WiFi configuration: { wifi SSID, wifi password } Note: Use double quotes!
-ESP_AI_wifi_config wifi_config = { "oldwang", "oldwang520" };
-// [Required] Service configuration: { service IP, service port, params max 256 byts }
-ESP_AI_server_config server_config = { "192.168.1.5", 8088, "api-key=your_api_key&p2=test" };
-// [Required] Offline wake-up solution: { solution, recognition threshold }, "edge_impulse" | "diy", for "diy" you can call the esp_ai.wakeUp() method to wake up
-ESP_AI_wake_up_config wake_up_config = { "edge_impulse", 0.7 };
-
-// [Optional] Microphone pin configuration: { bck_io_num, ws_io_num, data_in_num }
-ESP_AI_i2s_config_mic i2s_config_mic = { 4, 5, 6 };
-// [Optional] Speaker pin configuration: { bck_io_num, ws_io_num, data_in_num, sample rate }
-ESP_AI_i2s_config_speaker i2s_config_speaker = { 16, 17, 15, 16000 };
-// [Optional] Volume control configuration: { input pin, input max value (1024|4096), default volume (0-1) }
-ESP_AI_volume_config volume_config = { 34, 4096, 0.4 };
 
 void setup() {
   Serial.begin(115200);
+  // [Required] Debug mode, will output more information
+  bool debug = true;
+  // [Required] WiFi configuration: { wifi SSID, wifi password } Note: Use double quotes!
+  ESP_AI_wifi_config wifi_config = { "oldwang", "oldwang520" };
+  // [Required] Service configuration: { service IP, service port, params max 256 byts }
+  ESP_AI_server_config server_config = { "192.168.1.5", 8088, "api-key=your_api_key&p2=test" };
+  // [Required] Offline wake-up solution: { solution, recognition threshold }, "edge_impulse" | "diy", for "diy" you can call the esp_ai.wakeUp() method to wake up
+
+  ESP_AI_wake_up_config wake_up_config = {};
+  strcpy(wake_up_config.wake_up_scheme, "asrpro");  // 唤醒方案
+  strcpy(wake_up_config.str, "start");              // 串口和天问asrpro 唤醒时需要配置的字符串，也就是从另一个开发版发送来的字符串
+  // strcpy(wake_up_config.threshold,  0.95);  //  内置语音唤醒时需要配置 唤醒阈值 0-1
+  // strcpy(wake_up_config.str, 10);  // 引脚高低电平唤醒时需要的引脚IO
+
+  // [Optional] Microphone pin configuration: { bck_io_num, ws_io_num, data_in_num }
+  ESP_AI_i2s_config_mic i2s_config_mic = { 4, 5, 6 };
+  // [Optional] Speaker pin configuration: { bck_io_num, ws_io_num, data_in_num, sample rate }
+  ESP_AI_i2s_config_speaker i2s_config_speaker = { 16, 17, 15, 16000 };
+  // [Optional] Volume control configuration: { input pin, input max value (1024|4096), default volume (0-1) }
+  ESP_AI_volume_config volume_config = { 34, 4096, 0.4 };
+
   // Start running ESP-AI
   esp_ai.begin({ i2s_config_mic, i2s_config_speaker, wifi_config, server_config, wake_up_config, volume_config, debug }); 
 }
@@ -164,15 +173,9 @@ The server provides services to the hardware (client), used to call `LLM`, `IAT`
 ``` javascript
 const espAi = require("esp-ai"); 
 const config = { 
-    api_key: {
-        // iFLYTEK: https://console.xfyun.cn/services/iat. Open the URL and copy the three fields in the upper right corner.
-        xun_fei: {
-            appid: "5200d300",
-            apiSecret: "xxx",
-            apiKey: "xx",
-            llm: "v4.0",
-        }, 
-    }
+     gen_client_config: ()=>({
+        // For details, see the server...
+    })
 };
 espAi(config);
 ```
@@ -222,7 +225,7 @@ Note: These three configurations can only modify those on the host machine; the 
 
 #### Running the Container
 ```bash
-docker run -itd -p 8088:8088 -v /esp-ai-server/index.js:/server/index.js --name esp-ai-server registry.cn-shanghai.aliyuncs.com/xiaomingio/esp-ai:1.0.0
+docker run -itd -p 8088:8088 -v /esp-ai-server/index.js:/server/index.js --name esp-ai-server registry.cn-shanghai.aliyuncs.com/xiaomingio/esp-ai:2.0.0
 ```
 
 The configuration file is mapped to `/esp-ai-server/index.js`. You need to modify this configuration file yourself. After making changes, you can restart the service:

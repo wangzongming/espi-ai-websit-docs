@@ -1,454 +1,482 @@
-# Server
+# Server Side
+The server side handles communication and data processing between the `IAT/ASR`, `LLM/RAG`, and `TTS` services, and sends the final audio result to the client so that the client can directly play the audio data.
 
-The server is used to handle communication and data processing with `IAT/ASR`, `LLM/RAG`, and `TTS` services, and send the final audio results to the client so the client can directly play the audio data.
+The core of the server side is written in `Node.js`. It provides plugin development extensions for programming languages including but not limited to `Node.js`.
 
-The core of the server is written in `Nodejs`. It provides plugin development extensions for `Nodejs` programming language and more.
+The server side mainly offers various configuration options; you only need to modify these configuration options.
 
-The server mainly offers various configuration options that you need to modify.
-
-
-## free service
-A more complete service scheme is being built...
-
-``` c
-// 基于讯飞服务
-ESP_AI_server_config server_config = { "101.34.59.36", 8088, "api-key=free-test" };
-```
+## Free Service
+`ESP-AI Developer Platform` provides a free service. It is recommended to use the developer platform directly for visual configuration and service usage.
+URL: <https://dev.espai.fun/>
 
 ## Installation and Environment
 
-For detailed information, please refer directly to the Quick Start section: [Server Installation](start.html#server).
+Details are omitted here. Please refer to the Quick Start section under: <a href="start.html#server-side">Server Side Installation</a>
 
 ## Basic Code
 
 ```javascript
-const espAi = require("esp-ai"); 
-const config = { 
-    api_key: {
-        // Xunfei: https://console.xfyun.cn/services/iat. Open the URL and copy the three fields in the top right corner.
-        xun_fei: {
-            appid: "5200d300",
-            apiSecret: "xxx",
-            apiKey: "xx",
-            llm: "v4.0",
-        }, 
-    }
+const espAi = require("esp-ai");
+const config = {
+    gen_client_config: () => ({
+        // Specific configurations...
+    })
 };
 espAi(config);
 ```
 
 ## Configuration Options
 
-Besides the required `api_key`, there are additional optional settings.
-
-### api_key
-- Description:
-Different service providers require their own `key`, and each plugin also needs its corresponding `key`.
-The `key` configuration for each service provider or plugin is not exactly the same, please refer to the documentation for specifics.
-
-If `iat_server`, `tts_server`, or `llm_server` are configured, the corresponding configuration must appear below.
-For example, if `tts_server: "xun_fei"` is configured, there must be a Xunfei configuration below.
-
+### gen_client_config
+- Description: Assigns a set of configurations to the client (hardware), including which LLM/TTS/IAT services to use, etc.
 - Default: -
 - Required: Yes
 - Usage Example
 ```typescript
-const config = { 
-    api_key: {
-       /** [内置插件]
-        * 讯飞：https://console.xfyun.cn/services/iat  。打开网址后，右上角三个字段复制进来即可。
-       */
-        xun_fei: {
-            appid: "5200d300",
-            apiSecret: "xxx",
-            apiKey: "xx",
-            llm: "v4.0",
-        },
-        /** [内置插件]
-         * 阿里积灵（千问等）： https://dashscope.console.aliyun.com/apiKey
-         * 积灵主要是提供llm（推荐使用这个llm服务）
-        */ 
-        dashscope: {
-            apiKey: "sk-xx",
-            // LLM 版本
-            llm: "qwen-turbo",
-        },
-
-
-        /** [内置插件]
-         * 火山引擎（豆包等）：https://console.volcengine.com/speech/service/8?AppID=6359932705
-         */ 
-        volcengine: {
-            // 火山引擎的TTS与LLM使用不同的key，所以需要分别配置
-            tts: {
-                // 服务接口认证信息
-                appid: "xxx",
-                accessToken: "xxx",
-            },
-
-            // 暂不支持 llm
-            llm: {
-                // 获取地址：https://console.volcengine.com/ark/region:ark+cn-beijing/endpoint?current=1&pageSize=10
-                model: "ep-xxx",// 每个模型都有一个id
-                // 获取地址：https://console.volcengine.com/ark/region:ark+cn-beijing/apiKey
-                apiKey: "32dacfe4xxx",
-            }
-        },
-
-        /** [第三方插件]
-         * 海豚TTS, 可以不用配置 token, 每天都有免费额度
-         * 插件文档地址： https://www.npmjs.com/package/esp-ai-plugin-tts-ttson
-         * 海豚配音：https://www.ttson.cn/
-        */ 
-        "esp-ai-plugin-tts-ttson": {
-            token: ""
-        }, 
-        /**  [第三方插件]
-         * 通过onehub支持绝大多数LLM模型
-         * 插件文档地址： https://www.npmjs.com/package/esp-ai-plugin-llm-onehub 
-         */  
-        "esp-ai-plugin-llm-onehub": {
-            apiKey: "sk-xxx",
-            llm: "gpt-3.5-turbo",
-            api_server: "https://api.xn--5kv132d.com/v1/chat/completions",
-        }, 
-        // 其他自定义插件，插件名称为对象名字，如[custom_plugin]
-        // custom_plugin: {
-        //     [key: string]: any;
-        // }
-    } 
-}
-```
-
-### iat_server
-- Description:
-Speech recognition service, the framework currently has Xunfei's service `xun_fei` built-in. For other service providers or local services, please download the required plugins from the <a href="/en/plugs.html">Plugin Market</a> or write your own plugins.
-
-- Default: xun_fei
-- Required: No
-- Usage Example
-```javascript
-const config = { 
-    iat_server: "xun_fei",
-}
-```
-
-### tts_server
-- Description:
-TTS service, the framework currently has Xunfei's service `xun_fei` built-in. For other service providers or local services, please download the required plugins from the Plugin Market or write your own plugins.
-
-- Default: xun_fei
-- Required: No
-- Usage Example
-```javascript
-const config = { 
-    tts_server: "xun_fei",
-}
-```
-
-### llm_server
-- Description:
-LLM/RAG service, the framework currently has Xunfei's service `xun_fei` built-in. For other service providers or local services, please download the required plugins from the Plugin Market or write your own plugins.
-
-- Default: xun_fei
-- Required: No
-- Usage Example
-```javascript
-const config = { 
-    llm_server: "xun_fei",
-}
-```
-
-### devLog 
-- Description: Log output mode: 0 No output (online mode), 1 Normal output, 2 Detailed output
-- Default: 1
-- Required: No
-- Usage Example
-```javascript
-const config = { 
-    devLog: 1,
-}
-```
-
-### port 
-- Description: Server port
-- Default: 8088
-- Required: No
-- Usage Example
-```javascript
-const config = { 
-    port: 3000,
-}
-```
-
-### auth 
-- Description: Client authentication: The first connection between the client and the interface is called back each time
-- Required:  -
-- Required:  No
-- Example
-``` javascript
-const config = { 
-    /** 
-     * retrun success: false, eg Promise.resolve({ success: false, message:"ak无效" }) Client authentication may fail
-     * retrun success: true,  eg Promise.resolve({ success: true }) Client authentication may successful
-     * @param {object} params Parameters are parameters configured on the client, which are parsed into literal objects, and can be referenced directly by the developer using the key method.
-     * @param {string} scene What is the authentication scenario, when "connect" connects, and when "start_session" starts a session
+const config = {
+    /**
+     * You can request configurations from the library based on business needs using this method...
+     * Client configuration generation, primarily generates IAT/LLM/TTS configurations. This function is executed when the client first connects or at some idle moment, as there is an internal automatic update strategy.
+     * @param {object} params Parameters configured by the client, parsed into a literal object, developers can directly use the key to reference them.
      */
-    auth: async (params, scene) => {
-        // some code...
-        // console.log(scene, params);
-        return { success: true }
-        // return { success: false, message:"ak fail" }
-    },
-}
-```
+    gen_client_config: (params) => {
+        return {
+            iat_server: "xun_fei",
+            // iat_server: "esp-ai-plugin-iat-example", // Plugin
+            iat_config: {
+                // Xunfei: <https://console.xfyun.cn/services/iat>. After opening the website, copy the three fields in the top right corner here.
+                appid: "xxx",
+                apiSecret: "xxx",
+                apiKey: "xxx",
+                // Silence duration, how long it takes to consider speech ended when no speech is detected, in milliseconds
+                vad_eos: 1500,
 
-### intention
-- Description: User intention table. After waking up Xiao Ming, you can give the following commands. Setting 3 to 5 keywords is optimal. This function is essential when creating a home assistant.
-
-Built-in instruction __play_music__ 、__sleep__
-
-When the intent service needs to be requested, it can be written as an asynchronous function, and if it returns anything other than 'false', the match is successful. The following side of the music plays.
-
-- Default: -
-- Required: No
-- Usage Example
-```javascript
-const config = { 
-    intention: [
-        {
-            // Keywords
-            key: ["帮我开灯", "开灯", "打开灯"],
-            // Instruction sent to the client
-            instruct: "device_open_001",
-            message: "开啦！还有什么需要帮助的吗？", 
-            // Additional parameters, write all data as string type, and avoid placing large data here
-            data: "ak=123456"; 
-        },
-        {
-            // Keywords
-            key: ["帮我关灯", "关灯", "关闭灯"],
-            // Instruction sent to the client
-            instruct: "device_close_001",
-            message: "关啦！还有什么需要帮助的吗？"
-        },
-          {
-            /**
-             * regex match
-             * Such as: Play music last stubborn
-             * 
-             * The matching string is returned as a successful match
-            */
-            key: (text) => {
-                const regex = /^(播放音乐)(.*)$/;
-                const match = text.match(regex); 
-                if (match) { 
-                    const songName = match[2]; 
-                    console.log("name:", songName);
-                    return songName;
-                } else {
-                    return false;
-                }
+                // For custom plugins:
+                // Refer to the specific plugin documentation for available configurations...
             },
-            // 向客户端发送的指令
-            instruct: "__play_music__",
-            message: "好的！",
-            // 用于返回音乐地址的服务，`esp-ai` 目前不提供音乐服务
-            // name 是歌曲名称
-            // 目前只支持 mp3、wav 格式
-            music_server: async (name)=>{
-                return "https://xiaomingio.top/music.mp3";
-            }
-        },
-        {
-            // Keywords
-            key: ["退下吧", "退下"],
-            // Built-in sleep command
-            instruct: "__sleep__",
-            message: "我先退下了，有需要再叫我。"
+
+            llm_server: "xun_fei",
+            // llm_server: "dashscope",   // Built-in Qwen
+            // llm_server: "volcengine",  // Built-in VolcEngine
+            // llm_server: "esp-ai-plugin-llm-example", // Plugin
+            llm_config: {
+                // Xunfei: <https://console.xfyun.cn/services/iat>. After opening the website, copy the three fields in the top right corner here.
+                appid: "xxx",
+                apiSecret: "xxx",
+                apiKey: "xxx",
+                llm: "v4.0",
+
+                /****************/
+                // Alibaba Cloud Qwen (Qwen, etc.): <https://dashscope.console.aliyun.com/apiKey>
+                // apiKey: "sk-xxx",
+                // // LLM version
+                // llm: "qwen-turbo",
+
+
+                /******* VolcEngine *********/
+                // 1. Register: <https://console.volcengine.com/ark>
+                // 1. Enable: <https://console.volcengine.com/ark/region:ark+cn-beijing/openManagement?LLM=%7B%7D&tab=LLM>
+                // 2. Create Endpoint: <https://console.volcengine.com/ark/region:ark+cn-beijing/endpoint>
+                // apiKey: "xxx",
+                // epId: "ep-xxx", // Endpoint ID
+
+
+                // For custom plugins:
+                // Refer to the specific plugin documentation for available configurations...
+            },
+
+            tts_server: "xun_fei",
+            // tts_server: "volcengine", // Built-in VolcEngine TTS service
+            // tts_server: "esp-ai-plugin-tts-ttson",   // Plugin
+            // tts_server: "esp-ai-plugin-tts-aliyun",  // Plugin
+            tts_config: {
+                // Xunfei: <https://console.xfyun.cn/services/iat>. After opening the website, copy the three fields in the top right corner here.
+                // appid: "xxx",
+                // apiSecret: "xxx",
+                // apiKey: "xx",
+
+                /******* VolcEngine *********/
+                // 1. Register: <https://console.volcengine.com/speech/app>
+                // 2. Voice Authorization: <https://console.volcengine.com/speech/service/8?AppID=6359932705>
+                // 3. Authorization: xxx
+                // Service interface authentication information
+                // appid: "xxx",
+                // accessToken: "xxx",
+                // voice_type: "BV007_streaming", // Clear Female Voice
+                // voice_type: "BV051_streaming", // Cute Child Voice
+
+
+                /****************/
+                // Dolphin TTS
+                // url: "https://ht.ttson.cn:37284/flashsummary/tts",
+                // token: "",
+
+
+                /******* Alibaba Cloud TTS *********/
+                // // Obtain from: <https://nls-portal.console.aliyun.com/applist>
+                // appkey: "xxx",
+                // // Obtain from: <https://ram.console.aliyun.com/manage/ak>
+                // AccessKeyID: "xxx",
+                // AccessKeySecret: "xxx",
+
+
+                // For custom plugins:
+                // Refer to the specific plugin documentation for available configurations...
+            },
+
+            /**
+             * Initial prompt for LLM
+             */
+            llm_init_messages: [
+                { role: 'system', content: 'You are Xiao Ming, an all-powerful intelligent assistant.' },
+            ],
+
+            /**
+             * Intention Table: After the user wakes up Xiao Ming, Xiao Ming can perform the following tasks
+             */
+            intention: [
+                {
+                    // Keywords
+                    key: ["Help me turn on the light", "Turn on the light", "Turn on the lights"],
+                    // Instruction sent to the client
+                    instruct: "device_open_001",
+                    message: "Turned on! Is there anything else I can help with?"
+                },
+                {
+                    // Keywords
+                    key: ["Help me turn off the light", "Turn off the light", "Turn off the lights"],
+                    // Instruction sent to the client
+                    instruct: "device_close_001",
+                    message: "Turned off! Is there anything else I can help with?"
+                },
+                {
+                    // Keywords
+                    key: ["Retire", "Step back"],
+                    // Built-in sleep instruction
+                    instruct: "__sleep__",
+                    message: "I'll step back now, call me if you need anything."
+                }, 
+                {
+                    /**
+                     * Regular expression matching
+                     * For example: Play the last stubborn song
+                     * Returns the matched string as a successful match
+                     */
+                    key: async (text = "", llm_historys) => {
+                        const regex = /^(Play music)(.*)$/;
+                        const match = text.match(regex);
+                        if (match) {
+                            const songName = match[2];
+                            console.log("Song Name:", songName);
+                            return songName;
+                        } else {
+                            return false;
+                        }
+                    },
+                    // Instruction sent to the client
+                    instruct: "__play_music__",
+                    message: "Sure!",
+                    /**
+                     * Used to return audio URLs and playback progress
+                     * Currently only supports mp3, wav formats
+                     * @param {String} name is the song name
+                     * @return {number} seek Progress: (in seconds)
+                     * @return {message} TTS when data cannot be found
+                     */
+                    music_server: async (name, { user_config }) => {
+                        return {
+                            url: "[https](https://xiaomingio.top/music.mp3)",
+                            seek: 0,
+                            message: message
+                        };
+                    },
+                    /**
+                     * Callback after audio ends
+                     * @param {object} arg.break_second  The stopped progress, in seconds. That is, how many seconds the user has played (seek + play_time)
+                     * @param {object} arg.play_time     Actual playback time of the audio, in seconds.
+                     * @param {object} arg.seek          Audio start playback time, actually the seek value returned by the music_server function
+                     * @param {object} arg.start_time    Start playback audio Unix timestamp in milliseconds
+                     * @param {object} arg.end_time      End playback audio Unix timestamp in milliseconds
+                     * @param {object} arg.event         End reason: "user_break" User interruption | play_end Playback complete | foo Unknown event
+                     */
+                    on_end: (arg) => {
+                        // Request the business server to save the progress information...
+                        console.log(arg);
+                    }
+                },
+            ],
         }
-    ],
+    }
 }
 ```
 
-### f_reply
-- Description: Reply after being woken up
-- Default: 小明在的
-- Required: No
-- Usage Example
-```javascript
-const config = { 
-    f_reply: "有事请吩咐",
-}
-```
+### port
 
-###  vad_eos
-- 默认:  Voice recognition silence time, in milliseconds, default 2500
-- 必填:  No
-- 使用案例
-``` javascript
-const config = { 
-    vad_eos: 5000, // After 5 seconds no speech is heard end session
-}
-```
- 
+- Type: `number`
+- Description: Server port, default is 8080
+- Usage Example:
+  ```typescript
+  const config = {
+    port: 3000 // Customize the server port to 3000
+  };
+  ```
+
+### devLog
+
+- Type: `number`
+- Description: Log output mode:
+  - 0: No output (Production mode)
+  - 1: Normal output
+  - 2: Detailed output
+- Usage Example:
+  ```typescript
+  const config = {
+    devLog: 1 // Set to normal log output mode
+  };
+  ```
+
+### auth
+
+- Type: `(params: Record<string, any>, scene: "connect" | "start_session") => Promise<{ success: boolean, message?: string }>`
+- Description: Client authentication, called every time the client initially connects and starts a session.
+- Parameters:
+  - `params` - Parameters configured by the client, parsed into a literal object, developers can directly use the key to reference them.
+  - `scene` - Authentication scene:
+    - `"connect"`: When connecting
+    - `"start_session"`: When starting a session
+- Usage Example:
+  ```typescript
+  const config = {
+    auth: async (params, scene) => {
+      if (params.token === "valid_token") {
+        return { success: true }; // Authentication successful
+      } else {
+        return { success: false, message: "Invalid authentication token" }; // Authentication failed
+      }
+    }
+  };
+  ```
 
 ### llm_params_set
-- Description: LLM parameter customization, you can set temperature, etc.
-- Default: -
-- Required: No
-- Usage Example
-```javascript
-const config = { 
-    /**
-     * LLM parameter control, you can set temperature, etc.
-     * The parameter format and attribute names required by different services are different, according to the actual documentation of the plugin or service.
-    */
-    llm_params_set: (params) => { 
-        /** Xunfei temperature setting ... **/
-        params.parameter.chat.temperature = 0.4;
-        params.parameter.chat.max_tokens = 100; 
-        // Must return the parameters after modification
-        return params;
-    },
-}
-```
+
+- Type: `(params: Record<string, any>) => Record<string, any>`
+- Description: LLM parameter control, can set temperature, etc.
+- Parameters:
+  - `params` - Default LLM parameters.
+- Usage Example:
+  ```typescript
+  const config = {
+    llm_params_set: (params) => {
+      // Modify default LLM parameters
+      return { ...params, temperature: 0.8 };
+    }
+  };
+  ```
 
 ### tts_params_set
-- Description: TTS parameter customization, you can set speaker, volume, speech rate, etc.
-- Default: -
-- Required: No
-- Usage Example
-```javascript
-const config = { 
-    /**
-     * TTS parameter control, you can set speaker, volume, speech rate, etc.
-     * The parameter format and attribute names required by different services are different, configure according to the following attributes
-    */
-    tts_params_set: (params) => { 
-        /** Xunfei **/
-        // Speaker list: https://help.aliyun.com/zh/dashscope/developer-reference/model-list-old-version?spm=a2c4g.11186623.0.0.5fbe490eBdtzX0
-        params.vcn = "aisbabyxu";
 
-        /** Volcano Engine **/
-        // Speaker list: https://www.volcengine.com/docs/6561/97465
-        // params.voice_type = "BV051_streaming" 
-
-        // Must return the parameters after modification
-        return params;
-    },
-}
-```
+- Type: `(params: Record<string, any>) => Record<string, any>`
+- Description: TTS parameter control, can set speaker, volume, speed, etc.
+- Parameters:
+  - `params` - Default TTS parameters.
+- Usage Example:
+  ```typescript
+  const config = {
+    tts_params_set: (params) => {
+      // Modify default TTS parameters
+      return { ...params, voice: "male", speed: 0.9 };
+    }
+  };
+  ```
 
 ### onDeviceConnect
-- Description: Callback for new device connection to the service
-- Default: -
-- Required: No
-- Usage Example
-```javascript
-const config = {  
-    /**
-     * Callback for new device connection to the service
-     * @param {string} device_id Device ID
-     * @param {string} client_version Client version
-     * @param {WebSocket} ws Connection handle, can use ws.send() to send data
-     */
+
+- Type: `(arg: { device_id: string, ws: WebSocket, client_version: string }) => void`
+- Description: Callback when a new device connects to the service.
+- Parameters:
+  - `device_id` - Device ID.
+  - `client_version` - Client version.
+  - `ws` - Connection handle, can send data using `ws.send()`.
+- Usage Example:
+  ```typescript
+  const config = {
     onDeviceConnect: ({ device_id, ws, client_version }) => {
-        // Do something...
-    };
-}
-```
+      console.log(`Device ${device_id} connected, client version: ${client_version}`);
+      ws.send("Welcome to the server!");
+    }
+  };
+  ```
+
+### onIAT
+
+- Type: `(arg: { device_id: string, ws: WebSocket }) => void`
+- Description: Callback before the user triggers an IAT service request.
+- Usage Example:
+  ```typescript
+  const config = {
+    onIAT: ({ device_id, ws }) => {
+      console.log(`Preparing for speech recognition service: ${device_id}`);
+    }
+  };
+  ```
 
 ### onIATcb
-- Description: Callback during the speech recognition process
-- Default: -
-- Required: No
-- Usage Example
-```javascript
-const config = { 
-    /** 
-     * @param {string} device_id Device ID
-     * @param {string} text Recognized text 
-    */
-   onIATcb({ device_id, text }) { },
-}
-```
+
+- Type: `(arg: { device_id: string, text: string, ws: WebSocket }) => void`
+- Description: IAT callback: Callback during speech recognition.
+- Parameters:
+  - `device_id` - Device ID.
+  - `text` - Speech-to-text.
+- Usage Example:
+  ```typescript
+  const config = {
+    onIATcb: ({ device_id, text, ws }) => {
+      console.log(`Speech recognition result for device ${device_id}: ${text}`);
+    }
+  };
+  ```
 
 ### onIATEndcb
-- Description: Callback after speech recognition is complete, you can send the last frame to the speech recognition server here
-- Default: -
-- Required: No
-- Usage Example
-```javascript
-const config = {   
-    /** 
-     * @param {string} device_id Device ID
-     * @param {string} text Recognized text 
-    */
-    onIATEndcb: ({ device_id, text }) => {};
-}
-```
 
-### onLLMcb 
-- Description: LLM service response callback
-- Default: -
-- Required: No
-- Usage Example
-```javascript
-const config = { 
-    /** 
-     * @param {string} device_id Device ID
-     * @param {string} text Text segment inferred by the large language model 
-     * @param {boolean} is_over Whether the answer is complete 
-     * @param {object[]} llm_historys Conversation history 
-    */
-    onLLMcb: ({ device_id, text, is_over, llm_historys }) => {};
-}
-```
+- Type: `(arg: { device_id: string, text: string, ws: WebSocket }) => void`
+- Description: IAT callback: Callback after speech recognition is completed, used for sending the last frame to the speech recognition server, etc.
+- Parameters:
+  - `device_id` - Device ID.
+  - `text` - Speech-to-text.
+- Usage Example:
+  ```typescript
+  const config = {
+    onIATEndcb: ({ device_id, text, ws }) => {
+      console.log(`Speech recognition completed for device ${device_id}: ${text}`);
+    }
+  }; 
 
-###  onTTScb 
-- 说明：  tts 回调 
-- 默认:  -
-- 必填:  否
-- 使用案例
-``` javascript
-const config = { 
-    /** 
-     * @param {string} device_id 设备id
-     * @param {Boolean} is_over  是否完毕
-     * @param {Buffer} audio    音频流 
-    */
-    onTTScb: ({  device_id: string, is_over: boolean, audio: Buffer }) => {};
-}
-``` 
+### onTTS
 
-### plugins 
-- Description:
-  Plugins, the usage methods for `LLM`, `TTS`, and `IAT` plugins are the same. First, you need a plugin, whether it is installed from the 
-  <a href="/en/plugs.html">Plugin Market</a> 
-  or self-written: <a href="/en/plugs-develop.html">Plugin DevelopmentDocumentation</a>
-The general usage process is to install the plugin using the command `npm i xxx`, then change the service configuration `xxx_server: 'xxx'`, and then introduce it in the plugin.
+- Type: `(arg: { device_id: string, tts_task_id: string, text: string, ws: WebSocket }) => void`
+- Description: Callback function executed each time the TTS service is invoked.
+- Usage Example:
+  ```typescript
+  const config = {
+    onTTS: ({ device_id, tts_task_id, text, ws }) => {
+      console.log(`TTS service started, task ID: ${tts_task_id}, text: ${text}`);
+    }
+  };
+  ```
 
-- Default: -
-- Required: No  
-- Usage Example
-```javascript
-const config = {  
-    // Use esp-ai-plugin-iat-example to provide speech recognition service
-    iat_server: "esp-ai-plugin-iat-example",
-    // Use esp-ai-plugin-tts-ttson to provide tts service
-    tts_server: "esp-ai-plugin-tts-ttson", // Dolphin dubbing plugin
-    // Use esp-ai-plugin-llm-example to provide llm service
-    llm_server: "esp-ai-plugin-llm-example",
-    
-    // Introduce plugins
-    plugins: [ 
-        // Install in the project: npm i esp-ai-plugin-iat-example
-        require("esp-ai-plugin-iat-example"), 
-        // Install in the project: npm i esp-ai-plugin-tts-ttson
-        require("esp-ai-plugin-tts-ttson"), 
-        // Install in the project: npm i esp-ai-plugin-llm-example
-        require("esp-ai-plugin-llm-example"), 
+### onTTScb
+
+- Type: `(arg: { device_id: string, is_over: boolean, audio: Buffer, ws: WebSocket }) => void`
+- Description: TTS callback.
+- Parameters:
+  - `device_id` - Device ID.
+  - `is_over` - Whether completed.
+  - `audio` - Audio stream.
+- Usage Example:
+  ```typescript
+  const config = {
+    onTTScb: ({ device_id, is_over, audio, ws }) => {
+      console.log(`TTS conversion for device ${device_id} ${is_over ? "completed" : "in progress"}`);
+    }
+  };
+  ```
+
+### onLLM
+
+- Type: `(arg: { device_id: string, text: string, ws: WebSocket }) => void`
+- Description: Callback before invoking the LLM service.
+- Parameters:
+  - `device_id` - Device ID.
+  - `text` - Text segment generated by the large language model inference.
+- Usage Example:
+  ```typescript
+  const config = {
+    onLLM: ({ device_id, text, ws }) => {
+      console.log(`Device ${device_id} invokes LLM service, generated text: ${text}`);
+    }
+  };
+  ```
+
+### onLLMcb
+
+- Type: `(arg: { device_id: string, text: string, is_over: boolean, llm_historys: Record<string, any>[], ws: WebSocket }) => void`
+- Description: LLM callback.
+- Parameters:
+  - `device_id` - Device ID.
+  - `text` - Text segment generated by the large language model inference.
+  - `is_over` - Whether the response is complete.
+  - `llm_historys` - Conversation history.
+- Usage Example:
+  ```typescript
+  const config = {
+    onLLMcb: ({ device_id, text, is_over, llm_historys, ws }) => {
+      console.log(`LLM response for device ${device_id}: ${text}`);
+    }
+  };
+  ```
+
+### plugins
+
+- Type: `{ name: string; type: "LLM" | "TTS" | "IAT"; main: (arg: Record<string, any>) => void; }[]`
+- Description: Plugin configuration.
+- Parameters:
+  - `name` - Plugin name.
+  - `type` - Plugin type.
+  - `main` - Main function of the plugin.
+- Usage Example:
+  ```typescript
+  const config = {
+    plugins: [
+      {
+        name: "customPlugin",
+        type: "LLM",
+        main: (arg) => {
+          console.log("Custom plugin execution", arg);
+        }
+      }
     ]
-}
+  };
+  ```
+
+## Service Stress Test
+```javascript
+/**
+ * The following test data uses Tencent Cloud as the service provider: CPU 2 cores | Memory 2GB | Bandwidth 4mb | SSD 50GB
+ * During the testing process, server-side logging was enabled, so actual performance can be slightly higher.
+ *
+ * 1. Connection + Sending a Single Data Packet (Without considering whether reconnection is successful, only recording concurrent request situations)
+ * --------------------------------------------------------------------------------
+ *   Number of Connections   |  Successful Connections | Failed Connections  | Server Status During Instantaneous Concurrency             | Server Status After Connection  
+ * ---------------------------------------------------------------------------------
+ *   1000      |  1000  |   0   | CPU:100%,100%, MEM:1.5GB  | CPU:4%, 3%, MEM:1.5GB 
+ * ---------------------------------------------------------------------------------
+ *   2000      |  2000  |   0   | CPU:100%,100%, MEM:1.5GB  | CPU:4%, 3%, MEM:1.5GB 
+ * ---------------------------------------------------------------------------------
+ *   3000(peak) |  3000  |   0   | CPU:100%,100%, MEM:1.5GB  | CPU:4%, 3%, MEM:1.5GB 
+ * ---------------------------------------------------------------------------------
+ *   4000      |  3806  |194(5%)| CPU:100%,100%, MEM:1.5GB  | CPU:4%, 3%, MEM:1.5GB 
+ * ---------------------------------------------------------------------------------
+ *   5000      |  4685  |315(6.7%)| CPU:100%,100%, MEM:1.5GB  | CPU:4%, 3%, MEM:1.5GB 
+ * ---------------------------------------------------------------------------------
+ *   6000      |  4030  |1970(32%)| CPU:100%,100%, MEM:1.6GB  | CPU:4%, 3%, MEM:1.5GB 
+ * ---------------------------------------------------------------------------------
+ *   10000     |  52    |Service Crashed   | -                         | -
+ * ---------------------------------------------------------------------------------
+ *
+ * 
+ * 2. Connection + Necessary Flags + Sending Audio Stream (Test Situation): 10kb audio stream, sent in 2048-byte chunks. Each connection should send 6 messages.
+ *  * --------------------------------------------------------------------------------
+ *   Number of Connections   |Successful Connections| Messages to Send | Messages Sent  | Failed Messages  | Server Status During Instantaneous Concurrency             | Server Status After Connection  
+ * ---------------------------------------------------------------------------------
+ *   100      |  922   | 600     |600      |  0   | CPU:100%,100%, MEM:1.5GB  | CPU:4%, 3%, MEM:1.5GB 
+ * ---------------------------------------------------------------------------------
+ *   500      |  500   | 3000    | 3000    |   0   | CPU:100%,100%, MEM:1.5GB  | CPU:4%, 3%, MEM:1.5GB 
+ * ---------------------------------------------------------------------------------
+ *   1000     |  1000   | 6000    | 6000    |   0   | CPU:100%,100%, MEM:1.5GB  | CPU:4%, 3%, MEM:1.5GB 
+ * ---------------------------------------------------------------------------------
+ *   2000(peak)     |  2000   | 12000    | 12000    |   0   | CPU:100%,100%, MEM:1.5GB  | CPU:4%, 3%, MEM:1.5GB 
+ * ---------------------------------------------------------------------------------
+ *   3000     |  2982   | 18000    | 2982    |   0   | CPU:100%,100%, MEM:1.5GB  | CPU:4%, 3%, MEM:1.5GB 
+ * ---------------------------------------------------------------------------------
+ */
 ```
