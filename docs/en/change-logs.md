@@ -1,7 +1,7 @@
 # Change Logs
  
 
-## 2024-8-32 Server@2.0.0 Client@2.0.0
+## 2024-9-1 Server@2.0.0 Client@2.0.0
 
 🔥🔥🔥 A new member has been added to the ecosystem: `ESP-AI Developer Platform`
 
@@ -22,8 +22,7 @@
 - 🤔 Adjusted: Removed the `api_key` configuration, replaced by `iat_config`, `llm_config`, `tts_config` (as putting everything in `api_key` was confusing).
 - 🤔 Adjusted: Changed the default service port to `8088` (since there's a high chance of conflict with `8080`).
 - 🤔 Adjusted: Other configuration parts, details can be found in the documentation.
-- 💄 Optimized: Switched to a better prompt sound before starting a session.
-- 💄 Optimized: Voice wake-up mechanism, improving offline wake-up accuracy by over `60%` (further improvements will continue in future versions).
+- 💄 Optimized: Switched to a better prompt sound before starting a session. 
 - 🐞 Fixed: Issue where sentence breaks would repeat the previous sentence.
 
 ##### Installation
@@ -50,6 +49,7 @@ docker exec -it esp-ai-server npm i esp-ai@1.x.x
 - 🆕 Added: `setWifiConfig` for manually setting `wifi` information.
 - 🆕 Added: Each device generates a UUID during initialization, which can be retrieved as needed, similar to a `sn` code.
 - 🤔 Adjusted: Configuration order adjusted, unnecessary parameters are placed at the end and can be left unconfigured. 
+- 🤔 Adjusting the built-in voice wake-up scheme is temporarily delayed until the next 3 or so versions are released (because precision optimization is too time-consuming, it needs to be upgraded separately).
 - 💄 Optimized: Improved console output.
 - 💄 Optimized: Refactored client-side code.
 - 🐞 Fixed: Errors when uploading code in certain environments due to undefined `LED_BUILTIN`.

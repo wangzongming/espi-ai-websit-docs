@@ -79,8 +79,37 @@ docker 镜像或者window懒人包安装服务端时不需要 `Nodejs` 环境。
 
 硬件端这里称为客户端。文档中统一使用 `Ardunio IDE` 来编程，当然你也可以使用 `PlatformIO`。
 
-### 硬件代码 - Arduino
+### 官方固件烧录（零代码，不搞环境）
 
+用这个方法上传固件就不需要去下载客户端的依赖包等等，只需要上传固件到板子中，然后接好引脚即可。
+
+教程视频: 录制中...
+
+
+#### 下载烧录工具
+
+到乐鑫官网<https://www.espressif.com.cn/zh-hans/support/download/all>下载Flash下载工具。
+
+![alt text](/images/flash-tool.png)
+
+#### 下载 ESP-AI 固件
+固件下载地址：<http://101.34.59.36:7002/public/ota/new-version.bin>
+该固件带了 `OTA` 升级功能，下文将会详细讲述怎么进行 `OTA` 升级。
+
+
+#### 上传固件到开发板中
+1. 先按下图中配置好信息，文件就选择下载的 `bin` 文件，地址填写 `0x00`   
+2. 点击 START 按钮即可上传(注意，点击前先关闭其他地方对该串口的监听，比如 Arduino 在监听串口，否则会失败。)     
+![alt text](/images/bin-upload.png)
+
+#### OTA 升级
+当 `ESP-AI` 推出新版本时，您也无需再次烧录，只需要喊一声 `检查固件更新` 即可，详细效果可以看视频。 配置步骤如下：
+1. 到开发者平台配置意图命令
+![alt text](/images/ota-update.png)
+2. 重启开发板(按一下 RST 按钮)
+3. 尝试唤醒小明同学后，呼喊 `检查固件更新` 即可。
+
+### 硬件代码 - Arduino
 1. 创建一个文件 `example/example.ino` ，注意：文件必须放到一个文件夹里，文件夹名字必须和文件一样
 2. 用 `Arduino IDE` 打开 `example.ino` 文件
 3. 写入下面代码，然后上传到开发板中
@@ -95,9 +124,11 @@ void setup() {
   // [必  填] 是否调试模式， 会输出更多信息
   bool debug = true;
   // [必  填] wifi 配置： { wifi 账号， wifi 密码 }  注意：要用双引号！
-  ESP_AI_wifi_config wifi_config = { "oldwang", "oldwang520" };
-  // [必  填] 服务配置： { 服务IP， 服务端口, "请求参数，用多个参数&号分割，最大256字节" }
-  ESP_AI_server_config server_config = { "192.168.1.5", 8088, "api-key=your_api_key&p2=test" };
+  ESP_AI_wifi_config wifi_config = { "", "", "ESP-AI"  };
+  // 用开发者平台，只需要配置为空
+  ESP_AI_server_config server_config = { };
+  // [必  填] 服务配置： { 服务IP， 服务端口, "请求参数，用多个参数&号分割" }
+  // ESP_AI_server_config server_config = { "192.168.1.5", 8088, "api-key=your_api_key&p2=test" };
   // [必  填] 离线唤醒方案：{ 方案, 识别阈值 }, "edge_impulse" | "diy"，为 "diy" 时可调用 esp_ai.wakeUp() 方法进行唤醒
 
   ESP_AI_wake_up_config wake_up_config = {};
@@ -112,8 +143,8 @@ void setup() {
   ESP_AI_i2s_config_speaker i2s_config_speaker = { 16, 17, 15, 16000 };
   // [可留空] 音量调节配置：{ 输入引脚，输入最大值(1024|4096)，默认音量(0-1) }
   ESP_AI_volume_config volume_config = { 34, 4096, 0.4 };
-  // 开始运行 ESP-AI
-  esp_ai.begin({ i2s_config_mic, i2s_config_speaker, wifi_config, server_config, wake_up_config, volume_config, debug }); 
+  // 开始运行 ESP-AI 
+  esp_ai.begin({debug, wifi_config, server_config, wake_up_config, volume_config, i2s_config_mic, i2s_config_speaker});
 }
 
 void loop() {
@@ -255,7 +286,7 @@ espAi(config);
 #### 运行容器
 必须先手动创建好 `/esp-ai-server/index.js` 文件，该文件案例在仓库的 `example/index.js` 目录下。
 ```bash
-sudo docker run -itd -p 8088:8088 -v /esp-ai-server/index.js:/server/index.js --name esp-ai-server registry.cn-shanghai.aliyuncs.com/xiaomingio/esp-ai:2.0.0
+sudo docker run -itd -p 8088:8088 -v /esp-ai-server/index.js:/server/index.js --name esp-ai-server registry.cn-shanghai.aliyuncs.com/xiaomingio/esp-ai:1.0.0
 ```
 
 配置文件将映射到了`/esp-ai-server/index.js`，需要自行更改配置文件，更改文件后重启服务即可：

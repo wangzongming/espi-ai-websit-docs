@@ -206,7 +206,9 @@ const config = {
                 },
             ],
         }
-    }
+    },
+    
+    plugins: []
 }
 ```
 

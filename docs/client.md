@@ -67,7 +67,7 @@ void setup() {
   ESP_AI_volume_config volume_config = { 34, 4096, 0.5 };
 
   // 开始运行 ESP-AI
-  esp_ai.begin({ i2s_config_mic, i2s_config_speaker, wifi_config, server_config, wake_up_config, volume_config, debug }); 
+  esp_ai.begin({debug, wifi_config, server_config, wake_up_config, volume_config, i2s_config_mic, i2s_config_speaker});
 }
 ```
 #### 参数说明

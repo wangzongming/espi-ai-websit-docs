@@ -78,7 +78,36 @@ Registration URL: https://console.xfyun.cn/services/iat
 
 The hardware side is called the client. The documentation uses' Ardunio IDE 'to program, but you can also use' PlatformIO '.
 
-### Hardware Code - Arduino
+### Flash with Official Firmware (Zero Code, No Environment Setup)
+
+Using this method to upload the firmware means you don't need to download client dependencies or 
+anything else; you just need to upload the firmware to the board and then connect the pins.
+
+
+Tutorial Video: In Production...
+
+#### Download the Flashing Tool
+Download the Flash Download Tool from the Espressif official website: <https://www.espressif.com.cn/zh-hans/support/download/all>.
+
+[alt text](/images/flash-tool.png)
+
+#### Download the ESP-AI Firmware
+Firmware download link: <http://101.34.59.36:7002/public/ota/new-version.bin>
+This firmware includes OTA upgrade functionality, which will be detailed in the following sections.
+
+#### Upload Firmware to the Development Board
+1. Configure the information as shown in the image below. Select the downloaded `.bin` file, and enter the address as `0x00`.
+2. Click the START button to upload (Note: Before clicking, make sure to close any monitoring of the serial port from other applications, such as Arduino monitoring the serial port, otherwise, it will fail.)
+[alt text](/images/bin-upload.png)
+
+#### OTA Upgrade
+When a new version of `ESP-AI` is released, you don't need to flash it again; simply say "Check for firmware updates," and the detailed effect can be seen in the video. The configuration steps are as follows:
+1. Set up the intent command on the developer platform.
+[alt text](/images/ota-update.png)
+2. Restart the development board (press the RST button once).
+3. After waking up the device, call out "Check for firmware updates."
+
+### Hardware Code - Arduino  
 
 1. Create a file `example/example.ino`. Note: The file must be placed in a folder, and the folder name must be the same as the file name.
 2. Open the `example.ino` file with `Arduino IDE`.
@@ -111,8 +140,8 @@ void setup() {
   // [Optional] Volume control configuration: { input pin, input max value (1024|4096), default volume (0-1) }
   ESP_AI_volume_config volume_config = { 34, 4096, 0.4 };
 
-  // Start running ESP-AI
-  esp_ai.begin({ i2s_config_mic, i2s_config_speaker, wifi_config, server_config, wake_up_config, volume_config, debug }); 
+  // Start running ESP-AI 
+  esp_ai.begin({debug, wifi_config, server_config, wake_up_config, volume_config, i2s_config_mic, i2s_config_speaker});
 }
 
 void loop() {
@@ -225,7 +254,7 @@ Note: These three configurations can only modify those on the host machine; the 
 
 #### Running the Container
 ```bash
-docker run -itd -p 8088:8088 -v /esp-ai-server/index.js:/server/index.js --name esp-ai-server registry.cn-shanghai.aliyuncs.com/xiaomingio/esp-ai:2.0.0
+docker run -itd -p 8088:8088 -v /esp-ai-server/index.js:/server/index.js --name esp-ai-server registry.cn-shanghai.aliyuncs.com/xiaomingio/esp-ai:1.0.0
 ```
 
 The configuration file is mapped to `/esp-ai-server/index.js`. You need to modify this configuration file yourself. After making changes, you can restart the service:
