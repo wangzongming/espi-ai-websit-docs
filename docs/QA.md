@@ -18,3 +18,25 @@
 2. 确认两个板子共地了
 3. 波特率是否正确，天问默认 9600
  
+
+
+## 3、Arduino 烧录报错 config.audo_clear = true
+1. esp32库版本需要安装 2.0.17 版本
+2. 左上角选择的开发板不是 esp32s3 dev module
+
+
+
+## 4、服务端播放音乐报错：流写入停止： Error: spawn /www-server/esp-ai-node-server/node_modules/ffmpeg-static/ffmpeg EACCES
+
+执行下面命令可以看到提示没有权限 
+
+![上传报错](/images/qa/image-1.png)
+
+解决方法：删除掉 node_modules 文件夹，重新 npm install。
+需要注意用 taobao 镜像安装的会报错的话，可以切换到腾讯源： 
+
+```
+npm config set registry https://mirrors.cloud.tencent.com/npm/
+npm i esp-ai
+```
+

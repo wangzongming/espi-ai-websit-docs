@@ -78,13 +78,13 @@ Registration URL: https://console.xfyun.cn/services/iat
 
 The hardware side is called the client. The documentation uses' Ardunio IDE 'to program, but you can also use' PlatformIO '.
 
-### Flash with Official Firmware (Zero Code, No Environment Setup)
+<!-- ### Flash with Official Firmware (Zero Code, No Environment Setup)
 
 Using this method to upload the firmware means you don't need to download client dependencies or 
 anything else; you just need to upload the firmware to the board and then connect the pins.
 
 
-Tutorial Video: In Production...
+Tutorial Video: 【ESP-AI 官方固件烧录（零代码/不搞环境配置/不下载包）】 <https://www.bilibili.com/video/BV1dyHhefE9M/?share_source=copy_web&vd_source=041c9610a29750f498de1bafe953086b>
 
 #### Download the Flashing Tool
 Download the Flash Download Tool from the Espressif official website: <https://www.espressif.com.cn/zh-hans/support/download/all>.
@@ -105,7 +105,7 @@ When a new version of `ESP-AI` is released, you don't need to flash it again; si
 1. Set up the intent command on the developer platform.
 [alt text](/images/ota-update.png)
 2. Restart the development board (press the RST button once).
-3. After waking up the device, call out "Check for firmware updates."
+3. After waking up the device, call out "Check for firmware updates." -->
 
 ### Hardware Code - Arduino  
 

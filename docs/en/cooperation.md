@@ -24,7 +24,7 @@ If you wish to independently own a copy of the [https://dev.espai.fun](https://d
 This platform will offer unified management of client applications (hardware), including but not limited to quota management, device management, device configuration, user management, etc...
 
 ### Purchase Details
-- Fee: 10,000 RMB per set (only supports deployment, no customization available; some code provided as compiled packages)
+- Fee: expand on per set (only supports deployment, no customization available; some code provided as compiled packages)
 - Customization fees: to be discussed
 - Order Link: Available after November 2024
 

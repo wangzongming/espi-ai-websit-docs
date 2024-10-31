@@ -2,6 +2,7 @@ import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from 'vuepress/cli'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { docsearchPlugin } from '@vuepress/plugin-docsearch'
+import { noticePlugin } from '@vuepress/plugin-notice'
 
 export default defineUserConfig({
   lang: 'zh-CN',
@@ -14,6 +15,7 @@ export default defineUserConfig({
       lang: 'zh-CN',
       // description: '将任何物品接入AI最简单的方案，也是为您的开发板提供全套的 AI 对话方案',
       description: '最简单、最低成本的AI接入方案，让任何物品都能实现智能对话功能，让人人都有AI助手',
+      // description: '最简单、最低成本的AI接入方案，为万物赋予灵魂',
     },
     '/en/': {
       lang: 'en-US',
@@ -104,6 +106,14 @@ export default defineUserConfig({
                 text: "千年小妖仔的博客",
                 link: 'http://www.dhhyxr.top',
               },
+              {
+                text: "青柠博客",
+                link: 'http://www.qingningz.cn',
+              },
+              {
+                text: "白云苍狗",
+                link: 'https://www.imalun.com',
+              },
 
             ],
           },
@@ -179,11 +189,19 @@ export default defineUserConfig({
                 text: "千年小妖仔的博客",
                 link: 'http://www.dhhyxr.top',
               },
+              {
+                text: "青柠博客",
+                link: 'http://www.qingningz.cn',
+              },
+              {
+                text: "白云苍狗",
+                link: 'https://www.imalun.com',
+              },
             ],
           },
         ],
       },
-    },  
+    },
   }),
 
   bundler: viteBundler({
@@ -201,5 +219,26 @@ export default defineUserConfig({
       appId: 'V0M7LU48WZ',
       indexName: 'espai',
     }),
+    noticePlugin({
+      // 选项
+      config: [
+        {
+          path: '/',
+          title: `<b>公告</b>`,
+          content: `<div style="background: #fff;font-size:14px;">
+            <h4>新版将于 2024/11月份或者12月份推出</h4>
+            <p>音频流将会全线改为 mp3 进行传输(降低至少70%的带宽压力以及相当大的服务压力)、会话过程更稳定、对话打断流程更加流畅、日志模块完善、服务端对客户端的控制、服务端与客户端提供更丰富的 api 以供生产环境使用 ...</p>
+            <p> 总之，<b>新版将是一个可以投产的版本。</b> </p>
+
+            <p>届时<b>新版开放平台也将同步推出</b>，新版将会打造一个全功能、更简单的开放平台，敬请期待。</p>
+
+            <p>另外通知：<b>官方固件暂时停止维护</b>，直到新版发布，（ps: 新版将可以在线烧录固件，所以旧版暂时没必要维护了）</p>
+            <p> <b>Github 中的 Star 数对项目发展至关重要，请大家点一点 Star ~， 感谢！</b> </p>
+            
+          </div>`, 
+        },
+      ]
+    }),
+
   ],
 })
