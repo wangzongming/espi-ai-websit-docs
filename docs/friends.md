@@ -45,6 +45,10 @@ list:
     name: 白云苍狗
     link: https://www.imalun.com
     avatar: https://www.imalun.com/images/avatar.jpg?v=2
+  -
+    name: yiyun's Blog
+    link: moeci.com
+    avatar: https://moeci.com/images/avatar.png
 ---
 
  

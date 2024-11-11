@@ -8,6 +8,7 @@ export default defineNoteConfig({
             text: '开放平台使用-推荐',
             collapsed: false,
             items: [ 
+                '什么是开放平台',
                 '开放平台使用教程', 
             ],
         },

@@ -31,6 +31,11 @@ ESP-AI 是采用 Apache2.0 许可的开源项目，个人/教育使用完全免�
         <img src="https://xiaomingio.top/me/head.jpg" style="border-radius: 50%;"/>
     </a>
   </Card>
+  <Card class="spomsor-card">
+    <a class="spomsor-a" href="https://espai.fun/" target="_blcok" title="小土堆">
+        <img src="https://espai.fun/images/logo-tm.png" style="border-radius: 50%;"/>
+    </a>
+  </Card>
   <Card  class="spomsor-card"> 
     <a class="spomsor-a" href="https://afdian.com/a/esp-ai" target="_blcok">
         <span>我要赞助</span>

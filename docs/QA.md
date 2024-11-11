@@ -30,3 +30,13 @@ permalink: /qa/
 2. 左上角选择的开发板不是 esp32s3 dev module
 
 
+## 4、怎么重新配网，重新设置 api_key
+
+1. 方式一，查看局域网地址，然后打开局域网地址就可以进行配网。
+
+![上传报错](/images/qa/ip.png)
+
+
+2. 方式二，用这个按钮去清除设备内的程序，然后重新烧录。
+
+![上传报错](/images/qa/clear-flash.png)

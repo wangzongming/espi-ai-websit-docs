@@ -5,6 +5,15 @@ permalink: /change-logs/
 --- 
 
 
+## 2024/11/10 Server@2.20.17 - Client@2.11.5
+
+### [Server](https://espai.fun/change-logs/#server)
+🐞 修复 就算不说话也会识别出嗯嗯啊啊的问题
+
+### [Client](https://espai.fun/change-logs/#client)
+未做升级，继续使用  Client@2.11.5
+
+
 
 ## 2024/11/8 Server@2.20.16 - Client@2.11.5
  
