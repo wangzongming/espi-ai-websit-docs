@@ -34,5 +34,12 @@ export default defineNoteConfig({
                 'Docker', 
             ],
         }, 
+        {
+            text: '第三方文章推荐',
+            collapsed: false,
+            items: [
+                '青柠博客', 
+            ],
+        }, 
     ],
 })

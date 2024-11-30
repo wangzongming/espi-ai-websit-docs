@@ -3,7 +3,13 @@ title: IAT/ASR 插件开发
 createTime: 2024/11/7 21:06:45
 permalink: /plugin/iat/
 ---
- 
+
+## 流程图
+由于和 LLM 流程完全一致，所以这里直接引用 LLM 插件流程图。
+
+<div style="background:#fff;padding: 32px;text-align:center;border-radius: 32px;">
+  <img src="/images/llm-plugin.png" width="80%" />
+</div>
 
 ## TS描述
 

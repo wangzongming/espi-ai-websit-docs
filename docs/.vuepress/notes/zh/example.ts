@@ -20,6 +20,7 @@ export default defineNoteConfig({
                 '服务端认证',
                 '指示灯',
                 '各平台配置',
+                '用户指令',
                 '用Nodejs对设备进行控制', 
                 '语音控制继电器',
                 '语音控制点亮 LED',

@@ -4,6 +4,16 @@ createTime: 2024/11/7 21:06:45
 permalink: /plugin/llm/
 ---
 
+## 流程图
+ 
+<div style="background:#fff;padding: 32px;text-align:center;border-radius: 32px;">
+  <img src="/images/llm-plugin.png" width="80%" />
+</div>
+
+## 视频教程
+ 
+@[bilibili](BV1jNUsY4EDY)
+
 ## TS描述
 
 ```typescript
@@ -57,11 +67,6 @@ type Plugin = {
 
 
 
-## 视频教程
-
-录制中...
-<!-- @[bilibili](BV1EZ42187Hg) -->
-
 ## 案例代码
 
 下面提供`火山引擎LLM`请求案例。
@@ -72,7 +77,7 @@ module.exports = {
     name: "esp-ai-plugin-llm-example",
     // 插件类型 LLM | TTS | IAT
     type: "LLM", 
-    main({ devLog, device_id, llm_config, text, llmServerErrorCb, llm_init_messages = [], llm_historys = [], cb, llm_params_set, logWSServer, connectServerBeforeCb, connectServerCb }) {
+    main({ devLog, device_id, llm_config, text, llmServerErrorCb, llm_init_messages = [], llm_historys = [], cb, llm_params_set, logWSServer, connectServerBeforeCb, connectServerCb, log }) {
         try {
             const { apiKey, epId, ...other_config } = llm_config;
             if (!apiKey) return log.error(`请配给 LLM 配置 apiKey 参数。`)
@@ -80,29 +85,31 @@ module.exports = {
 
             // 如果关闭后 message 还没有被关闭，需要定义一个标志控制
             let shouldClose = false;
-            // 这个对象是固定写法，每个 TTS 都必须按这个结构定义
+            // 这个对象是固定写法，每个 LLM 插件都必须按这个结构定义
             const texts = {
                 all_text: "",
                 count_text: "",
                 index: 0,
             } 
-
-            let openai = device_open_obj[device_id];
-            if (!device_open_obj[device_id]) {
-                connectServerBeforeCb();
-                openai = new OpenAI({
-                    apiKey: apiKey,
-                    baseURL: 'https://ark.cn-beijing.volces.com/api/v3',
-                });
-            }
+            
+            // 告诉框架要开始连接 LLM 服务了
+            connectServerBeforeCb();
+            let openai = new OpenAI({
+                apiKey: apiKey,
+                baseURL: 'https://ark.cn-beijing.volces.com/api/v3',  // 在必要情况下，这个 URL 也推荐作为一个参数让用户配置
+            });
 
 
             async function main() {
                 try {
                     const stream = await openai.chat.completions.create({
                         messages: [
+                            // 提示词
                             ...llm_init_messages,
+                            // 上下文
                             ...llm_historys,
+
+                            // 最新的用户提问
                             {
                                 "role": "user", "content": text
                             },
@@ -110,8 +117,12 @@ module.exports = {
                         model: epId,
                         stream: true,
                     });
+
+                    // 告诉框架已经和 llm 服务连接了
                     connectServerCb(true);
+
                     logWSServer({
+                        // 向框架注册一个服务关闭对象
                         close: () => {
                             connectServerCb(false);
                             stream.controller.abort()
@@ -135,8 +146,10 @@ module.exports = {
                         texts,
                         shouldClose, 
                     })
-                    connectServerCb(false);
-                    // devLog && log.llm_info('\n===\n', httpResponse, '\n===\n')
+                    
+                    // 告诉框架关闭了和 llm 服务的连接
+                    connectServerCb(false); 
+
                     devLog && log.llm_info('===')
                     devLog && log.llm_info(texts["count_text"])
                     devLog && log.llm_info('===')

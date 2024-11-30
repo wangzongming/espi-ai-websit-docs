@@ -3,7 +3,13 @@ title: TTS 插件开发
 createTime: 2024/11/7 21:06:45
 permalink: /plugin/tts/
 ---
- 
+
+## 流程图
+由于和 LLM 流程完全一致，所以这里直接引用 LLM 插件流程图。
+
+<div style="background:#fff;padding: 32px;text-align:center;border-radius: 32px;">
+  <img src="/images/llm-plugin.png" width="80%" />
+</div>
 
 ## TS描述
 
@@ -67,7 +73,7 @@ module.exports = {
     name: "esp-ai-plugin-tts-test",
     // 插件类型 LLM | TTS | IAT
     type: "TTS", 
-    main({ device_id, text, devLog, tts_config, logWSServer, tts_params_set, cb, log, ttsServerErrorCb, connectServerCb, connectServerBeforeCb }) {
+    main({ device_id, text, devLog, tts_config, logWSServer, tts_params_set, cb, log, ttsServerErrorCb, connectServerCb, connectServerBeforeCb, log }) {
         try {
             const { appid, accessToken, appConfig, ...other_config } = tts_config;
             if (!accessToken) return log.error(`请配给 TTS 配置 accessToken 参数。`)

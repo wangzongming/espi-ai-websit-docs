@@ -47,7 +47,7 @@ list:
     avatar: https://www.imalun.com/images/avatar.jpg?v=2
   -
     name: yiyun's Blog
-    link: moeci.com
+    link: https://moeci.com
     avatar: https://moeci.com/images/avatar.png
 ---
 
