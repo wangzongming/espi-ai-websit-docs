@@ -1,4 +1,5 @@
 import { defineNotesConfig } from 'vuepress-theme-plume' 
+import dev from './dev'
 import start from './start'
 import clientConfig from './config-client'
 import serverConfig from './config-server'
@@ -13,6 +14,7 @@ export const zhNotes = defineNotesConfig({
     example,
     clientConfig,
     serverConfig,
-    plugin, 
+    plugin,
+    dev, 
   ],
 })

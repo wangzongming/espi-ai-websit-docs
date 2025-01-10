@@ -228,8 +228,8 @@ export default defineUserConfig({
             location: 'GuangZhou, China',
             organization: 'esp-ai',
         },
-        footer: {
-            copyright: 'Apache 2.0 Licensed | Copyright © ESP-AI <br/><div style="font-size:12px;padding-top:0px;display: flex;justify-content: center;align-items:center"><a style="color:#777;"  href="https://beian.miit.gov.cn/" target="_blank">黔ICP备2024030115号-2</a> <img style="width:16px;height:16px;margin-left:14px;padding-right:3px;" src="/images/beian.png"/><a href="https://beian.mps.gov.cn/#/query/webSearch?code=44030002004468 style="color:#777;"  rel="noreferrer" target="_blank">粤公网安备44030002004468</a></div>',
+        footer: { 
+            copyright: 'Apache 2.0 Licensed | Copyright © ESP-AI <br/><span class="bei_an_container"><a style="color:#777;"  href="https://beian.miit.gov.cn/" target="_blank">黔ICP备2024030115号-2</a> <img class="img" src="/images/beian.png"/><a href="https://beian.mps.gov.cn/#/query/webSearch?code=44030002004468" style="color:#777;"  rel="noreferrer" target="_blank">粤公网安备44030002004468</a></span>',
         },
 
 
@@ -515,7 +515,7 @@ export default defineUserConfig({
 
         bulletin: {
             layout: 'center',
-            id: '1', 
+            id: '5', 
             lifetime: 'once',
             title: '🎉 ESP-AI 公告 🎉',
             contentFile: path.join(__dirname, 'bulletin.md'),

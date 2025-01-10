@@ -25,16 +25,17 @@ permalink: /team/
 </CardGrid>  
 
 ## <center>深度贡献</center> 
-暂无~
-
-
-## <center>无私贡献</center>  
 <CardGrid  cols="4">
   <Card class="spomsor-card" style="background: transparent;">
-    <a class="spomsor-a" href="https://espai.fun/" target="_blcok" title="未留名的PCB贡献者，ESP-AI 首块开源PCB作者！">
-        <img src="https://espai.fun/images/logo-tm.png" style="border-radius: 50%;"/>
+    <a class="spomsor-a" href="https://space.bilibili.com/395849314" target="_blcok" title="Open01，ESP-AI 开源PCB作者！">  
+        <img src="/images/open01x.png" style="border-radius: 50%;"/>
     </a>
-  </Card> 
+  </Card>  
+</CardGrid>  
+
+
+## <center>周边贡献</center>  
+<CardGrid  cols="4"> 
   <Card class="spomsor-card" style="background: transparent;">
     <a class="spomsor-a" href="https://www.qingningz.cn/" target="_blcok" title="青柠博客，为 ESP-AI 周边做了非常多的贡献！">
         <img src="https://wmimg.com/i/113/2023/08/64ec78404d85d.jpg" style="border-radius: 50%;"/>

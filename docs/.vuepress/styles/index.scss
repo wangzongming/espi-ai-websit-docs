@@ -50,3 +50,20 @@
     // height: 100%;
     // border-radius: 50%;
 }
+
+.vp-footer {
+    .bei_an_container {
+        font-size: 12px;
+        padding-top: 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center
+    }
+
+    .img {
+        width: 16px;
+        height: 16px;
+        margin-left: 14px;
+        padding-right: 3px;
+    }
+}

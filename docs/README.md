@@ -19,6 +19,10 @@ config:
           text: 开放平台
           link: https://dev.espai.fun
         -
+          theme: brand
+          text: 硬件购买
+          link: /open/pcb/ 
+        -
           theme: alt
           text: Github
           link: https://github.com/wangzongming/esp-ai
@@ -35,8 +39,8 @@ config:
         details: 内置讯飞/火山引擎/阿里积灵 IAT、TTS、LLM，其他平台可用插件扩展。
       -
         icon: flat-color-icons:voice-presentation
-        title: 语音唤醒
-        details: 可定制的离线语音唤醒，语音推理使用 TensorFlow Lite 模型，后续将会推出在线唤醒词生成服务。
+        title: 多种对话/唤醒方式
+        details: 可定制的离线语音唤醒，语音推理使用 TensorFlow Lite 模型，后续将会推出在线唤醒词生成服务。可以连续对话或者按住按钮对话或者任意方式对话~
       -
         icon: openmoji:authority-instruction
         title: 指令识别
@@ -109,8 +113,8 @@ permalink: /
 
 ::: center
 
-<img src="/images/nodejs.png" width="45%"   style="height: 350px" />
-<img src="/images/arduino.png" width="45%"    style="height: 350px" />
+<img src="/images/nodejs.png" width="45%" style="height: 350px" />
+<img src="/images/arduino.png" width="45%" style="height: 350px" />
 
 :::
 
