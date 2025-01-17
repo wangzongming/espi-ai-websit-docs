@@ -31,14 +31,19 @@ permalink: /team/
         <img src="/images/open01x.png" style="border-radius: 50%;"/>
     </a>
   </Card>  
+  <Card class="spomsor-card" style="background: transparent;">
+    <a class="spomsor-a" href="https://www.qingningz.cn/" target="_blcok" title="青柠博客，为 ESP-AI 做了非常多的贡献！">
+        <img src="https://wmimg.com/i/113/2023/08/64ec78404d85d.jpg" style="border-radius: 50%;"/>
+    </a>
+  </Card> 
+  <Card class="spomsor-card" style="background: transparent;">
+    <a class="spomsor-a" href="https://github.com/pq-dong" target="_blcok" title="pqdong，为 ESP-AI 做了非常多的贡献！">
+        <img src="https://avatars.githubusercontent.com/u/40668796?v=4" style="border-radius: 50%;"/>
+    </a>
+  </Card> 
 </CardGrid>  
 
 
 ## <center>周边贡献</center>  
 <CardGrid  cols="4"> 
-  <Card class="spomsor-card" style="background: transparent;">
-    <a class="spomsor-a" href="https://www.qingningz.cn/" target="_blcok" title="青柠博客，为 ESP-AI 周边做了非常多的贡献！">
-        <img src="https://wmimg.com/i/113/2023/08/64ec78404d85d.jpg" style="border-radius: 50%;"/>
-    </a>
-  </Card> 
 </CardGrid>  
