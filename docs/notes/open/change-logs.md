@@ -17,21 +17,21 @@ ESP-AI 承诺在非必要情况下，我们绝不做破坏性更新！
 我们会制定好每一个版本的发布计划，会在QQ群内公告。
 
  
-## 2025/1/18 Server@2.41.28 - Client@2.41.30
+## 2025/1/18 Server@2.41.30 - Client@2.41.30
 
 
 ### Server 
  
-- 🐞 修复 指令识别部分问题。
+- 🐞 修复 用户指令问题。
                    
 **Install**
 
 ```bash
-npm i esp-ai@2.41.28
+npm i esp-ai@2.41.30
 ```
 **docker Install**
 ```bash
-docker exec -it esp-ai-server  npm i esp-ai@2.41.28
+docker exec -it esp-ai-server  npm i esp-ai@2.41.30
 ```
 
 ### Client 

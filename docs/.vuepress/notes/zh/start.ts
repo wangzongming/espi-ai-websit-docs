@@ -10,6 +10,7 @@ export default defineNoteConfig({
             items: [
                 'ESP-AI简介', 
                 '下一步计划',
+                "怎么上手"
             ],
         },
         {
