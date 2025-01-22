@@ -16,6 +16,24 @@ ESP-AI 遵循 [Semantic Versioning 2.0.0](Shttps://semver.org/lang/zh-CN/) 语�
 ESP-AI 承诺在非必要情况下，我们绝不做破坏性更新！   
 我们会制定好每一个版本的发布计划，会在QQ群内公告。
 
+
+## 2025/1/22 Server@2.41.30 - Client@2.41.32
+
+
+### Server 
+
+未做修改，继续使用 `v2.41.30`。
+
+### Client 
+  
+- 🐞 修复 DIY 套件不接按钮会导致无限重置
+- 🐞 修复 部分其他问题
+
+
+**Install**
+
+请到仓库发布页面自行下载最新版客户端：[发行页面](https://github.com/wangzongming/esp-ai/releases)   
+
  
 ## 2025/1/18 Server@2.41.30 - Client@2.41.30
 
