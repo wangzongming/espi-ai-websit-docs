@@ -77,7 +77,9 @@ ESP-AI 是采用 Apache2.0 许可的开源项目，个人/教育使用完全免�
   </Card>
 </CardGrid>  
 
-## 铂金赞助商 - 1000 元/月
+## 铂金赞助商(企业名义) - 1000 元/月
+赞助期内：赞助满五个月费用时优先贵企业需求。
+
 <CardGrid> 
   <Card  class="spomsor-card"> 
     <a class="spomsor-a" href="https://afdian.com/a/esp-ai" target="_blcok">
@@ -87,7 +89,21 @@ ESP-AI 是采用 Apache2.0 许可的开源项目，个人/教育使用完全免�
 </CardGrid>  
 
 
-## 黑钻赞助商 - 5000 元/月
+## 黑钻赞助商(企业名义) - 5000 元/月
+赞助期内：优先贵企业需求。
+
+<CardGrid> 
+  <Card  class="spomsor-card"> 
+    <a class="spomsor-a" href="https://afdian.com/a/esp-ai" target="_blcok">
+        <span>我要赞助</span>
+    </a>
+  </Card>
+</CardGrid>  
+
+
+## 独家赞助 - 20000 元/月
+赞助期内：优先贵企业需求，享受作者一对一技术支持，包括免费给公司人员培训等。
+
 <CardGrid> 
   <Card  class="spomsor-card"> 
     <a class="spomsor-a" href="https://afdian.com/a/esp-ai" target="_blcok">
