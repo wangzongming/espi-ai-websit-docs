@@ -49,6 +49,12 @@ list:
     name: yiyun's Blog
     link: https://moeci.com
     avatar: https://moeci.com/images/avatar.png
+  -
+    name: 南生论坛
+    link: https://bbs.nanshengbbs.top 
+    avatar: https://bbs.nanshengbbs.top/static/img/nan.8c583343.jpg
+
+    
 ---
 
  
