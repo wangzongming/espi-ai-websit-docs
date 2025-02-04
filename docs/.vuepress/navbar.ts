@@ -31,11 +31,12 @@ export const zhNavbar = [
         text: '开放生态',
         icon: 'ri:open-arm-line',
         activeMatch: '^/open/',
-        items: [
-            // { text: '插件市场', link: '/notes/open/plug-in-market.md', icon: "clarity:plugin-line" },
+        items: [ 
             { text: '插件市场', link: 'https://dev.espai.fun/#/Plugin', icon: "clarity:plugin-line" },
             { text: '升级日志', link: '/notes/open/change-logs.md', icon: "material-symbols-light:update" },
             { text: '开源PCB', link: '/notes/open/pcb.md', icon: "file-icons:arduino" },
+            { text: '智能家居', link: '/notes/open/智能家居方案.md', icon: "solar:armchair-2-linear" },
+            { text: '社区案列', link: '/notes/open/社区案列.md', icon: "bitcoin-icons:globe-filled" },
             { text: '参与贡献', link: '/notes/open/contribution.md', icon: "ri:open-arm-line" },
         ],
     },

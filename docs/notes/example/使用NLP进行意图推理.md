@@ -14,13 +14,21 @@ const config = {
         return {
             intention: [
                 { 
-                    key: async (text = "") => {
-                        // text 就是用户说的话，可以将 text 传给 nlp 服务进行推理，在进行返回
-                        const match = await fetch("nlp-server");
-                        if (match) { 
-                            return true;
-                        }
-                    },
+                    key: ["开灯"],
+                    // 配置开放平台 api_key 后字符串类型的指令会进行NLP推理。
+                    api_key: "xxx",
+                    /***
+                     * nlp 服务地址，默认为 https://espai.natapp4.cc/v1/semantic。 注意，必须配置 api_key 才会去请求这个服务
+                     * 请求体为 json： {
+                     *      
+                     *   "api_key": api_key,
+                     *   "texts": ["开灯", "帮我开灯"]
+                     * }
+                     * 
+                     * 接口需要返回： true || false
+                     * 
+                    */
+                    // nlp_server?: string;
  
                     // 自定义做一些事
                     // instruct: (arg) => {

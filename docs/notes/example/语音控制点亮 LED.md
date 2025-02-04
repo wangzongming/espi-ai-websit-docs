@@ -15,14 +15,18 @@ const config = {
                     key: ["开灯", "打开灯"], 
                     // 向设备发送一个字符串，客户端使用 onEvent 监听
                     instruct: "device_open_001", 
-                    message: "好的"
+                    message: "好的",
+                    // 配置开放平台 api_key 后字符串类型的指令会进行NLP推理。
+                    api_key: "xxx",
                 },
                 
                 { 
                     key: ["关灯", "关闭灯"], 
                     // 向设备发送一个字符串，客户端使用 onEvent 监听
                     instruct: "device_close_001", 
-                    message: "好的"
+                    message: "好的",
+                    // 配置开放平台 api_key 后字符串类型的指令会进行NLP推理。
+                    api_key: "xxx",
                 }
             ]
         }
