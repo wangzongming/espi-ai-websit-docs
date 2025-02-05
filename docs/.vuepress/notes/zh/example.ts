@@ -23,7 +23,6 @@ export default defineNoteConfig({
                 '用户指令',
                 '用Nodejs对设备进行控制', 
                 '语音控制继电器',
-                '远程开关、点火器',
                 '语音控制点亮 LED',
                 '语音控制舵机旋转角度',
                 '音频播放(音乐、有声书)', 
@@ -33,6 +32,13 @@ export default defineNoteConfig({
                 '将对话文字放到串口屏、网页等', 
                 '存储业务数据到硬件',
                 '根据数据库数据生成配置'
+            ],
+        },
+        { 
+            text: '物联网',
+            collapsed: false,
+            items: [ 
+                '远程开关、点火器',
             ],
         },
         { 
