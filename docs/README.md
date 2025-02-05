@@ -65,38 +65,6 @@ config:
         icon: icon-park:strongbox
         title: 生产级&可集成
         details: ESP-AI 作为面向生产环境发布的开发库，对于扩展性、灵活性、稳定性有严格要求。并且可以很方便集成到现有项目。
- 
-
-  # -
-  #   type: image-text
-  #   title: 功能
-  #   description: 功能丰富、接口灵活，理论上可以满足任何需求。
-  #   image: /images/plume-1.svg
-  #   list:
-  #     -
-  #       title: 可定制的离线语音唤醒词，且内置多种唤醒方式（内置、语音、按钮、串口、天问asrpro）。 
-  #     -
-  #       title: 完整对话链接 IAT(ASR) ➡️ LLM/RAG ➡️ TTS。 
-  #     -
-  #       title: 支持会话打断。 
-  #     -
-  #       title: TTS/LLM 快速响应算法，在考虑服务费用的基础上尽力以最快速度响应用户。 
-  #     -
-  #       title: 用户指令智能识别(家电控制、音频播放)，可根据上下文动态响应指令。且支持自定义逻辑/字符匹配等方式来识别用户意图。 
-  #     -
-  #       title: 插件化，可编写插件接入任何 LLM/TTS/IAT, 也就是说你可以轻而易举的接入自己的知识库、tts、llm、asr等服务。
-  #     -
-  #       title: C/S 架构，也就是说你可以对每个设备进行管理，包括为每一个客户端(硬件)独立分配一套配置。
-  #     -
-  #       title: 完整的鉴权规则。
-  #     -
-  #       title: 全链流式数据交互。
-  #     -
-  #       title: 开发者平台提供：免费服务、可视化配置 ... 。
-  #     -
-  #       title: 高度自定义（配网页面以及各种细节都是完全提供出来以供更改的）
-  #     -
-  #       title: 轻松应付大并发场景 
   -
     type: custom
 title: README

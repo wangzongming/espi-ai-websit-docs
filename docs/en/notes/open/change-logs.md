@@ -1,7 +1,7 @@
 ---
 title:  升级日志
 createTime: 2024/07/18 22:10:12
-permalink: /change-logs/
+permalink: /en/change-logs/
 --- 
 
 ## 发布周期
