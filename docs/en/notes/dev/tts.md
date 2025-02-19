@@ -15,7 +15,10 @@ const axios = require('axios');
 const { PassThrough } = require('stream'); 
 
 const api_key = "开放平台 api_key"; 
-const response = await axios.post('https://espai.natapp4.cc/v1/tts', { streaming: true }, {
+const response = await axios.post('https://api.espai.fun/ai_api/tts', { 
+    streaming: true,
+    reference_id: "说话人ID", // 获取方式： 开放平台 -> 超体 -> 点击打开TTS编辑面板 -> 找到你要用的音色 -> 点击复制ID
+}, {
     headers: {
         'Authorization': `Bearer ${api_key}`,
         'Content-Type': 'application/json',
@@ -39,7 +42,7 @@ stream.on('end', () => {
 
 @tab javascript-网页中
 ```ts
-const blob = await fetch('https://espai.natapp4.cc/v1/tts', {
+const blob = await fetch('https://api.espai.fun/ai_api/tts', {
     method: 'POST',
     headers: {
         'Authorization': `Bearer ${开放平台 api_key}`,

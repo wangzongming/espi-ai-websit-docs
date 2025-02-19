@@ -20,6 +20,8 @@ permalink: /plugin/llm/
 type Args = {
     // 设备id
     device_id: string,
+    // 是否为预请求，用于告诉 llm 插件马上就要轮到它工作了
+    is_pre_connect: boolean;
     // 日志输出等级，为0时不应该输出任何日志
     devLog: number,
     // 用户配置的 apikey 等信息
@@ -77,11 +79,22 @@ module.exports = {
     name: "esp-ai-plugin-llm-example",
     // 插件类型 LLM | TTS | IAT
     type: "LLM", 
-    main({ devLog, device_id, llm_config, text, llmServerErrorCb, llm_init_messages = [], llm_historys = [], cb, llm_params_set, logWSServer, connectServerBeforeCb, connectServerCb, log }) {
+    main({ devLog, device_id, is_pre_connect, llm_config, text, llmServerErrorCb, llm_init_messages = [], llm_historys = [], cb, llm_params_set, logWSServer, connectServerBeforeCb, connectServerCb, log }) {
         try {
             const { apiKey, epId, ...other_config } = llm_config;
             if (!apiKey) return log.error(`请配给 LLM 配置 apiKey 参数。`)
             if (!epId) return log.error(`请配给 LLM 配置 epId 参数。`)
+
+            // 预先连接函数
+            async function preConnect() {
+                // some code...
+                // 如果你不理解，可以不用写任何逻辑
+            }
+            if (is_pre_connect) {
+                preConnect()
+                return;
+            }
+
 
             // 如果关闭后 message 还没有被关闭，需要定义一个标志控制
             let shouldClose = false;

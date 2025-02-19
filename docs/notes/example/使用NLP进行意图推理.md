@@ -18,7 +18,7 @@ const config = {
                     // 配置开放平台 api_key 后字符串类型的指令会进行NLP推理。
                     api_key: "xxx",
                     /***
-                     * nlp 服务地址，默认为 https://espai.natapp4.cc/v1/semantic。 注意，必须配置 api_key 才会去请求这个服务
+                     * nlp 服务地址，默认为 https://api.espai.fun/ai_api/semantic。 注意，必须配置 api_key 才会去请求这个服务
                      * 请求体为 json： {
                      *      
                      *   "api_key": api_key,

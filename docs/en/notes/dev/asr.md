@@ -14,7 +14,7 @@ permalink: /en/dev/asr-api/
 const api_key = "开放平台 api_key";
 const vad_first = 5000;  // 首次对话时静默时间
 const vad_course = 2000; // 对话过程中静默时间
-const iat_ws = new WebSocket(`wss://espai.natapp4.cc/v1/asr?api_key=${api_key}&vad_first=${vad_first}&vad_course=${vad_course}`);
+const iat_ws = new WebSocket(`wss://api.espai.fun/ai_api/asr?api_key=${api_key}&vad_first=${vad_first}&vad_course=${vad_course}`);
 
 let realStr = "";
 // 得到识别结果后进行处理，仅供参考，具体业务具体对待
@@ -59,7 +59,7 @@ iat_ws.send("xxx");
 const formData = new FormData();
 formData.append("api_key", "开放平台 api_key");
 formData.append("audio", File 对象); // 一般是 input 输入上传的文件
-const { success, data, message } = await myFetch("https://espai.natapp4.cc/v1/stt", formData);
+const { success, data, message } = await myFetch("https://api.espai.fun/ai_api/stt", formData);
 if (success) {
     console.log("音频内容：", data)
 } else { 

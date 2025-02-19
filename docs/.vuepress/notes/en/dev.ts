@@ -12,12 +12,14 @@ export default defineNoteConfig({
                 'llm',
                 'asr',
                 'tts',
+                '相同语义'
             ],
         }, 
         {
             text: 'ESP-AI 开放接口',
             collapsed: false,
             items: [
+                "知识库",
                 '开发中',  
             ],
         }, 

@@ -35,7 +35,7 @@ const body = {
 };
 
 // 发出请求
-axios.post("https://espai.natapp4.cc/v1/llm", body, {
+axios.post("https://api.espai.fun/ai_api/llm", body, {
     headers: { 'Content-Type': 'application/json' },
     responseType: 'stream'
 }).then((response) => { 
@@ -71,7 +71,7 @@ const body = {
     "api_key": "开放平台 api_key"
 };
 
-fetch('https://espai.natapp4.cc/v1/llm', {
+fetch('https://api.espai.fun/ai_api/llm', {
     method: 'POST',
     body: JSON.stringify(body),
     headers: { 'Content-Type': 'application/json' },
