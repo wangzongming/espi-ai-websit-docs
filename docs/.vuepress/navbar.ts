@@ -38,7 +38,7 @@ export const zhNavbar = [
         items: [
             { text: '技术支持', link: '/notes/about/js-sponsor.md', icon: "fluent:person-support-28-regular" },
             { text: '商业合作', link: '/notes/about/handshake.md', icon: "emojione:handshake-light-skin-tone" },
-            { text: '商业授权', link: '/notes/about/authority.md', icon: "openmoji:authority" },
+            // { text: '商业授权', link: '/notes/about/authority.md', icon: "openmoji:authority" },
             { text: '团队简介', link: '/notes/about/info.md', icon: "flat-color-icons:info" },
         ],
     },
@@ -94,7 +94,7 @@ export const enNavbar = [
         "items": [
             { "text": "Technical Support", "link": "/en/notes/about/js-sponsor.md", "icon": "fluent:person-support-28-regular" },
             { "text": "Business Cooperation", "link": "/en/notes/about/handshake.md", "icon": "emojione:handshake-light-skin-tone" },
-            { "text": "Business Authorization", "link": "/en/notes/about/authority.md", "icon": "openmoji:authority" },
+            // { "text": "Business Authorization", "link": "/en/notes/about/authority.md", "icon": "openmoji:authority" },
             { "text": "Team Introduction", "link": "/en/notes/about/info.md", "icon": "flat-color-icons:info" },
         ]
     },
