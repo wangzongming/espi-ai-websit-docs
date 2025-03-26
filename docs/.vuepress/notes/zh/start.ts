@@ -21,6 +21,7 @@ export default defineNoteConfig({
                 '客户端安装',
                 '物料准备',
                 '硬件接线',
+                'ESP-AI开发板接线',
                 '硬件代码',
                 '唤醒方案', 
             ],

@@ -104,11 +104,12 @@ permalink: /
 <br/>
 
 <center>
-QQ 交流群: 854445223 | 952051286
+<p>QQ 交流群1: 854445223(已满) </p>
+<p>QQ 交流群2: <a href="https://qm.qq.com/q/vRZ2IK5JCw" target="_block">952051286 </a>   </p>
 </center> 
 <br/>
 <center>
-<img src="/images/qq-grounp.png"  style="border-radius: 32px;"/>
+<!-- <img src="/images/qq-grounp.png"  style="border-radius: 32px;"/> -->
 <img src="/images/qq-grounp2.png"  style="border-radius: 32px;"/>
 </center>  
 

@@ -47,11 +47,11 @@ export const zhNavbar = [
         link: '/friends/',
         icon: 'carbon:friendship'
     },
-    {
-        text: '投资/赞助',
-        link: '/sponsor/',
-        icon: 'emojione:handshake-light-skin-tone'
-    },
+    // {
+    //     text: '投资/赞助',
+    //     link: '/sponsor/',
+    //     icon: 'emojione:handshake-light-skin-tone'
+    // },
     {
         text: '开放平台',
         icon: 'logos:compose-multiplatform',
@@ -103,11 +103,11 @@ export const enNavbar = [
         "link": "/friends/",
         "icon": "carbon:friendship"
     },
-    {
-        "text": "Investment/Sponsorship",
-        "link": "/en/sponsor/",
-        "icon": "emojione:handshake-light-skin-tone"
-    },
+    // {
+    //     "text": "Investment/Sponsorship",
+    //     "link": "/en/sponsor/",
+    //     "icon": "emojione:handshake-light-skin-tone"
+    // },
     {
         "text": "Open Platform",
         "icon": "logos:compose-multiplatform",

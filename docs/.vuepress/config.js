@@ -233,7 +233,7 @@ export default defineUserConfig({
             organization: 'esp-ai',
         },
         footer: { 
-            copyright: 'Apache 2.0 Licensed | Copyright © ESP-AI <br/><span class="bei_an_container"><a style="color:#777;"  href="https://beian.miit.gov.cn/" target="_blank">黔ICP备2024030115号-2</a> <img class="img" src="/images/beian.png"/><a href="https://beian.mps.gov.cn/#/query/webSearch?code=44030002004468" style="color:#777;"  rel="noreferrer" target="_blank">粤公网安备44030002004468</a></span>',
+            copyright: 'Apache 2.0 Licensed | Copyright © ESP-AI<br/><span class="bei_an_container"><a style="color:#777;"  href="https://beian.miit.gov.cn/" target="_blank">黔ICP备2024030115号-2</a> <img class="img" src="/images/beian.png"/><a href="https://beian.mps.gov.cn/#/query/webSearch?code=44030002004468" style="color:#777;"  rel="noreferrer" target="_blank">粤公网安备44030002004468</a></span>',
         },
 
 
@@ -519,7 +519,7 @@ export default defineUserConfig({
 
         bulletin: {
             layout: 'center',
-            id: '11', 
+            id: '13', 
             lifetime: 'once',
             title: '🎉 ESP-AI 公告 🎉',
             contentFile: path.join(__dirname, 'bulletin.md'),

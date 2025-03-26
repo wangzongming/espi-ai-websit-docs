@@ -1,66 +1,61 @@
 ---
-title: Business Cooperation
+title: 商业合作
 createTime: 2024/11/07 13:57:58
-permalink: /en/article/join/
+permalink: /en/acout/cooperation/
 ---
  
-## Are you interested in investing or sponsoring us?
-For details, please refer to: [Invest or Sponsor ESP - AI](/sponsor/)
+## 成为分销商、代理商
 
-## Become a Distributor
-Purchase products and services of `ESP - AI` and resell them to users. There is no direct business cooperation between users and `ESP - AI`.
-After becoming a distributor, you will obtain the software and hardware services provided by `ESP - AI` at a very low price.
+采购 `ESP-AI` 的产品及服务，转售给用户，用户与 `ESP-AI` 没有直接商务合作。
 
-#### Purchase Details
-- Fee: `100,000 yuan/year`
-- Hardware purchase price: Cost price
-- Software purchase price: 50% off
-- Order address: Add WeChat for communication `xiaomingdijia`
+成为分销商后您将以非常低的价格拿到`ESP-AI`所提供的软件服务以及硬件服务。
 
-## Open Platform - Sub - site Application
-If you are a toy manufacturer, home furnishing manufacturer, salesperson, or startup, and don't want to spend a large amount of money to build your own team, opening an `ESP - AI sub - site` will be your best choice!
-The underlying technology is supported by the open - source ecosystem, and the platform is managed by dedicated personnel. You only need to focus on product development and sales!
+#### 购买详情
+- 费用：添加商务洽谈  
+- 硬件拿货价：成本价  
+- 下单地址：`见文末联系方式`
 
-**Demo website**: [https://demo.espai.fun/](https://demo.espai.fun/)
-**Application address**: [Open Platform Sub - site Application](https://dev.espai.fun/#/UserManagementChildSite)
 
-**Services included**:
-1. Customizable `LOGO`
-2. Customizable `theme color`
-3. Customizable website name
-4. Customizable `second - level domain name`
-5. Customizable `slogan`
-6. `Exclusive APP (Android)`
-7. `Unit commercial authorization`
-8. 50% of all user payment commissions (refers to consumption on the credit card of the open platform)
+## 开放平台-分站申请
 
-#### Purchase Details
-- Fee: `6,800 yuan/year`
-- Order address: Add WeChat for communication `xiaomingdijia`
+如果您是玩具厂商、家居厂商、销售、初创者，不想斥巨资自建团队，那开通一个`ESP-AI 分站`将是您最佳的选择！
 
-## Open Platform - Private Deployment, Customization
-If you want to independently own a site like [https://dev.espai.fun](https://dev.espai.fun) and deploy it on your server, you can contact us, and we will provide customized services.
-This platform will provide unified management of clients (hardware), including but not limited to: credit management, device management, device configuration, user management, etc.
+底层技术由开源生态支持，平台由专人负责，您只需要做好产品和销售即可！
 
-#### Purchase Details
-- Fee: 100,000 yuan/set
-- Order address: Add WeChat for communication `xiaomingdijia`
-- Note: Only deployment is supported, no customization is included. If customization is required, the cost will be negotiated separately. Three units of ESP - AI commercial authorization will be given as a gift for each purchase.
+**演示网站**： [https://demo.espai.fun/](https://demo.espai.fun/)   
+**申请地址**： [开放平台分站申请](https://dev.espai.fun/#/UserManagementChildSite)   
 
-## Private Service Node
-If you just want to have an independent service node on the developer platform (https://dev.espai.fun) to enjoy faster and more stable services, you only need to purchase an independent node. Nodes are charged annually.
-There is no limit on the usage quota for private service nodes. That is to say, after using the private service, you don't need to use the credit card on the developer platform.
 
-#### Purchase Details
-- Independent IP high - speed (Tencent Cloud CVM): 9,800 yuan/year (Independent server: 10M bandwidth, CPU: 4 cores, memory: 8GB)
-- Independent IP high - speed (Tencent Cloud CVM): 25,000 yuan/year (Independent server: 20M bandwidth, CPU: 8 cores, memory: 16GB)
-- Order address: Add WeChat for communication `xiaomingdijia`
 
-## Industry - Specific Solutions
-For smart homes, toys, smart devices, etc., if you need us to customize a set of solutions for you, you are welcome to contact us.
-We can provide you with a full - set of solutions from software to hardware.
+**包括的服务：**
+1. 自定义 `二级域名`、`LOGO`、`主题色`、`网站标题`、`标语`、`独立后台管理`、`自定义登录页轮播`、`...`
+2. 分站中不携带任何主站信息
+3. `专属APP（安卓）`
+4. `单位商用授权`
+5. 用户所有支付分成 20% (指开放平台额度卡上的消费, 70% 的费用将用于免费服务运营，平台抽成 10%)
 
-### Contact Information
-- Email: 1746809408@qq.com
-- QQ: 1746809408
-- WeChat: xiaomingdijia
+
+**购买详情**
+- 费用：`6800/年`    
+- 下单地址：`见文末联系方式`
+
+## 定制硬件固件
+
+如果你不想让用户去配置你的超体秘钥或者做一些定制，那你可以让我们定制一套硬件代码。
+
+**购买详情**
+- 下单地址：`见文末联系方式`
+  
+ 
+
+## 特定行业解决方案
+
+智能家居、玩具、智能设备等，如果您需要我们为您定制一套解决方案，那么欢迎联系我们。
+我们可以为您提供 软件到硬件的全套解决方案。
+
+
+## 联系方式 
+- 座机电话： 4006066808
+- 微信/电话同步： 15581856632 (陈灵均)
+- 微信/电话同步： 18328521130 (Ricky)
+- 微信/电话同步： 15805875550 (王雷)

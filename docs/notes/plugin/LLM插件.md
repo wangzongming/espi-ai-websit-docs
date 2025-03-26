@@ -6,7 +6,7 @@ permalink: /plugin/llm/
 
 ## 流程图
  
-<div style="background:#fff;padding: 32px;text-align:center;border-radius: 32px;">
+<div style="background:#fff;text-align:center;border-radius: 32px;">
   <img src="/images/llm-plugin.png" width="80%" />
 </div>
 
@@ -66,7 +66,9 @@ type Plugin = {
 }
 ``` 
 
+## 关于预请求
 
+LLM插件引进预请求概念。在预请求节点很多参数都没有。只有基础请求参数，请务必参见下面案列代码。
 
 
 ## 案例代码
