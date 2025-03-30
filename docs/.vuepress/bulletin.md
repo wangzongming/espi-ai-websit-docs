@@ -5,14 +5,19 @@
 
 ---
 
+<br/> 
+
+# 📢 2025/3/27 公告
+
+<h4> ESP-AI 增加备用域名： <a target="_block" href="https://espai2.fun">espai2.fun</a> / <a target="_block" href="https://dev.espai2.fun">dev.espai2.fun</a></a></h4> 
+
+<br/>
+<br/> 
+
+
 # 📢 2025/3/26 公告
 
 <h4> ESP-AI 删除商用授权协议，开放商用使用。</a></h4> 
-
-<br/>
-<br/>
-<br/>
-<br/>
 
 # 📢 2025/3/17 招聘公告
 <h4>我们正在聘请Arduino、IDF 开发者来共同建设生态</a></h4> 

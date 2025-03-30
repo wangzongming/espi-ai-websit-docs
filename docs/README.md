@@ -17,7 +17,7 @@ config:
         -
           theme: brand
           text: 开放平台
-          link: https://dev.espai.fun
+          link: https://dev.espai2.fun
         -
           theme: brand
           text: 硬件购买
@@ -91,7 +91,7 @@ permalink: /
 <h1><center>实现流程</center></h1>
 <br/>
 <br/>
-<div style="background:#fff;padding: 32px;text-align:center;border-radius: 32px;">
+<div style="background:#fff;text-align:center;border-radius: 32px;">
   <img src="/images/ESP-AI.png" width="80%" />
 </div>
 

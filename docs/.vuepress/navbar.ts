@@ -55,7 +55,7 @@ export const zhNavbar = [
     {
         text: '开放平台',
         icon: 'logos:compose-multiplatform',
-        link: 'https://dev.espai.fun/',
+        link: 'https://dev.espai2.fun/',
     },
 ] as NavItem[]
 
@@ -111,6 +111,6 @@ export const enNavbar = [
     {
         "text": "Open Platform",
         "icon": "logos:compose-multiplatform",
-        "link": "https://dev.espai.fun/"
+        "link": "https://dev.espai2.fun/"
     }
 ] as NavItem[]
