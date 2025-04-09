@@ -1,12 +1,12 @@
 <template>
     <div class="root">
         <div class="powered">Powered by VuePress & vuepress-theme-plume</div>
-        <div class="copyright">Apache 2.0 Licensed | Copyright © ESP-AI</div>
+        <div class="copyright">Apache 2.0 Licensed | Copyright © ESP-AI <span style="display: inline-block;padding-left: 24px;"> 地址：深圳市福田区汉国中心1206</span></div>
         <div>
             <span class="bei_an_container">
                 <a style="color:#777;" href="https://beian.miit.gov.cn/" target="_blank">{{ bei_an_hao }}</a>
                 <div class="wang_an">
-                    <img class="img" src="/images/beian.png" />
+                    <img class="img" src="/images/beian.png" v-if="bei_an_wangan"/>
                     <a href="https://beian.mps.gov.cn/#/query/webSearch?code=44030002004468" style="color:#777;"
                         rel="noreferrer" target="_blank">{{ bei_an_wangan }}</a>
                 </div>
