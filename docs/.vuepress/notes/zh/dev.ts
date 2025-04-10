@@ -24,6 +24,7 @@ export default defineNoteConfig({
                 "额度支付接口",
                 "插件配置接口",
                 "设备管理接口",
+                "超体管理接口",
                 '开发中',
             ],
         },
