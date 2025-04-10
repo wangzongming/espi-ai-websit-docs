@@ -59,7 +59,7 @@ const espai_wangan = "粤公网安备44030002004468";
 
 // espai2 域名备案号
 const espai2 = "粤ICP备2025391423号";
-const espai2_wangan = "";
+const espai2_wangan = "粤公网安备44030002006581号";
 
 onBeforeMount(() => {
     const { host } = window.location;
