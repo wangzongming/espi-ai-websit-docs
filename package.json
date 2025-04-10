@@ -34,6 +34,8 @@
     "node": ">=22.0.0"
   },
   "dependencies": {
+    "@vuepress/shiki-twoslash": "^2.0.0-rc.76",
+    "chartjs": "^0.3.24",
     "vuepress-theme-plume": "^1.0.0-rc.114"
   }
 }
