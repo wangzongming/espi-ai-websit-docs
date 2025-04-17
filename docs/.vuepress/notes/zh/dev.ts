@@ -19,8 +19,8 @@ export default defineNoteConfig({
             text: 'ESP-AI 开放接口',
             collapsed: false,
             items: [
-                "知识库",
                 "开放接口密钥",
+                "知识库",
                 "超体管理接口",
                 "设备管理接口",
                 "额度卡接口",
