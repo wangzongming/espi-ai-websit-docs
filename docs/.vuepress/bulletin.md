@@ -7,6 +7,16 @@
 
 <br/> 
 
+# 📢 2025/4/29 公告
+
+
+<h3>ESP-AI 开发板已发布，<a href="/open/pcb/">快去看看吧！</a></h3>
+<h3>ESP-AI 开放平台Open api 已经发布，<a href="/dev/dev-open-api/">快去看看吧！</a></h3>
+<h3>ESP-AI 免费语音克隆进行重大优化升级，<a href="https://dev.espai.fun/" target="_block">快去看看吧！</a></h3>
+
+
+<br/> 
+<!-- 
 # 📢 2025/3/27 公告
 
 <h4> ESP-AI 增加备用域名： <a target="_block" href="https://espai2.fun">espai2.fun</a> / <a target="_block" href="https://dev.espai2.fun">dev.espai2.fun</a></a></h4> 
@@ -16,7 +26,7 @@
 
 # 📢 2025/3/26 公告
 
-<h4> ESP-AI 删除商用授权协议，开放商用使用。</a></h4> 
+<h4> ESP-AI 删除商用授权协议，开放商用使用。</a></h4>  -->
 
 <!-- 
 # 📢 2025/3/17 招聘公告

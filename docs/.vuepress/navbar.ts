@@ -25,10 +25,15 @@ export const zhNavbar = [
         items: [
             { text: '插件市场', link: 'https://dev.espai.fun/#/Plugin', icon: "clarity:plugin-line" },
             { text: '升级日志', link: '/notes/open/change-logs.md', icon: "material-symbols-light:update" },
-            { text: '开源PCB', link: '/notes/open/pcb.md', icon: "file-icons:arduino" },
+            { 
+                text: '开源PCB', link: '/notes/open/pcb.md', icon: "file-icons:arduino", 
+             },
             { text: '智能家居', link: '/notes/open/智能家居方案.md', icon: "solar:armchair-2-linear" },
             { text: '社区案列', link: '/notes/open/社区案列.md', icon: "bitcoin-icons:globe-filled" },
             { text: '参与贡献', link: '/notes/open/contribution.md', icon: "ri:open-arm-line" },
+
+            // { text: 'test', link: '/notes/open/test.md', icon: "fluent:person-support-28-regular" }, 
+
         ],
     },
     {
@@ -57,6 +62,16 @@ export const zhNavbar = [
         icon: 'logos:compose-multiplatform',
         link: 'https://dev.espai2.fun/',
     },
+    // { text: 'v1.0.2', link: '/notes/open/pcb/common/1.0.2', icon: "clarity:plugin-line" }, 
+    // { 
+    //     text: 'pcbs', 
+    //     activeMatch: '^/pcbs/',
+    //     // link: '/notes/open/test' 
+    //     items: [
+    //         { text: 'test', link: '/notes/open/test.md', icon: "fluent:person-support-28-regular" }, 
+    //     ],
+    // }, 
+    // { text: 'v1.0.2', link: '/open/pcb2', icon: "clarity:plugin-line" }, 
 ] as NavItem[]
 
 export const enNavbar = [

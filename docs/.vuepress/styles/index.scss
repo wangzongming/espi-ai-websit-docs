@@ -67,3 +67,21 @@
         padding-right: 3px;
     }
 }
+
+.no-arr{ 
+    &::after{
+        display: none !important;
+    }
+}
+.pcb-list{
+    .image-container{
+        height: 250px;
+        text-align: center;
+        padding: 24px;
+        box-sizing: border-box;
+    }
+    img{
+        width: 250px;
+        // height: 100%; 
+    }
+}

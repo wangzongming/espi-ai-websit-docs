@@ -7,7 +7,43 @@ permalink: /open/pcb/
 `ESP-AI` 鼓励并且会尽最大努力帮助硬件工程师接入 `ESP-AI` 生态，`ESP-AI` 所获收益都将与作者分成。如果你有好的创意何不发挥出来让大家都看见呢，这不是很酷吗？
 
 **来吧，让我们一起做一些更加有趣的事情！**
- 
+
+
+## ==ESP-AI 全功能开发板=={.tip} 
+<CardGrid class="pcb-list">
+ <a href="/open/pcb/common/2.0.0/" class="no-arr">
+  <ImageCard
+    image="/images/pcb/common/2.0.0/haibao.png"
+    title="v2.0.0"  
+  /> 
+ </a>
+ <a href="/open/pcb/common/1.0.2/" class="no-arr">
+   <ImageCard
+    image="/images/pcb/common/1.0.0/haibao.png"
+    title="v1.0.2"    
+  />
+ </a>
+</CardGrid>
+
+
+## ==ESP-AI mini 开发板=={.important} 
+<CardGrid class="pcb-list">
+ <a href="/open/pcb/mini/1.0.0/" class="no-arr">
+  <ImageCard
+    image="/images/pcb/mini/1.0.0/haibao.jpg"
+    title="v1.0.0"  
+  /> 
+ </a> 
+</CardGrid>
+
+
+
+## ==ESP-AI Super mini 开发板=={.danger} 
+
+敬请期待...
+
+
+<!--  
 ## ESP-AI Super mini 
 
 我们正在研发中...
@@ -66,8 +102,4 @@ permalink: /open/pcb/
 ### 外壳
 文件也放置在仓库 pcb 目录中
 <img src="/images/pcb_package.png" style="display:block;margin: auto;"  /> 
-
-<!-- <iframe 
-style="width: 100%;border: 0px;height:1000px;"
-src="https://espai.fun/files/esp-ai-pcb.html"
-/> -->
+  -->

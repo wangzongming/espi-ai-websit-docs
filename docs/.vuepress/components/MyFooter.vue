@@ -54,11 +54,11 @@ const bei_an_hao = ref()
 const bei_an_wangan = ref()
 
 // espai 域名备案号 重新备案中...
-const espai = "黔ICP备2024030115号-2";
-const espai_wangan = "粤公网安备44030002004468";
+const espai = "";
+const espai_wangan = "粤ICP备2025391423号-3";
 
 // espai2 域名备案号
-const espai2 = "粤ICP备2025391423号";
+const espai2 = "粤ICP备2025391423号-1";
 const espai2_wangan = "粤公网安备44030002006581号";
 
 onBeforeMount(() => {
