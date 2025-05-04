@@ -1,12 +1,12 @@
 ---
-title: 大语言模型接口
+title: 大语言模型接口 LLM
 createTime: 2024/12/19 19:25:46
 permalink: /dev/llm-api/
 ---
 
 数据采用流式返回，使用 https 协议。
 
-可用模型如下, 调用费用为每次一个额度。（开放平台每天 200 免费额度）
+可用模型如下, 调用费用为每次一个额度。（开放平台每天 500 免费额度）
 
 | 模型名字  | 模型ID        |
 | --------- | ------------- |
@@ -35,7 +35,7 @@ const body = {
 };
 
 // 发出请求
-axios.post("https://espai.natapp4.cc/v1/llm", body, {
+axios.post("https://api.espai.fun/ai_api/llm", body, {
     headers: { 'Content-Type': 'application/json' },
     responseType: 'stream'
 }).then((response) => { 
@@ -71,7 +71,7 @@ const body = {
     "api_key": "开放平台 api_key"
 };
 
-fetch('https://espai.natapp4.cc/v1/llm', {
+fetch('https://api.espai.fun/ai_api/llm', {
     method: 'POST',
     body: JSON.stringify(body),
     headers: { 'Content-Type': 'application/json' },

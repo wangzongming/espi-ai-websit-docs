@@ -12,7 +12,8 @@ export default defineNoteConfig({
                 'llm',
                 'asr',
                 'tts',
-                '相同语义'
+                '相同语义',
+                "知识库"
             ],
         },
         {
@@ -20,7 +21,6 @@ export default defineNoteConfig({
             collapsed: false,
             items: [
                 "开放接口密钥",
-                "知识库",
                 "超体管理接口",
                 "设备管理接口",
                 "额度卡管理接口",
