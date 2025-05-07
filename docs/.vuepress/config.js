@@ -521,7 +521,7 @@ export default defineUserConfig({
 
         bulletin: {
             layout: 'center',
-            id: '15',
+            id: '16',
             lifetime: 'once',
             title: '🎉 ESP-AI 公告 🎉',
             contentFile: path.join(__dirname, 'bulletin.md'),

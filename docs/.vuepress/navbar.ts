@@ -12,9 +12,9 @@ export const zhNavbar = [
 
             { text: '客户端详细接口/方法', link: '/notes/config-client/客户端配置.md', icon: "file-icons:arduino" },
             { text: '服务端详细接口/方法', link: '/notes/config-server/服务端配置.md', icon: "akar-icons:node-fill" },
-            { text: '开放接口', link: '/notes/dev/说明.md', icon: "carbon:api-1" },
-
             { text: '插件开发教程', link: '/notes/plugin/简介.md', icon: "clarity:plugin-line" },
+            { text: '开放平台 open api', link: '/notes/dev/说明.md', icon: "carbon:api-1" },
+            { text: '开放平台开源硬件代码', link: 'https://gitee.com/xm124/esp-ai-business-arduion', icon: "carbon:api-1" }, 
             { text: '常见问题', link: '/qa/', icon: "mdi:git-issue" },
         ],
     },

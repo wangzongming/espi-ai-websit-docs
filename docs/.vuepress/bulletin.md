@@ -6,7 +6,17 @@
 ---
 
  
+<br/> 
 
+# 📢 2025/5/7 公告
+
+<h3>ESP-AI 开放平台硬件代码已开源，<a href="https://github.com/wangzongming/esp-ai-business-arduion">快去看看吧！</a></h3>
+
+
+
+
+
+<br/> 
 <br/> 
 
 # 📢 2025/4/29 公告
