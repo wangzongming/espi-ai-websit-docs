@@ -5,6 +5,18 @@
 
 ---
 
+
+<br/> 
+
+# 📢 2025/5/9 公告
+
+<h3>ESP-AI 固件社区已开放，<a href="https://dev.espai.fun/#/UserBin">快去看看吧！</a></h3>
+
+
+
+
+
+<br/>  
  
 <br/> 
 

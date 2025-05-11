@@ -104,7 +104,7 @@ permalink: /
 <br/>
 
 <center>
-<p>QQ 交流群1: 854445223(已满) </p>
+<p>QQ 交流群1:  <a href="https://qm.qq.com/q/rO36RdR95u" target="_block">854445223 </a>   </p>
 <p>QQ 交流群2: <a href="https://qm.qq.com/q/vRZ2IK5JCw" target="_block">952051286 </a>   </p>
 </center> 
 <br/>
