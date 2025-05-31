@@ -45,6 +45,8 @@ type Args = {
     serverTimeOutCb: Function;
     // iat 静默时间达到后触发，一般在这里面进行最后一帧的发送，告诉服务端结束识别
     iatEndQueueCb: Function;
+    // 每次ASR识别到文字都应当调用本回调
+    onIATText: (text: string)=> void;
     // 日志输出对象
     log: {
         error: (msg: string) => void;
@@ -80,7 +82,7 @@ module.exports = {
     name: "esp-ai-plugin-iat-test",
     // 插件类型 LLM | TTS | IAT
     type: "IAT", 
-    main({ ddevice_id, session_id, log, devLog, iat_config, iat_server, llm_server, tts_server, cb, iatServerErrorCb, logWSServer, logSendAudio, connectServerCb, connectServerBeforeCb, serverTimeOutCb, iatEndQueueCb }) {
+    main({ ddevice_id, session_id, log, devLog, iat_config, iat_server, llm_server, tts_server, cb, iatServerErrorCb, logWSServer, logSendAudio, connectServerCb, connectServerBeforeCb, serverTimeOutCb, iatEndQueueCb, onIATText }) {
         try {
             const { appid, apiSecret, apiKey, ...other_config } = iat_config;
             if (!apiKey) return log.error(`请配给 IAT 配置 apiKey 参数。`)
@@ -102,6 +104,10 @@ module.exports = {
                     shouldClose = true;
                     log.t_red_info('框架调用 IAT 关闭:' + session_id);
                     // clearTimeout(close_connect_timer);
+                    iat_ws.close() 
+                }, 
+                end: async () => {
+                    // 这里面要执行关闭 ASR 服务的操作
                     iat_ws.close() 
                 }
             });
@@ -173,10 +179,12 @@ module.exports = {
                         }
                     })
 
+                    onIATText && onIATText(str)
                     devLog && log.iat_info(`-> 最终识别结果：${realStr}`)
                     cb({ text: realStr, device_id });
                     return;
                 } else {
+                    onIATText && onIATText(str)
                     str += "-> 中间识别结果"
                 }
                 iatResult[res.data.result.sn] = res.data.result
@@ -184,6 +192,7 @@ module.exports = {
                     res.data.result.rg.forEach(i => {
                         iatResult[i] = null
                     })
+                    onIATText && onIATText(str)
                     str += "【动态修正】"
                 }
                 str += "："
