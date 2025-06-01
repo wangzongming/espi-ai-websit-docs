@@ -5,17 +5,24 @@
 
 ---
 
+<br/> 
 
+# 📢 2025/6/1 公告
+
+<h3>ESP-AI 新版已发布：<a href="/change-logs/">升级日志</a></h3>
+<h3>open api提供音乐生成接口：<a href="/dev/dev-open-api/">OPEN API</a></h3>
+<h3>open api天气查询接口：<a href="/dev/dev-open-api/">OPEN API</a></h3>
+
+
+
+<br/> 
 <br/> 
 
 # 📢 2025/5/9 公告
 
 <h3>ESP-AI 固件社区已开放，<a href="https://dev.espai.fun/#/UserBin">快去看看吧！</a></h3>
 
-
-
-
-
+ 
 <br/>  
  
 <br/> 

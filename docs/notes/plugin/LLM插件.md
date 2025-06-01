@@ -34,6 +34,8 @@ type Args = {
     tts_server: string,
     // 对话文本
     text: string,
+    // 大语言模式是否已经推理完毕
+    text_is_over: bool;
     // 连接 LLM 服务逻辑开始前需要调用这个方法告诉框架
     connectServerBeforeCb: () => void,
     // 连接 LLM 服务后需要调用这个方法告诉框架

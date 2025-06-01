@@ -13,7 +13,9 @@ export default defineNoteConfig({
                 'asr',
                 'tts',
                 '相同语义',
-                "知识库"
+                "知识库",
+                "音乐生成服务",
+                "天气查询"
             ],
         },
         {
