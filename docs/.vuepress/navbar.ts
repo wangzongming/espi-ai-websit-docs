@@ -15,6 +15,7 @@ export const zhNavbar = [
             { text: '插件开发教程', link: '/notes/plugin/简介.md', icon: "clarity:plugin-line" },
             { text: '开放平台 open api', link: '/notes/dev/说明.md', icon: "carbon:api-1" },
             { text: '开放平台开源硬件代码', link: 'https://gitee.com/xm124/esp-ai-business-arduino', icon: "fluent:bot-28-regular" }, 
+            { text: 'ESP-AI-Studio(在线编码)', link: '/notes/dev/ESP-AI-Studio.md', icon: "fluent:bot-28-regular" }, 
             { text: 'ESP-AI-Protocol', link: '/notes/protocol/说明.md', icon: "fluent:branch-compare-20-filled" }, 
             { text: '常见问题', link: '/qa/', icon: "mdi:git-issue" },
         ],
