@@ -85,3 +85,22 @@
         // height: 100%; 
     }
 }
+
+.vp-home .actions{
+    position: absolute;
+    bottom: 48px;
+    left: 0px;
+    right: 0px;
+
+    .vp-button{
+        background-color: transparent;
+        color: #95c3b4;
+        border-radius: 0px;
+        border-left: 1px solid rgba(85, 84, 84, 0.075);
+        margin-right: 0px;
+        padding: 0px 40px; 
+        &:nth-of-type(1){
+            border: none;
+        }
+    }
+}

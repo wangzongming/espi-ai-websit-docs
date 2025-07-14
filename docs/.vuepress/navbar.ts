@@ -8,14 +8,13 @@ export const zhNavbar = [
         activeMatch: '^/guide|example|plugin/',
         items: [
             { text: '快速开始', link: '/notes/guide/ESP-AI简介.md', icon: "streamline:startup" },
-            { text: '使用教程', link: '/notes/example/开放平台使用教程.md', icon: "hugeicons:doc-01" },
-
+            { text: '使用教程', link: '/notes/example/开放平台使用教程.md', icon: "hugeicons:doc-01" }, 
             { text: '客户端详细接口/方法', link: '/notes/config-client/客户端配置.md', icon: "file-icons:arduino" },
             { text: '服务端详细接口/方法', link: '/notes/config-server/服务端配置.md', icon: "akar-icons:node-fill" },
             { text: '插件开发教程', link: '/notes/plugin/简介.md', icon: "clarity:plugin-line" },
             { text: '开放平台 open api', link: '/notes/dev/说明.md', icon: "carbon:api-1" },
             { text: '开放平台开源硬件代码', link: 'https://gitee.com/xm124/esp-ai-business-arduino', icon: "fluent:bot-28-regular" }, 
-            { text: 'ESP-AI-Studio(在线编码)', link: '/notes/dev/ESP-AI-Studio.md', icon: "fluent:bot-28-regular" }, 
+            { text: 'ESP-AI-Studio(在线编码)', link: '/notes/dev/ESP-AI-Studio.md', icon: "proicons:visual-studio-code" }, 
             { text: 'ESP-AI-Protocol', link: '/notes/protocol/说明.md', icon: "fluent:branch-compare-20-filled" }, 
             { text: '常见问题', link: '/qa/', icon: "mdi:git-issue" },
         ],
@@ -25,15 +24,14 @@ export const zhNavbar = [
         icon: 'ri:open-arm-line',
         activeMatch: '^/open/',
         items: [
-            { text: '插件市场', link: 'https://dev.espai.fun/#/Plugin', icon: "clarity:plugin-line" },
             { text: '升级日志', link: '/notes/open/change-logs.md', icon: "material-symbols-light:update" },
-            { 
-                text: '开源PCB', link: '/notes/open/pcb.md', icon: "file-icons:arduino", 
-             },
+            { text: '插件市场', link: 'https://dev.espai.fun/#/Plugin', icon: "clarity:plugin-line" },
+            { text: '固件社区', link: 'https://dev.espai.fun/#/UserBinCommunity', icon: "famicons:hardware-chip-sharp" },
+            { text: '音色社区', link: 'https://dev.espai.fun/#/UserTimbreCommunity', icon: "arcticons:ttslexx" },
+            { text: '开源PCB', link: '/notes/open/pcb.md', icon: "file-icons:arduino" },
             { text: '智能家居', link: '/notes/open/智能家居方案.md', icon: "solar:armchair-2-linear" },
             { text: '社区案列', link: '/notes/open/社区案列.md', icon: "bitcoin-icons:globe-filled" },
-            { text: '参与贡献', link: '/notes/open/contribution.md', icon: "ri:open-arm-line" },
-
+            { text: '参与贡献', link: '/notes/open/contribution.md', icon: "ri:open-arm-line" }, 
             // { text: 'test', link: '/notes/open/test.md', icon: "fluent:person-support-28-regular" }, 
 
         ],

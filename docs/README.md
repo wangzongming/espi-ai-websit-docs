@@ -17,11 +17,23 @@ config:
         -
           theme: brand
           text: 开放平台
-          link: https://dev.espai2.fun
+          link: https://dev.espai.fun
+        -
+          theme: brand
+          text: 插件市场
+          link: https://dev.espai.fun/#/Plugin
+        -
+          theme: brand
+          text: 固件社区
+          link: https://dev.espai.fun/#/UserBinCommunity 
+        -
+          theme: brand
+          text: 音色社区
+          link: https://dev.espai.fun/#/UserTimbreCommunity
         -
           theme: brand
           text: 硬件购买
-          link: /open/pcb/ 
+          link: https://shop396116768.taobao.com/?spm=a21n57.shop_search.0.0.327f523c7BlnZB
         -
           theme: alt
           text: Github

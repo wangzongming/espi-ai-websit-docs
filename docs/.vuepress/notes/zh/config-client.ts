@@ -8,6 +8,7 @@ export default defineNoteConfig({
             text: '客户端',
             collapsed: false,
             items: [
+                '绑定设备', 
                 '客户端配置', 
                 '客户端实例',
             ],

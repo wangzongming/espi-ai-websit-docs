@@ -9,8 +9,25 @@ permalink: /open/pcb/
 **来吧，让我们一起做一些更加有趣的事情！**
 
 
-## ==ESP-AI 全功能开发板=={.tip} 
+
+## ==ESP-AI C3 mini 开发板=={.important} 
 <CardGrid class="pcb-list">
+ <a href="/open/pcb/c3-mini/1.0.0/" class="no-arr">
+  <ImageCard
+    image="/images/pcb/c3-mini/1.0.0/haibao.jpg"
+    title="v1.0.0"  
+  /> 
+ </a> 
+</CardGrid>
+
+## ==ESP-AI S3 全功能开发板=={.tip} 
+<CardGrid class="pcb-list">
+ <a href="/open/pcb/common/3.0.0/" class="no-arr">
+  <ImageCard
+    image="/images/pcb/common/3.0.0/haibao.jpg"
+    title="v3.0.0"  
+  /> 
+ </a>
  <a href="/open/pcb/common/2.0.0/" class="no-arr">
   <ImageCard
     image="/images/pcb/common/2.0.0/haibao.png"
@@ -26,7 +43,7 @@ permalink: /open/pcb/
 </CardGrid>
 
 
-## ==ESP-AI mini 开发板=={.important} 
+## ==ESP-AI S3 mini 开发板=={.important} 
 <CardGrid class="pcb-list">
  <a href="/open/pcb/mini/1.0.0/" class="no-arr">
   <ImageCard
@@ -38,11 +55,14 @@ permalink: /open/pcb/
 
 
 
-## ==ESP-AI Super mini 开发板=={.danger} 
+## ==ESP-AI S3 模组=={.danger} 
 
 敬请期待...
 
 
+## ==ESP-AI C3 模组=={.danger} 
+
+敬请期待...
 <!--  
 ## ESP-AI Super mini 
 
