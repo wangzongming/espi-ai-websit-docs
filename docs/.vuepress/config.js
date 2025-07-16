@@ -23,7 +23,7 @@ export default defineUserConfig({
         ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0' }],
         ['title', {}, 'ESP-AI | 为万物赋予灵魂'],
         ['meta', { name: 'description', content: 'ESP-AI是开源AIoT开发平台，支持大模型与硬件融合。提供TTS/ASR语音功能、插件化架构，0代码门槛构建智能设备解决方案。适用于开发者、企业快速落地AIoT项目，硬件接入AI最快、最稳的方案。' }],
-        ['meta', { name: 'keywords', content: 'ESP-AI,ESPAI,AIoT开发平台,开源硬件,大模型,语音识别,TTS,ASR,LLM,AIoT解决方案,智能设备开发,嵌入式AI,ESP32AI,AI小智,小智AI,小明同学,小明IO,乐鑫,智能硬件,物联网,硬件接入AI,ai助手,espai助手' }],
+        ['meta', { name: 'keywords', content: 'ESP-AI,ESPAI,espai,AIoT开发平台,开源硬件,大模型,语音识别,TTS,ASR,LLM,AIoT解决方案,智能设备开发,嵌入式AI,ESP32AI,AI小智,小智AI,小明同学,小明IO,乐鑫,智能硬件,物联网,硬件接入AI,ai助手,espai助手' }],
         ['meta', { name: 'author', content: 'ESP-AI开发团队' }],
         ['meta', { name: 'robots', content: 'index, follow' }],
         ['meta', { property: 'og:type', content: 'website' }],
