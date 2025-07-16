@@ -46,7 +46,7 @@ permalink: /team/
   </Card>
   <Card class="spomsor-card" style="background: transparent;">
     <a class="spomsor-a" href="" target="_blcok" title="ESP-AI 项目嵌入式硬件开发负责人。">
-        <img src="/images/team/hqz.jpg" style="border-radius: 50%;"/>
+        <img src="/images/team/hqz.jpg" style="border-radius: 50%;" />
     </a> 
     <div style="text-align:center;font-size: 12px;color: #777;margin-top: 12px;">黄秋仔</div>
   </Card>
