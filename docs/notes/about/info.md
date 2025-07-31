@@ -14,12 +14,12 @@ permalink: /team/
 
 ## <center>核心成员</center>
  
-<CardGrid cols="4"> 
+<CardGrid cols="4">   
   <!-- 空的占位符 -->
   <!-- <Card class="spomsor-card" style="background: transparent;">  </Card> -->
    <Card class="spomsor-card" style="background: transparent;">
-    <a class="spomsor-a" href="https://xiaomingio.top/me/" target="_blcok" title="ESP-AI 创始人">
-        <img src="https://xiaomingio.top/me/head.jpg" style="border-radius: 50%;"/>
+    <a class="spomsor-a" href="https://xiaomingio.top/" target="_blcok" title="ESP-AI 创始人">
+        <img src="https://xiaomingio.top/head.jpg" style="border-radius: 50%;"/>
     </a>
     <div style="text-align:center;font-size: 12px;color: #777;margin-top: 12px;">小明IO</div>
   </Card> 

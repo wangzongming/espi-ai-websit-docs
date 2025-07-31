@@ -37,6 +37,16 @@ export const zhNavbar = [
         ],
     },
     {
+        text: '行业方案',
+        icon: 'mdi:streamline-plump:industry-innovation-and-infrastructure',
+        activeMatch: '^/about/',
+        items: [ 
+            // { text: 'AI方案', link: 'https://espai.fun/scheme/toy', icon: "tabler:horse-toy" },
+            { text: '儿童玩具', link: 'https://espai.fun/scheme/toy', icon: "tabler:horse-toy" },
+            // { text: '儿童教育', link: 'https://espai.fun/scheme/edu', icon: "mdi:education-outline" }, 
+        ],
+    },
+    {
         text: '关于我们',
         icon: 'mdi:about-circle-outline',
         activeMatch: '^/about/',
