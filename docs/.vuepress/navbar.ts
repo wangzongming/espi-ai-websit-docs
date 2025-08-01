@@ -38,11 +38,11 @@ export const zhNavbar = [
     },
     {
         text: '行业方案',
-        icon: 'mdi:streamline-plump:industry-innovation-and-infrastructure',
+        icon: 'akar-icons:file',
         activeMatch: '^/about/',
         items: [ 
             // { text: 'AI方案', link: 'https://espai.fun/scheme/toy', icon: "tabler:horse-toy" },
-            { text: '儿童玩具', link: 'https://espai.fun/scheme/toy', icon: "tabler:horse-toy" },
+            { text: '儿童玩具', link: '/notes/scheme/toy', icon: "tabler:horse-toy" },
             // { text: '儿童教育', link: 'https://espai.fun/scheme/edu', icon: "mdi:education-outline" }, 
         ],
     },
