@@ -1,15 +1,18 @@
 ---
-title: ESP-AI-C3-MINI 1.0.0 开发板 
+title: ESP-AI-C3-MINI 1.0.0 玩偶板 
 createTime: 2025/7/14 15:19:16
-permalink: /open/pcb/c3-mini/1.0.0/
+permalink: /open/pcb/c3-mini-toy/1.0.0/
 ---
+
+> 插座板和普通c3开发板的区别是所有的按钮和开关都换成了插座形式，更加方便塞到玩偶中。
+
   
 ## 视频演示(与普通开发板一致)
-@[bilibili](BV1Ecu6z7E5r)
+@[bilibili](BV1DWttzmEca)
 
-<!-- 
+
 ## 视频教程(与普通开发板一致)
-@[bilibili](BV1YTbDzQEk8) -->
+@[bilibili](BV1YTbDzQEk8)
 
 
 ## 购买链接  
@@ -35,14 +38,8 @@ permalink: /open/pcb/c3-mini/1.0.0/
 
  
 ## 产品介绍
-<div style="background:#000">
-    <img src="/images/pcb/c3-mini/1.0.0/简介.png" style="display:block;margin: auto;"/>
-    <img src="/images/pcb/c3-mini/1.0.0/接口描述.png" style="display:block;margin: auto;"  />
-    <img src="/images/pcb/c3-mini/1.0.0/主要组件.png" style="display:block;margin: auto;"  />
-    <img src="/images/pcb/c3-mini/1.0.0/其他物理部件.png" style="display:block;margin: auto;"  />  
-    <!-- <img src="/images/pcb/common/3.0.0/尺寸.png" style="display:block;margin: auto;"  />  -->
-</div>
 
+    和普通c3开发板一致。
 
 <!-- <iframe 
 style="width: 100%;border: 0px;height:1000px;"

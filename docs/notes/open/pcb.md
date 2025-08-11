@@ -15,7 +15,15 @@ permalink: /open/pcb/
  <a href="/open/pcb/c3-mini/1.0.0/" class="no-arr">
   <ImageCard
     image="/images/pcb/c3-mini/1.0.0/haibao.jpg"
-    title="v1.0.0"  
+    title="开发板 v1.0.0"  
+  /> 
+ </a> 
+
+ <a href="/open/pcb/c3-mini-toy/1.0.0/" class="no-arr">
+  <ImageCard
+    style="height: 318px"
+    image="https://esp-ai2.oss-cn-beijing.aliyuncs.com/pcbs/c3-mini-toy-v1-pcb.jpg"
+    title="玩偶板（插座板） v1.0.0"  
   /> 
  </a> 
 </CardGrid>
