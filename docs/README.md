@@ -99,6 +99,16 @@ permalink: /
 
 :::
 
+
+<br/>
+<br/>
+<h1><center>解决方案</center></h1>
+<br/>
+<br/>
+<div style="background:#fff;text-align:center;border-radius: 32px;">
+  <img src="/images/ESP-AI-zoology.png" width="80%" />
+</div>
+
 <br/>
 <br/>
 <h1><center>实现流程</center></h1>
@@ -107,6 +117,7 @@ permalink: /
 <div style="background:#fff;text-align:center;border-radius: 32px;">
   <img src="/images/ESP-AI.png" width="80%" />
 </div>
+
 
 
 

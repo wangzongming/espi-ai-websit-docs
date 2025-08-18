@@ -41,7 +41,7 @@ const config = {
 
 ...
 
-void on_command(String command_id, String data) {
+void on_command(const String& command_id, const String& data) {
     Serial.printf("\n收到指令：%s -- %s\n", command_id, data);
 
     // 控制小灯演示
