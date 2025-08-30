@@ -29,7 +29,6 @@ export const zhNavbar = [
             { text: '固件社区', link: 'https://dev.espai.fun/#/UserBinCommunity', icon: "famicons:hardware-chip-sharp" },
             { text: '音色社区', link: 'https://dev.espai.fun/#/UserTimbreCommunity', icon: "arcticons:ttslexx" },
             { text: '开源PCB', link: '/notes/open/pcb.md', icon: "file-icons:arduino" },
-            { text: '智能家居', link: '/notes/open/智能家居方案.md', icon: "solar:armchair-2-linear" },
             { text: '社区案列', link: '/notes/open/社区案列.md', icon: "bitcoin-icons:globe-filled" },
             { text: '参与贡献', link: '/notes/open/contribution.md', icon: "ri:open-arm-line" }, 
             // { text: 'test', link: '/notes/open/test.md', icon: "fluent:person-support-28-regular" }, 
@@ -43,6 +42,7 @@ export const zhNavbar = [
         items: [ 
             // { text: 'AI方案', link: 'https://espai.fun/scheme/toy', icon: "tabler:horse-toy" },
             { text: '儿童玩具', link: '/notes/scheme/toy', icon: "tabler:horse-toy" },
+            { text: '智能家居', link: '/notes/open/智能家居方案.md', icon: "solar:armchair-2-linear" },
             // { text: '儿童教育', link: 'https://espai.fun/scheme/edu', icon: "mdi:education-outline" }, 
         ],
     },

@@ -8,7 +8,7 @@ list:
   -
     name: 小明IO
     link: https://xiaomingio.top
-    avatar: https://xiaomingio.top/me/head.jpg
+    avatar: https://xiaomingio.top/head.jpg
   -
     name: 海豚配音
     link: https://www.ttson.cn/
@@ -25,14 +25,13 @@ list:
     name: mybatis-mp
     link: https://mybatis-mp.cn/
     avatar: https://mybatis-mp.cn/images/small-logo.png
-  -
-    name: 安全获取苹果UDID
-    link: https://authapi.applekuid.com/index.html
-    # avatar: https://github.com/pengzhanbo.png
-  -
-    name: KaedeharaLu's Blog
-    link: https://www.kazuhalu.com
-    avatar: https://www.kazuhalu.com/wp-content/uploads/2024/10/cropped-%E4%B8%87%E5%8F%B6%E5%A4%B4%E5%83%8F-%E6%9B%B4%E6%B8%85%E6%99%B0.jpg
+  # -
+  #   name: 安全获取苹果UDID
+  #   link: https://authapi.applekuid.com/index.html 
+  # -
+  #   name: KaedeharaLu's Blog
+  #   link: https://www.kazuhalu.com
+  #   avatar: https://www.kazuhalu.com/wp-content/uploads/2024/10/cropped-%E4%B8%87%E5%8F%B6%E5%A4%B4%E5%83%8F-%E6%9B%B4%E6%B8%85%E6%99%B0.jpg
   -
     name: 千年小妖仔的博客
     link: http://www.dhhyxr.top
