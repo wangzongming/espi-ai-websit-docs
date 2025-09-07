@@ -4,19 +4,17 @@ createTime: 2024/11/07 13:57:07
 permalink: /team/
 ---
 
-**核心贡献者**：参与 `ESP-AI` 的所有盈利。
-
-**深度贡献者**：将获得 `ESP-AI` 免费商用授权，并且参与所创作部分的盈利。
-
-无论您以什么方式为 `ESP-AI` 带来了创收，我们都将会把所获得收益的至少 `20%` 来作为对您的感谢。
-
- 
-
 ## <center>核心成员</center>
- 
-<CardGrid cols="4">   
-  <!-- 空的占位符 -->
-  <!-- <Card class="spomsor-card" style="background: transparent;">  </Card> -->
+<center>
+<b style="font-size: 16px;">愿以「ALL IN 心态」投身 ESP-AI 的你<br>才是 ESP-AI 最核心的财富</b>
+
+<p style="font-size: 14px; color: #D32F2F; margin: 12px 0 6px 0;">我们正寻找同频伙伴——若你渴望一份「值得全力以赴」的事业，即刻联结！</p>
+<p style="font-size: 14px; color: #D32F2F; margin: 6px 0;">▌ 核心成员招募：需以创业者心态深度参与，享公司股权分红</p>
+<p style="font-size: 14px; color: #333; margin-top: 15px;">微信联系：xiaomingdijia（备注「ESP-AI 加入」优先对接）</p>
+</center>
+
+<CardGrid cols="4">  
+  <Card class="spomsor-card" style="background: transparent;">  </Card>
    <Card class="spomsor-card" style="background: transparent;">
     <a class="spomsor-a" href="https://xiaomingio.top/" target="_blcok" title="ESP-AI 创始人">
         <img src="https://xiaomingio.top/head.jpg" style="border-radius: 50%;"/>
@@ -29,9 +27,15 @@ permalink: /team/
     </a>
     <div style="text-align:center;font-size: 12px;color: #777;margin-top: 12px;">陈灵均</div>
   </Card>  
-  <!-- <Card class="spomsor-card" style="background: transparent;">  </Card> -->
+  <Card class="spomsor-card" style="background: transparent;">  </Card>
+</CardGrid>  
 
- 
+
+## <center>内部成员</center>
+
+<CardGrid cols="4">   
+  <!-- 空的占位符 -->
+
   <Card class="spomsor-card" style="background: transparent;">
     <a class="spomsor-a" href="" target="_blcok" title="ESP-AI 项目后端开发负责人。">
         <img src="https://esp-ai2.oss-cn-beijing.aliyuncs.com/team/lwd.jpg" style="border-radius: 50%;"/>
@@ -77,6 +81,8 @@ permalink: /team/
 </CardGrid>  
 
 ## <center>深度贡献者</center>  
+<p>无论您以什么方式为 ESP-AI 带来了创收，我们都将会把所获得收益的至少 20% 来作为对您的感谢。</p>
+
 <CardGrid  cols="4"> 
   <Card class="spomsor-card" style="background: transparent;">
   <a class="spomsor-a" href="https://space.bilibili.com/395849314" target="_blcok" title="Open01，ESP-AI 开源PCB作者！">  
