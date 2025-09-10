@@ -11,6 +11,7 @@ export default defineNoteConfig({
                 '绑定设备', 
                 '客户端配置', 
                 '客户端实例',
+                '蓝牙配网协议'
             ],
         },  
     ],
