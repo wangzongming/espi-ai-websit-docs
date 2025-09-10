@@ -21,31 +21,113 @@ permalink: /example/hello-world/
  * 本案例演示: 连接自定义服务和固定 wifi
  * 注意：配置值要用双引号！ 
  **/
-
 #include <esp-ai.h>
 
 ESP_AI esp_ai;
+ 
 
-void setup()
-{
+void setup() {
   Serial.begin(115200);
+  
   // [必  填] 是否调试模式， 会输出更多信息
   bool debug = true;
-  // [必  填] wifi 配置： { wifi 账号， wifi 密码, "热点名字" } 可不设置，连不上wifi时会打开热点：ESP-AI，连接wifi后打开地址： 192.168.4.1 进行配网(控制台会输出地址，或者在ap回调中也能拿到信息)
-  ESP_AI_wifi_config wifi_config = {"test2", "12345678", "ESP-AI"};
-  // [可 填] 服务配置： { 服务协议, 服务IP， 服务端口, "[可选] 请求参数" }
-  ESP_AI_server_config server_config = {"http", "192.168.3.23", 8088};
-  // [必  填] 唤醒方案： { 方案, 语音唤醒用的阈值(本方案忽略即可), 引脚唤醒方案(本方案忽略), 发送的字符串 }
-  ESP_AI_wake_up_config wake_up_config = { "asrpro", 1, 10, "start" };   
-  // 启动
+
+  // wifi 配置： { wifi 账号， wifi 密码 }  注意：要用双引号！ 
+  // 不填则需要打开配网页面进行配网。填写则会自动连接wifi。
+  ESP_AI_wifi_config wifi_config = { "联域科技", "lykj987654321", "ESP-AI"  };
+  
+  // 服务地址，用开发者平台，只需要配置为空，需要在配网页面配置。
+  // ESP_AI_server_config server_config = { };
+  // 或者直接秘钥配置上，这样就不用在配网页面配置了
+  // 注意：设备需要和开放平台进行绑定，参见设备绑定： https://gitee.com/xm124/esp-ai-business-arduino 代码中的 esp_ai.onBindDevice 函数
+  ESP_AI_server_config server_config = {"http", "node.espai.fun", 80, "api_key=开放平台秘钥"};
+  // 或者配置为自己部署的服务： { 服务IP， 服务端口, "连接自己业务服务的请求参数，用多个参数&号分割，服务端用 auth 接收" }
+  // ESP_AI_server_config server_config = { "http", "192.168.1.5", 8088, "p1=111&p2=test" };
+
+  // 离线唤醒方案：{ 方案, 识别阈值 },  "diy"，为 "diy" 时可调用 esp_ai.wakeUp() 方法进行唤醒 
+  ESP_AI_wake_up_config wake_up_config = { "pin_high", 1, 10 };  // 如果按钮按下是低电平，那使用 pin_low 即可 
+
+  // 开始运行 ESP-AI 
   esp_ai.begin({debug, wifi_config, server_config, wake_up_config });
+
+  // 模拟绑定设备，实际中的逻辑应该是由配网页面调用
+  String binded = esp_ai.getLocalData("binded");
+  if(binded != "1"){
+    on_bind_device(); 
+  }
+
 }
 
-void loop()
-{
-  esp_ai.loop();
+void loop() {
+  esp_ai.loop(); 
 }
 
+
+// 绑定设备到开放平台的方法参考代码
+HTTPClient on_bind_device_http;
+void on_bind_device()
+{    
+  on_bind_device_http.begin("http://api.espai2.fun/devices/add");
+  on_bind_device_http.addHeader("Content-Type", "application/json");
+
+  JSONVar json_params;
+  json_params["device_id"] = get_device_id(); 
+  json_params["api_key"] = "开放平台秘钥";  
+  json_params["version"] = "0.0.1"; // 固件版本号, 用于 OTA 升级
+  json_params["bin_id"] = "固件ID"; // 固件ID, 用于 OTA 升级
+  json_params["wifi_ssid"] = "联域科技"; // wifi 账号
+  json_params["wifi_pwd"] = "lykj987654321";  // wifi 密码
+  String send_data = JSON.stringify(json_params);  
+  int httpCode = on_bind_device_http.POST(send_data);   
+  if (httpCode > 0)
+  {
+    String payload = on_bind_device_http.getString(); 
+    JSONVar parse_res = JSON.parse(payload); 
+    if (JSON.typeof(parse_res) == "undefined" || String(httpCode) != "200")
+    {
+      on_bind_device_http.end();   
+      // 这个 json 数据中的 message 会在配网页面弹出
+      Serial.println("设备绑定失败，错误码:" + String(httpCode));
+
+      // 如果是使用 esp_ai.onBindDevice 方法，请返回这个 json 数据
+      //return "{\"success\":false,\"message\":\"设备绑定失败，错误码:" + String(httpCode) + "，重启设备试试呢。\"}"
+    }
+
+    if (parse_res.hasOwnProperty("success"))
+    {
+      bool success = (bool)parse_res["success"];
+      String message = (const char *)parse_res["message"];
+      String code = (const char *)parse_res["code"];
+      if (success == false)
+      {  
+        on_bind_device_http.end();
+        Serial.println("绑定设备失败，错误原因：" + message);
+ 
+        // 如果是使用 esp_ai.onBindDevice 方法，请返回这个 json 数据
+        // return "{\"success\":false,\"message\":\"绑定设备失败，错误原因：" + message + "\"}";
+      }
+      else
+      { 
+        // 设备激活成功！ 
+        on_bind_device_http.end();
+        Serial.println("设备绑定成功");
+        esp_ai.setLocalData("binded", "1");
+        // 如果是使用 esp_ai.onBindDevice 方法，请返回这个 json 数据
+        // return "{\"success\":true,\"message\":\"设备激活成功，即将重启设备。\"}";
+      }
+    }
+    else
+    { 
+      on_bind_device_http.end();
+      Serial.println("设备激活失败，请求服务失败！");
+    }
+  }
+  else
+  {
+      Serial.println("设备激活失败，请求服务失败！");
+      on_bind_device_http.end(); 
+  }
+}
 ```
  
 ## 2. Nodejs 代码
