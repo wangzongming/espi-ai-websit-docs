@@ -59,18 +59,6 @@ permalink: /team/
         <img src="/images/team/cph.jpg" style="border-radius: 50%;"/>
     </a> 
     <div style="text-align:center;font-size: 12px;color: #777;margin-top: 12px;">CPH</div>
-  </Card> 
-  <Card class="spomsor-card" style="background: transparent;">
-    <a class="spomsor-a" href="" target="_blcok" title="市场部负责人。">
-        <img src="/images/team/Katasa.jpg" style="border-radius: 50%;"/>
-    </a> 
-    <div style="text-align:center;font-size: 12px;color: #777;margin-top: 12px;">Katasa</div>
-  </Card> 
-    <Card class="spomsor-card" style="background: transparent;">
-    <a class="spomsor-a" href="" target="_blcok" title="市场部负责人。">
-        <img src="/images/team/Yeeee.jpg" style="border-radius: 50%;"/>
-    </a> 
-    <div style="text-align:center;font-size: 12px;color: #777;margin-top: 12px;">Yeeee</div>
   </Card>  
    <Card class="spomsor-card" style="background: transparent;">
     <a class="spomsor-a" href="" target="_blcok" title="UI设计">
