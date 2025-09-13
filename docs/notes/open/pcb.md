@@ -20,8 +20,7 @@ permalink: /open/pcb/
  </a> 
 
  <a href="/open/pcb/c3-mini-toy/1.0.0/" class="no-arr">
-  <ImageCard
-    style="height: 318px"
+  <ImageCard 
     image="https://esp-ai2.oss-cn-beijing.aliyuncs.com/pcbs/c3-mini-toy-v1-pcb.jpg"
     title="玩偶板（插座板） v1.0.0"  
   /> 
@@ -30,6 +29,12 @@ permalink: /open/pcb/
 
 ## ==ESP-AI S3 全功能开发板=={.tip} 
 <CardGrid class="pcb-list">
+ <a href="/open/pcb/common/4.0.0/" class="no-arr">
+  <ImageCard
+    image="/images/pcb/common/4.0.0/haibao.png"
+    title="v4.0.0 (正在发售)"  
+  /> 
+ </a>
  <a href="/open/pcb/common/3.0.0/" class="no-arr">
   <ImageCard
     image="/images/pcb/common/3.0.0/haibao.jpg"
