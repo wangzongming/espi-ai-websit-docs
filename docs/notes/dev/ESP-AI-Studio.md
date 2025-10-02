@@ -19,4 +19,4 @@ permalink: /dev/ESP-AI-Studio/
 
 
 ## 视频教程 
-@[bilibili](BV16aK6zLE5t)
+@[bilibili](BV1MSHWzXEmz)

@@ -9,6 +9,7 @@ export default defineNoteConfig({
             collapsed: false,
             items: [
                 'ESP-AI简介', 
+                '视频教程',
                 '下一步计划',
                 "怎么上手"
             ],

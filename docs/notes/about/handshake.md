@@ -38,6 +38,8 @@ permalink: /acout/cooperation/
 **购买详情**
 - 费用：`6800/年`    
 - 下单地址：`见文末联系方式`
+ 
+@[bilibili](BV1sjHWzLEZT)
 
 ## 开放平台-专属小程序
 
