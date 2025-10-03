@@ -6,16 +6,26 @@ permalink: /dev/llm-api/
 
 数据采用流式返回，使用 https 协议。
 
-可用模型如下, 调用费用为每次一个额度。（开放平台每天 500 免费额度）
+可用模型如下, 调用费用为每100字/额度。（开放平台每天 500 免费额度），提示词超过500字部分，每200字每次对话扣除1额度。
 
-| 模型名字  | 模型ID        |
-| --------- | ------------- |
-| 千问32B   | qwen2.5:32b   |
-| 千问7B    | qwen2.5:7b    |
-| openchat  | openchat      |
-| codellama | codellama:13b |
-| wizardlm2 | wizardlm2     |
-| 千问32    | qwen2.5:32b   |
+## 千问模型
+| 模型名字       | 模型ID               |
+| -------------- | -------------------- |
+| 千问2.5-72b    | qwen2.5-72b-instruct |
+| 千问2.5-14b    | qwen2.5-14b-instruct |
+| 千问3 (可联网) | qwen-plus-latest     |
+| 千问视觉大模型 | qwen-vl-plus         |
+
+
+<!-- ## 豆包模型 & DS模型
+| 模型名字                  | 模型ID                  |
+| ------------------------- | ----------------------- |
+| Doubao-lite-4k            | ep-20250215214941-l969g |
+| DeepSeek-R1               | ep-20250214173250-dxmgk |
+| Doubao-pro-32k            | ep-20250214173702-c78m6 |
+| Doubao-1.5-pro-256k       | ep-20250218153720-6gctb |
+| Doubao-1.5-vision-pro-32k | ep-20250218153813-g2tlb |
+ -->
 
 ::: code-tabs
 @tab nodejs
@@ -29,8 +39,9 @@ const body = {
             "role": "user",          // 角色： user  | assistant | system
             "content": "你好呀！"
         }
-    ],
-    "model": "qwen2.5:7b",           // 模型ID
+    ], 
+    "model": "qwen2.5-72b-instruct",
+    "stream": true, // 是否为流模式返回
     "api_key": "开放平台 api_key"
 };
 
@@ -67,7 +78,7 @@ const body = {
             "content": "你好呀！"
         }
     ],
-    "model": "qwen2.5:7b",           // 模型ID
+    "model": "qwen2.5-72b-instruct",
     "api_key": "开放平台 api_key"
 };
 
