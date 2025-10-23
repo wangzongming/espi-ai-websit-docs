@@ -44,11 +44,11 @@ permalink: /qa/
 1. esp32库版本需要安装 2.0.17 版本
 2. 左上角选择的开发板不是 esp32s3 dev module
 
-### 4、天问唤醒词怎么改？
-跟着视频操作 [http://twen51.com/new/twen51/coursePlayCloud.php?id=24&info_id=217]
+[//]: # (### 4、天问唤醒词怎么改？)
+[//]: # (跟着视频操作 [http://twen51.com/new/twen51/coursePlayCloud.php?id=24&info_id=217])
 
 
-### 5、一直按重启键，板子偶尔连不上WIFI 
+### 4、一直按重启键，板子偶尔连不上WIFI 
 
 这一般是路由器问题，特别是使用手机热点时容易出现，点名一加手机，该手机经测试，在省电模式下和设备断开wifi连接的速度超级慢。很多时候在设备重启完成后手机依然还未断开连接，就会导致设备连不上wifi。
 
