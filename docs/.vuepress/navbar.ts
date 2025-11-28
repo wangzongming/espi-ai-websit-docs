@@ -51,11 +51,11 @@ export const zhNavbar = [
         icon: 'mdi:about-circle-outline',
         activeMatch: '^/about/',
         items: [ 
-            { text: '产品列表', link: '/notes/about/product.md', icon: "fluent-mdl2:product" },
+            // { text: '产品列表', link: '/notes/about/product.md', icon: "fluent-mdl2:product" },
             { text: '技术支持', link: '/notes/about/js-sponsor.md', icon: "fluent:person-support-28-regular" },
             { text: '商业合作', link: '/notes/about/handshake.md', icon: "emojione:handshake-light-skin-tone" },
             // { text: '商业授权', link: '/notes/about/authority.md', icon: "openmoji:authority" },
-            { text: '公司简介', link: '/notes/about/company.md', icon: "mdi:company" },
+            // { text: '公司简介', link: '/notes/about/company.md', icon: "mdi:company" },
             { text: '团队简介', link: '/notes/about/info.md', icon: "flat-color-icons:info" },
         ],
     },
