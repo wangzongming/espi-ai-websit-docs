@@ -17,14 +17,14 @@ list:
     name: 免费二次元音色
     link: https://acgn.ttson.cn/
     avatar: https://www.ttson.cn/assets/images/logo.CTJZMbNp.png
+  # -
+  #   name: Qsy's Blog
+  #   link: http://hexp.top/
+  #   avatar: https://mybatis-mp.cn/images/small-logo.png
   -
-    name: Qsy's Blog
-    link: http://hexp.top/
-    avatar: https://mybatis-mp.cn/images/small-logo.png
-  -
-    name: mybatis-mp
-    link: https://mybatis-mp.cn/
-    avatar: https://mybatis-mp.cn/images/small-logo.png
+    name: xbatis 
+    link: https://xbatis.cn/
+    avatar: https://xbatis.cn/images/small-logo.png
   # -
   #   name: 安全获取苹果UDID
   #   link: https://authapi.applekuid.com/index.html 
