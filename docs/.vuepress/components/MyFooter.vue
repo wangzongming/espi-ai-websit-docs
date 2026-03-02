@@ -1,7 +1,7 @@
 <template>
     <div class="root">
         <div class="powered">Powered by VuePress & vuepress-theme-plume</div>
-        <div class="copyright">Apache 2.0 Licensed | Copyright © ESP-AI <span style="display: inline-block;padding-left: 24px;"> 地址：深圳市福田区汉国中心1206</span></div>
+        <div class="copyright">Apache 2.0 Licensed | Copyright © ESP-AI <span style="display: inline-block;padding-left: 24px;"> 地址：深圳市龙岗区龙城街道尚景社区龙城大道99号西门正中时代广场B座901H </span></div>
         <div>
             <span class="bei_an_container">
                 <a style="color:#777;" href="https://beian.miit.gov.cn/" target="_blank">{{ bei_an_hao }}</a>

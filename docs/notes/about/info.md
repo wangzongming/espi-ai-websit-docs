@@ -14,7 +14,7 @@ permalink: /team/
 </center>
 
 <CardGrid cols="4">  
-  <Card class="spomsor-card" style="background: transparent;">  </Card>
+  <!-- <Card class="spomsor-card" style="background: transparent;">  </Card> -->
    <Card class="spomsor-card" style="background: transparent;">
     <a class="spomsor-a" href="https://xiaomingio.top/" target="_blcok" title="ESP-AI 创始人">
         <img src="https://xiaomingio.top/head.jpg" style="border-radius: 50%;"/>
@@ -27,11 +27,22 @@ permalink: /team/
     </a>
     <div style="text-align:center;font-size: 12px;color: #777;margin-top: 12px;">陈灵均</div>
   </Card>  
-  <Card class="spomsor-card" style="background: transparent;">  </Card>
+    <Card class="spomsor-card" style="background: transparent;">
+    <a class="spomsor-a" href="" target="_blcok" title="ESP-AI 项目嵌入式硬件开发负责人。">
+        <img src="/images/team/hqz.jpg" style="border-radius: 50%;" />
+    </a> 
+    <div style="text-align:center;font-size: 12px;color: #777;margin-top: 12px;">黄秋仔</div>
+  </Card>
+  <Card class="spomsor-card" style="background: transparent;">
+    <a class="spomsor-a" href="" target="_blcok" title="ESP-AI 项目嵌入式软件开发负责人。">
+        <img src="/images/team/cph.jpg" style="border-radius: 50%;"/>
+    </a> 
+    <div style="text-align:center;font-size: 12px;color: #777;margin-top: 12px;">CPH</div>
+  </Card>  
 </CardGrid>  
 
 
-## <center>内部成员</center>
+<!-- ## <center>内部成员</center> -->
 
 <CardGrid cols="4">   
   <!-- 空的占位符 -->
@@ -48,18 +59,7 @@ permalink: /team/
     </a> 
     <div style="text-align:center;font-size: 12px;color: #777;margin-top: 12px;">十五艾格</div>
   </Card>
-  <Card class="spomsor-card" style="background: transparent;">
-    <a class="spomsor-a" href="" target="_blcok" title="ESP-AI 项目嵌入式硬件开发负责人。">
-        <img src="/images/team/hqz.jpg" style="border-radius: 50%;" />
-    </a> 
-    <div style="text-align:center;font-size: 12px;color: #777;margin-top: 12px;">黄秋仔</div>
-  </Card>
-  <Card class="spomsor-card" style="background: transparent;">
-    <a class="spomsor-a" href="" target="_blcok" title="ESP-AI 项目嵌入式软件开发负责人。">
-        <img src="/images/team/cph.jpg" style="border-radius: 50%;"/>
-    </a> 
-    <div style="text-align:center;font-size: 12px;color: #777;margin-top: 12px;">CPH</div>
-  </Card>  
+
    <Card class="spomsor-card" style="background: transparent;">
     <a class="spomsor-a" href="" target="_blcok" title="UI设计">
         <img src="/images/team/zuo.jpg" style="border-radius: 50%;"/>

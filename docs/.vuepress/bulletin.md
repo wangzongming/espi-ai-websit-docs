@@ -2,15 +2,19 @@
 
 ::: center
 
+## 📢 投资合作公告
+
+目前我们经济能力还非常的不足，<br/> 
+我们热烈欢迎合作伙伴的加入和投资者的支持！<br/>无论您是希望与我们合作开发新产品，还是对`ESP-AI`的前景感兴趣，<br/>我们期待与您建立紧密的合作关系。
+
+  
  ---
-<br/> 
-<br/> 
+<br/>  
 
 # 📢 2026 年 2 月 20 日
 
 <h4>OPEN API 中 ASR 接口、音乐生成服务、官方知识库服务下线通知</h4> 
 由于上述服务使用频率极低，我们决定暂时下线这些服务，给您带来的不便我们深表歉意。
-<br/>
 下线日期： 2026/3/1
 <br/>
 我们将会重构这些服务以便给您提供更优质的服务。
@@ -152,7 +156,7 @@
 
 ![QQ qr_code](/images/qq-grounp.png){width="618" height="616" style="width: 200px"}
 
-**QQ 交流群：** [952051286](https://qm.qq.com/q/vRZ2IK5JCw)
+**QQ 交流群：** 1群 [854445223](https://qm.qq.com/q/rO36RdR95u)（已满）  2群 [952051286](https://qm.qq.com/q/vRZ2IK5JCw)
 
 您在使用过程中遇到任何问题，欢迎通过 [issue](https://github.com/wangzongming/esp-ai/issues/new/choose) 反馈。<br/>也欢迎加入我们的 QQ 交流群一起讨论。
 
