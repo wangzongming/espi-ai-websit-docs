@@ -1,57 +1,50 @@
 ---
-title: 技术支持
+title: Technical Support
 createTime: 2024/11/07 13:57:47
 permalink: /en/article/hmimr5q5/
 ---
 
 
-如果你通过文档、搜索引擎、Github Issue 搜索等方式都无法解决你的问题，可以通过以下方式获得技术支持。
+If you cannot solve your issue through the docs, search engines, or GitHub Issues, you can get technical support through the following channels.
 
-## 免费技术支持
+## Free Technical Support
 
-- 通过 GitHub Issues 提交问题，这是免费的，这是最推荐的方式，因为问题都是公开的，可以帮助到更多人，也可以避免重复的问题。 
-- 进入 QQ 群（群号: <a href="https://qm.qq.com/q/vRZ2IK5JCw" target="_block">`952051286`</a>）询问其他人是否有遇到过相同的问题，或者是否有解决方法。
-- 如果你熟悉<a href="https://zhuanlan.zhihu.com/p/25258228">《提问的艺术》</a>，懂得尊重对方的时间，可以清晰得描述你的问题，包括运行环境、排查过程等信息，然后加我 微信 `xiaomingdijia` 联系我，我会尝试帮你解决问题，这是免费的，但是我更建议你通过 <a href="https://github.com/wangzongming/esp-ai/issues">GitHub Issues</a> 来提交问题。
+- Submit an issue through GitHub Issues. This is free and strongly recommended because issues are public, help more people, and reduce repeated questions.
+- Join the QQ group (Group ID: <a href="https://qm.qq.com/q/vRZ2IK5JCw" target="_block">`952051286`</a>) and ask whether others have seen the same issue or found a solution.
+- If you are familiar with <a href="https://zhuanlan.zhihu.com/p/25258228">The Art of Asking Questions</a> and can clearly describe your environment and troubleshooting process, you can add WeChat `xiaomingdijia` and I will try to help for free. Still, GitHub Issues is preferred: <a href="https://github.com/wangzongming/esp-ai/issues">GitHub Issues</a>.
 
-## 付费技术支持
+## Paid Technical Support
 
-你想要更快的响应，不想去搜索或看不懂那些东西，可以付费获得技术支持。
+If you need faster responses, or don't want to spend time searching and troubleshooting, paid support is available.
 
-## 联系方式 
-- 微信/电话同步： 18216811014 (小明) 
+## Contact
+- WeChat / Phone: 18216811014 (Xiaoming)
 
-<!-- - 座机电话： 4006066808 
-- 微信/电话同步： 18216811014 (小明) 
-- 微信/电话同步： 15581856632 (陈灵均) 
-- 微信/电话同步： 15805875550 (王雷)
-- 公司地址：深圳市福田区汉国中心1206 -->
+<!-- `ESP-AI` is a growing ecosystem. To keep the project sustainable, we also provide paid technical support.
 
-<!-- `ESP-AI` 是一个较大的新生态，为了项目可持续发展，我们还将提供付费的技术支持。 
+If you want faster responses and do not want to spend time searching or troubleshooting, you can purchase technical support.
 
-你想要更快的响应，不想去搜索或看不懂那些东西，可以付费获得技术支持。
+| Service Item                       | Price (RMB) | Notes                                                                                             |
+| ---------------------------------- | ----------- | ------------------------------------------------------------------------------------------------- |
+| Business consultation              | 50 / 10 min | Intro discussion                                                                                  |
+| Consultation / technical guidance  | 200 / hour  | Remote guidance for technical issues                                                              |
+| Full hardware set                  | 150 / set   | Hardware only, no technical support                                                               |
+| Full hardware set (solder + flash)| 400 / set   | Includes 30 minutes support; later upgrade help is 150 / time                                    |
+| Server deployment                  | 150 / time  | Service ends once server runs successfully on cloud or local machine                              |
+| Wake-word customization            | 1000 / item | [Not open yet] Requires around 500 voice samples; we will guide data collection                  |
+| Plugin customization               | from 5000   | Place a 10-minute consultation order first                                                        |
+| Business cooperation               | negotiable  | Place a 10-minute consultation order first                                                        | -->
 
-| 服务项                  | 收费标准(RMB) | 备注                                                                                                |
-| ----------------------- | ------------- | --------------------------------------------------------------------------------------------------- |
-| 业务咨询                | 50/10分钟     | 请喝咖啡/简单了解                                                                               |
-| 业务咨询/技术指导       | 200/小时      | 任何技术问题远程指导                                                                                |
-| 全套硬件                | 150/套        | 无任何技术支持                                                                                      |
-| 全套硬件(焊接+代码烧录) | 400/套        | 送半小时技术支持，后续需要帮升级仅需 150/次                                                         |
-| 服务端部署              | 150/次        | 在服务器或者在本地运行起来服务端即为服务结束                                                        |
-| 唤醒词定制              | 1000/条        | [暂未开放]需自行提供500条左右样本数据<br/>(对着你的麦克风喊一句 小明同学 就是一条样本<br/>我会告诉你怎么收集) |  |
-| 插件定制                | 5000起         | 先下单10分钟的                                                                                      |  |  |
-| 商业合作                | 详谈          | 先下单10分钟的                                                                                      |  |  | -->
 
- 
-<!-- ### 下单链接
+### Order Link
 
-下单后会在下单平台中告知您腾讯会议号和会议时间，请务必提前下载好`腾讯会议`。
+After ordering, the meeting ID and schedule will be sent to you on the order platform. Please install `Tencent Meeting` in advance.
 
-复制下面文字打开淘宝，或者直接扫码：
+Copy the text below to open Taobao, or scan the QR code directly:
 
-**【淘宝】https://m.tb.cn/h.g9fi35pHj7F2ScS?tk=H0qi3WXdlqH CZ0016 「ESP-AI 技术支持」
-点击链接直接打开 或者 淘宝搜索直接打开**
+**[Taobao] https://m.tb.cn/h.g9fi35pHj7F2ScS?tk=H0qi3WXdlqH CZ0016 "ESP-AI Technical Support"
+Open directly via the link or search in Taobao**
 
 <div align="center">
 <img src="/images/taobao.jpg"  style="border-radius: 32px;"/>
 </div>
-  -->

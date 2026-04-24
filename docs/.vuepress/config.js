@@ -5,8 +5,8 @@ import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 // import { noticePlugin } from '@vuepress/plugin-notice'
 import { plumeTheme, defineNoteConfig } from 'vuepress-theme-plume'
 
-import { enNavbar, zhNavbar } from './navbar.js'
-import { enNotes, zhNotes } from './notes/index.js'
+import { enNavbar, jaNavbar, zhNavbar } from './navbar.js'
+import { enNotes, jaNotes, zhNotes } from './notes/index.js'
 import path from 'path'
 
 export default defineUserConfig({
@@ -51,6 +51,10 @@ export default defineUserConfig({
         '/en/': {
             lang: 'en-US',
             description: 'The simplest and most cost-effective AI integration solution, enabling any object to have intelligent conversation capabilities. Let everyone have an AI assistant',
+        },
+        '/ja/': {
+            lang: 'ja-JP',
+            description: 'ハードウェアをAIへ接続するための、シンプルで低コストなソリューション',
         },
     },
 
@@ -138,13 +142,19 @@ export default defineUserConfig({
             '/en/': {
                 notes: enNotes,
                 navbar: enNavbar,
-            }, 
+            },
+            '/ja/': {
+                selectLanguageName: '日本語',
+                selectLanguageText: '言語',
+                notes: jaNotes,
+                navbar: jaNavbar,
+            },
         },
 
 
         bulletin: {
             layout: 'center', 
-            id: '24',
+            id: '25',
             lifetime: 'once',
             title: '🎉 ESP-AI 公告 🎉',
             contentFile: path.join(__dirname, 'bulletin.md'),

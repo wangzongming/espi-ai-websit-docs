@@ -1,64 +1,78 @@
 ---
-title: 商业合作
+title: Business Cooperation
 createTime: 2024/11/07 13:57:58
-permalink: /en/acout/cooperation/
+permalink: /en/about/cooperation/
 ---
  
-## 成为分销商、代理商
+## Become a Distributor or Agent
 
-采购 `ESP-AI` 的产品及服务，转售给用户，用户与 `ESP-AI` 没有直接商务合作。
+Purchase `ESP-AI` products and services, then resell them to your customers. In this model, end users do not establish direct commercial cooperation with `ESP-AI`.
 
-成为分销商后您将以非常低的价格拿到`ESP-AI`所提供的软件服务以及硬件服务。
+After becoming a distributor, you can access `ESP-AI` software and hardware services at highly competitive wholesale prices.
 
-#### 购买详情
-- 费用：添加商务洽谈  
-- 硬件拿货价：成本价  
-- 下单地址：`见文末联系方式`
-
-
-## 开放平台-分站申请
-
-如果您是玩具厂商、家居厂商、销售、初创者，不想斥巨资自建团队，那开通一个`ESP-AI 分站`将是您最佳的选择！
-
-底层技术由开源生态支持，平台由专人负责，您只需要做好产品和销售即可！
-
-**演示网站**： [https://demo.espai.fun/](https://demo.espai.fun/)   
-**申请地址**： [开放平台分站申请](https://dev.espai.fun/#/UserManagementChildSite)   
+#### Purchase Details
+- Fee: contact us for business negotiation  
+- Hardware wholesale price: at cost  
+- Software wholesale price: 40% off list price  
+- Order channel: `see contact at the end`
 
 
+## Open Platform - Subsite Application
 
-**包括的服务：**
-1. 自定义 `二级域名`、`LOGO`、`主题色`、`网站标题`、`标语`、`独立后台管理`、`自定义登录页轮播`、`...`
-2. 分站中不携带任何主站信息
-3. `专属APP（安卓）`
-4. `单位商用授权`
-5. 用户所有支付分成 20% (指开放平台额度卡上的消费, 70% 的费用将用于免费服务运营，平台抽成 10%)
+If you are a toy manufacturer, smart home brand, sales team, or startup and don't want to invest heavily in building a full AI team, an `ESP-AI subsite` is a strong option.
+
+The core technology is supported by the open-source ecosystem and maintained by a dedicated team, so you can focus on product and sales.
+
+**Demo site**: [https://demo.espai.fun/](https://demo.espai.fun/)   
+**Apply here**: [Open Platform Subsite Application](https://dev.espai.fun/#/UserManagementChildSite)   
 
 
-**购买详情**
-- 费用：`6800/年`    
-- 下单地址：`见文末联系方式`
 
-## 定制硬件固件
+**Included services:**
+1. Custom `subdomain`, `logo`, `theme color`, `site title`, `slogan`, `independent admin panel`, `custom login carousel`, and more.
+2. No parent-site branding in your subsite.
+3. `Dedicated Android app`.
+4. `Organization-level commercial authorization`.
+5. Revenue share: 20% of user payments (for open-platform quota-card consumption; 70% supports free-service operations, platform keeps 10%).
 
-如果你不想让用户去配置你的超体秘钥或者做一些定制，那你可以让我们定制一套硬件代码。
 
-**购买详情**
-- 下单地址：`见文末联系方式`
+**Purchase details**
+- Fee: `6800/year`    
+- Order channel: `see contact at the end`
+
+## Open Platform - Dedicated Mini Program
+
+Supports Bluetooth provisioning and device management through your own mini program. Feature parity is aligned with the official mini program. You need to complete your own mini-program filing/compliance process. This service is available after your subsite is activated.
+
+**Purchase details**
+- Fee: `6800/year`    
+- Order channel: `see contact at the end`
+
+## Custom Hardware Firmware
+
+If you don't want users to configure their own Super-Agent API key, or you need customized logic, we can provide a tailored firmware package.
+
+**Purchase details**
+- Order channel: `see contact at the end`
   
  
 
-## 特定行业解决方案
+## Industry-Specific Solutions
 
-智能家居、玩具、智能设备等，如果您需要我们为您定制一套解决方案，那么欢迎联系我们。
-我们可以为您提供 软件到硬件的全套解决方案。
+For smart home, toys, and other intelligent devices, contact us if you need a tailored solution.
+We can provide an end-to-end stack from software to hardware.
+
+## Private Deployment of ESP-AI Services
+
+If you need to deploy part of the ESP-AI service stack on your own infrastructure, feel free to contact us.
+We can provide complete software and hardware integration solutions.
 
 
-## 联系方式 
-- 微信/电话同步： 18216811014 (小明) 
+## Contact
+- WeChat / Phone: 18216811014 (Xiaoming)
 
-<!-- - 座机电话： 4006066808
-- 微信/电话同步： 18216811014 (小明) 
-- 微信/电话同步： 15581856632 (陈灵均) 
-- 微信/电话同步： 15805875550 (王雷) 
-- 公司地址：深圳市福田区汉国中心1206 -->
+<!-- - Landline: 4006066808
+- WeChat / Phone: 18216811014 (Xiaoming)
+- WeChat / Phone: 15581856632 (Chen Lingjun)
+- WeChat / Phone: 15805875550 (Wang Lei)
+- Company Address: HanGuo Center 1206, Futian District, Shenzhen -->

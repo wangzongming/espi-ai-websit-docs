@@ -86,6 +86,41 @@ export const zhNavbar = [
     // { text: 'v1.0.2', link: '/open/pcb2', icon: "clarity:plugin-line" }, 
 ] as NavItem[]
 
+export const jaNavbar = [
+    {
+        text: 'ガイド',
+        icon: 'icon-park-outline:guide-board',
+        items: [
+            { text: 'クイックスタート', link: '/ja/', icon: 'streamline:startup' },
+            { text: '開発ドキュメント（英語）', link: '/en/notes/guide/ESP-AI简介.md', icon: 'hugeicons:doc-01' },
+            { text: 'よくある質問', link: '/ja/qa/', icon: 'mdi:git-issue' },
+        ],
+    },
+    {
+        text: 'エコシステム',
+        icon: 'ri:open-arm-line',
+        items: [
+            { text: 'オープンプラットフォーム', link: 'https://dev.espai.fun', icon: 'carbon:api-1' },
+            { text: 'プラグインマーケット', link: 'https://dev.espai.fun/#/Plugin', icon: 'clarity:plugin-line' },
+            { text: 'オープンソース PCB', link: '/en/notes/open/pcb.md', icon: 'file-icons:arduino' },
+        ],
+    },
+    {
+        text: '私たちについて',
+        icon: 'mdi:about-circle-outline',
+        items: [
+            { text: 'スポンサー / 投資', link: '/ja/sponsor/', icon: 'emojione:handshake-light-skin-tone' },
+            { text: '技術サポート', link: '/en/notes/about/js-sponsor.md', icon: 'fluent:person-support-28-regular' },
+            { text: 'ビジネス提携', link: '/en/notes/about/handshake.md', icon: 'emojione:handshake-light-skin-tone' },
+        ],
+    },
+    {
+        text: 'Github',
+        icon: 'mdi:github',
+        link: 'https://github.com/wangzongming/esp-ai',
+    },
+] as NavItem[]
+
 export const enNavbar = [
     {
         "text": "Guide",
