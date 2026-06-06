@@ -3,14 +3,19 @@
 ::: center
 
 
-## 📢 欢庆 ESP-AI 两周年
+## 📢 ESP-AI Mini 开发板套件已发布
+
+支持各类屏幕和扩展IO，详情见<a href="/open/pcb/mini-ext/1.0.0/"> ESP-AI Mini 开发板套件</a>。
+
+
+<!-- ## 📢 欢庆 ESP-AI 两周年
 
 ESP-AI 项目已经发布了两年了，感谢大家的支持！   
 
 为表达感谢，ESP-AI 迷你开发板持续低价热销中，淘宝店 <a href="https://shop396116768.taobao.com/?spm=pc_detail.30350276.shop_block.dshopinfo.2f0d5fa7ORoq2A" target="_blank">去看看</a>。
 
 另外，ESP-AI-Mini 开发板扩展板也即将发布，敬请期待！
-
+ -->
 
 <!-- ## 📢 投资合作公告
 

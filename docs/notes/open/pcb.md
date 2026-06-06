@@ -68,10 +68,17 @@ permalink: /open/pcb/
 
 ## ==ESP-AI S3 mini 开发板=={.important} 
 <CardGrid class="pcb-list">
+<a href="/open/pcb/mini-ext/1.0.0/" class="no-arr">
+  <ImageCard
+    image="/images/pcb/mini/ext-1.0/5.png"
+    title="Mini 开发板 + 扩展板 v1.0.0"  
+  /> 
+ </a> 
+
  <a href="/open/pcb/mini/1.0.0/" class="no-arr">
   <ImageCard
     image="/images/pcb/mini/1.0.0/haibao.jpg"
-    title="v1.0.0"  
+    title="Mini 开发板 v1.0.0"  
   /> 
  </a> 
 </CardGrid>
