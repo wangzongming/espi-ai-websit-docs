@@ -1,10 +1,10 @@
-# ESP-AI Mini Ext Development Expert
+# ESP-AI Mini 开发套件 Development Expert
 
 ## When to use this skill
 
 Use this skill whenever the task involves:
-
-- ESP-AI Mini Ext
+ 
+- ESP-AI Mini 开发套件
 - ESP-AI SDK
 - ESP32-S3 AI development board
 - INMP441 microphone
@@ -17,7 +17,7 @@ Use this skill whenever the task involves:
 - AI chatbot hardware
 - ESP-AI ecosystem devices
 - Embedded software development for ESP-AI devices
-- Arduino firmware development for ESP-AI Mini Ext
+- Arduino firmware development for ESP-AI Mini 开发套件
 - Device binding and network provisioning
 - BLE WiFi provisioning
 - Battery monitoring
@@ -61,13 +61,13 @@ This skill contains:
 
 Always prioritize the information in this skill over generic ESP32 examples.
 
-# ESP-AI Mini Ext 开发板开发规范（Skills）
+# ESP-AI Mini 开发套件开发规范（Skills）
 
 ## 角色定义
 
 你是一名专业 ESP32-S3 嵌入式工程师。
 
-当用户要求编写 ESP-AI Mini Ext 开发板程序时：
+当用户要求编写 ESP-AI Mini 开发套件开发板程序时：
 
 * 优先使用 ESP-AI SDK
 * 优先使用 Arduino Framework
@@ -80,7 +80,7 @@ Always prioritize the information in this skill over generic ESP32 examples.
 
 # 一、开发板介绍
 
-ESP-AI Mini Ext 是基于 ESP32-S3 的 AI 开发板。
+ESP-AI Mini 开发套件 是基于 ESP32-S3 的 AI 开发板。
 
 板载资源：
 
@@ -628,3 +628,300 @@ float voltage = analogRead(8) * 3.3 / 4095 * 4;
 * TFT：ST7789
 
 并在代码注释中说明。
+
+
+
+## 代码案列
+
+如果你只是想点亮屏幕，那只需要关注 `User_Setup.h` 配置和背光代码即可。
+
+### 2.4寸屏搭配 ESP-AI 开源代码使用（基于 ESP-AI-Studio 开发）
+
+1. 在 `\libraries2\TFT_eSPI\User_Setup.h` 修改配置
+```c
+
+#define ST7789_2_DRIVER 
+
+#define TFT_WIDTH  240
+#define TFT_HEIGHT 320
+
+#define TFT_MOSI     42   // LCD_SDA   Automatically assigned with ESP8266 if not defined
+#define TFT_SCLK     39    // LCD_SCK   Automatically assigned with ESP8266 if not defined
+#define TFT_DC       7   //  Data Command control pin
+#define TFT_CS       13   // Chip select control pin D8 
+```
+
+2. 在 `\libraries2\esp-ai\src\USER_CONFIG.h` 修改配置
+
+```c
+/** 音频编解码方案 **/
+#define CODEC_TYPE_BLAMP_I2S // 两路 I2S + MSM 数字麦克风 + MAX 数字功放   
+```
+
+3. 在 `\project\src` 中增加文件 `backlight_control.h`
+```c
+/**
+ * Copyright (c) 2026 义体工坊团队
+ * MIT License
+ *
+ * 屏幕背光控制模块
+ */
+
+#ifndef BACKLIGHT_CONTROL_H
+#define BACKLIGHT_CONTROL_H
+
+#include <Arduino.h>
+
+// 初始化背光控制（默认关闭）
+void initBacklight();
+
+// 设置背光亮度 (0-255，255最亮)
+void setBacklightBrightness(uint8_t brightness);
+
+// 开启背光
+void setBacklightOn();
+
+// 关闭背光
+void setBacklightOff();
+
+// 重置背光计时器
+void resetBacklightTimer();
+
+// 更新背光状态（检查超时）
+void updateBacklight();
+
+#endif
+
+
+```
+
+4. 在 `\project\src` 中增加文件 `backlight_control.cpp`
+```c
+/**
+ * Copyright (c) 2026 义体工坊团队
+ * MIT License
+ *
+ * 屏幕背光控制模块实现
+ */
+
+#include "backlight_control.h"
+
+#define SCREEN_BL_PIN 3
+#define SCREEN_TIMEOUT_MS (120 * 1000)
+#define LEDC_FREQ 5000
+#define LEDC_RES 8
+#define LEDC_MAX ((1 << LEDC_RES) - 1)
+#define BACKLIGHT_DEFAULT_BRIGHTNESS 255
+
+#if ESP_ARDUINO_VERSION >= ESP_ARDUINO_VERSION_VAL(3, 0, 0)
+#define LEDC_CH SCREEN_BL_PIN
+#else
+#define LEDC_CH 0
+#endif
+
+static unsigned long lastActivityTime = 0;
+static bool backlightOn = false;
+static uint8_t currentBrightness = 0;
+
+// 低电平点亮，duty 越小越亮
+static void writeBacklightDuty(uint8_t brightness) {
+  uint32_t duty = LEDC_MAX - ((uint32_t)brightness * LEDC_MAX / 255);
+  ledcWrite(LEDC_CH, duty);
+}
+
+void initBacklight() {
+#if ESP_ARDUINO_VERSION >= ESP_ARDUINO_VERSION_VAL(3, 0, 0)
+  ledcAttach(SCREEN_BL_PIN, LEDC_FREQ, LEDC_RES);
+#else
+  ledcSetup(LEDC_CH, LEDC_FREQ, LEDC_RES);
+  ledcAttachPin(SCREEN_BL_PIN, LEDC_CH);
+#endif
+  writeBacklightDuty(0);
+  backlightOn = false;
+  currentBrightness = 0;
+}
+
+void setBacklightBrightness(uint8_t brightness) {
+  currentBrightness = brightness;
+  writeBacklightDuty(brightness);
+  backlightOn = brightness > 0;
+  if (backlightOn) {
+    lastActivityTime = millis();
+  }
+}
+
+void setBacklightOn() {
+  setBacklightBrightness(BACKLIGHT_DEFAULT_BRIGHTNESS);
+}
+
+void setBacklightOff() {
+  writeBacklightDuty(0);
+  backlightOn = false;
+  currentBrightness = 0;
+}
+
+void resetBacklightTimer() {
+  lastActivityTime = millis();
+  if (!backlightOn) {
+    setBacklightOn();
+  }
+}
+
+void updateBacklight() {
+  if (backlightOn && (millis() - lastActivityTime >= SCREEN_TIMEOUT_MS)) {
+    setBacklightOff();
+  }
+}
+
+```
+
+5. 在 `\project\main.h` 中添加背光控制头文件
+
+最最顶部增加下面头文件
+```c
+#include "backlight_control.h"
+```
+
+在最下面增加下面定义
+
+```c
+#define SCREEN_WIDTH 320
+#define SCREEN_HEIGHT 240
+```
+
+6. 在 `\project\main.cpp` 的 `setup` 函数最后没中添加背光控制
+```c 
+void setup() {
+    
+    // ... 
+    // 打开背光
+    initBacklight();
+    setBacklightOn(); 
+}
+``` 
+
+7. `\project\USER_CONFIG.h` 中修改配置
+
+```c
+#define IS_ESP_AI_S3_TFT_EMO //  ESP-AI-V2/V3 开发板（TFT 屏 - EEUI）
+```
+
+### 1.54寸屏搭配 ESP-AI 开源代码使用（基于 ESP-AI-Studio 开发）
+
+和 2.4 寸屏一样，唯一不同的地方需要修改下面几处
+
+
+1. `\libraries2\TFT_eSPI\User_Setup.h`
+
+```c
+
+#define ST7789_DRIVER 
+
+#define TFT_WIDTH  240
+#define TFT_HEIGHT 240
+
+#define TFT_MOSI     42   // LCD_SDA   Automatically assigned with ESP8266 if not defined
+#define TFT_SCLK     39    // LCD_SCK   Automatically assigned with ESP8266 if not defined
+#define TFT_DC       7   //  Data Command control pin
+#define TFT_CS       13   // Chip select control pin D8 
+```
+
+
+2. 在 `\project\main.h` 中添加背光控制头文件
+
+最最顶部增加下面头文件
+```c
+#include "backlight_control.h"
+```
+
+在最下面增加下面定义
+
+```c
+#define SCREEN_WIDTH 240
+#define SCREEN_HEIGHT 240
+```
+
+
+### 1.28 寸双目 ESP-AI 开源代码使用（基于 ESP-AI-Studio 开发）
+
+和 2.4 寸屏一样，唯一不同的地方需要修改下面几处
+
+
+1. `\libraries2\TFT_eSPI\User_Setup.h`
+
+```c
+
+#define GC9A01_DRIVER 
+
+#define TFT_WIDTH  240
+#define TFT_HEIGHT 240
+
+#define TFT_MOSI     42   // LCD_SDA   Automatically assigned with ESP8266 if not defined
+#define TFT_SCLK     39    // LCD_SCK   Automatically assigned with ESP8266 if not defined
+#define TFT_DC       7   //  Data Command control pin
+#define TFT_CS       13   // Chip select control pin D8 
+```
+
+
+2. 在 `\project\main.h` 中添加背光控制头文件
+
+最最顶部增加下面头文件
+```c
+#include "backlight_control.h"
+```
+
+在最下面增加下面定义
+
+```c
+#define SCREEN_WIDTH 240
+#define SCREEN_HEIGHT 240
+```
+
+3. `\project\USER_CONFIG.h` 中修改配置
+
+```c
+#define IS_ESP_AI_S3_TFT_EMO_CIRCLE // ESP-AI S3 开发板（TFT 屏 - EEUI - 1.28寸圆形屏幕）
+```
+
+
+
+### 0.71 寸双目 ESP-AI 开源代码使用（基于 ESP-AI-Studio 开发）
+
+和 2.4 寸屏一样，唯一不同的地方需要修改下面几处
+
+
+1. `\libraries2\TFT_eSPI\User_Setup.h`
+
+```c
+
+#define GC9D01_DRIVER 
+
+#define TFT_WIDTH  160
+#define TFT_HEIGHT 160
+
+#define TFT_MOSI     42   // LCD_SDA   Automatically assigned with ESP8266 if not defined
+#define TFT_SCLK     39    // LCD_SCK   Automatically assigned with ESP8266 if not defined
+#define TFT_DC       7   //  Data Command control pin
+#define TFT_CS       13   // Chip select control pin D8 
+```
+
+
+2. 在 `\project\main.h` 中添加背光控制头文件
+
+最最顶部增加下面头文件
+```c
+#include "backlight_control.h"
+```
+
+在最下面增加下面定义
+
+```c
+#define SCREEN_WIDTH 160
+#define SCREEN_HEIGHT 160
+```
+
+3. `\project\USER_CONFIG.h` 中修改配置
+
+```c
+#define IS_ESP_AI_S3_TFT_EMO_CIRCLE // ESP-AI S3 开发板（TFT 屏 - EEUI - 1.28寸圆形屏幕）
+```
